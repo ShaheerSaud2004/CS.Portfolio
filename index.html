@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Portfolio</title>
+    <title>Shaheer Saud's Portfolio</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+
+
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
+    <header class="header">
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-
     <section id="about">
         <h1>About Me</h1>
-        <p><!-- Your introduction --></p>
+        <p>Hi, I'm Shaheer Saud, a passionate IT professional and software developer currently studying at Rutgers University...</p>
     </section>
-
     <section id="projects">
         <h1>Projects</h1>
-        <div class="project-item"><!-- Project details --></div>
-        <!-- Repeat for each project -->
+       
+        <div class="project-item">
+            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/ScarletPlates">
+                <h2>ScarletPlates</h2>
+                <p>Full-stack search tool for Rutgers dining services...</p>
+            </div>
+        </div>
+        <div class="project-item">
+            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/HandTracking">
+                <h2>Real-Time Hand Gesture Recognition</h2>
+                <p>AI-powered system using Python and Mediapipe for hand gesture recognition...</p>
+            </div>
+        </div>
+        <div class="project-item">
+            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/Router-Simulation-">
+                <h2>Network Router Simulation</h2>
+                <p>Java-based router simulation program for efficient data flow and IP tracking...</p>
+            </div>
+        </div>
+        <div class="project-item">
+            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/DictionaryAttack">
+                <h2>Dictionary Attack</h2>
+                <p>A security-focused project implementing a dictionary attack simulation...</p>
+            </div>
+        </div>
     </section>
-
+    </section>
+   
+    <section id="work-experience">
+        <h1>Work Experience</h1>
+        <div class="experience-container">
+            <div class="experience-item left-item">
+            <img src="ITLOGO.jpg" alt="Rutgers OIT Logo">
+            <div class="work-title">Rutgers Office of Information Technology</div>
+            <button class="info-btn" data-target="#exp1">More Info</button>
+            <div class="exp-description" id="exp1">
+                <p>Level 2 IT Consultant at Rutgers University...</p>
+            </div>
+        </div>
+        <div class="experience-item right-item">
+            <img src="Seal.png" alt="Legal Intern Icon">
+            <div class="work-title">Assemblyman Sterley Stanley</div>
+            <button class="info-btn" data-target="#exp2">More Info</button>
+            <div class="exp-description" id="exp2">
+                <p>Legal Intern at Assemblyman Sterley Stanley's Office...</p>
+            </div>
+        </div>
+    </section>
+    
+    </section>
     <section id="contact">
         <h1>Contact</h1>
-        <p><!-- Contact details or form --></p>
+        <p>Reach out to me at shaheer.saud@rutgers.edu or call me at 732-314-8699.</p>
     </section>
 
-    <footer>
-        <p>© 2024 Your Name. All Rights Reserved.</p>
+    <footer class="footer">
+        <p>© 2024 Shaheer Saud. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+

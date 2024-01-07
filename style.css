@@ -1,53 +1,206 @@
+/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Source Code Pro', monospace;
     color: #333;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-size: 18px;
+ 
+}
+.about{
+    font-size: 18px;
 }
 
-header {
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header Styles */
+.header {
     background: #333;
     color: #fff;
     padding: 10px 0;
     text-align: center;
 }
 
-header nav ul {
+.navbar .nav-list {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
-header nav ul li {
-    display: inline;
+.navbar .nav-list li {
     margin: 0 15px;
 }
 
-header nav ul li a {
+.navbar .nav-list li a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.5s ease;
 }
 
+/* Section Styles */
 section {
     padding: 20px;
     margin: 20px 0;
+    text-align: center;
 }
 
+/* Project Item Styles */
 .project-item {
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     margin-bottom: 20px;
     padding: 15px;
     transition: transform 0.3s ease;
+    text-align: left;
 }
 
-.project-item:hover {
-    transform: scale(1.05);
+.project-link {
+    cursor: pointer;
+    position: relative;
+    display: block; /* Make the whole area clickable */
 }
 
-footer {
+.project-link:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly darker on hover */
+    transition: background-color 0.3s ease;
+}
+
+/* Footer Styles */
+.footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background: #333;
     color: #fff;
+}
+
+
+.experience-item img {
+    width: 100px;  /* Set a fixed width */
+    height: 100px; /* Set a fixed height */
+    object-fit: cover; /* This ensures the image covers the area without stretching */
+    border-radius: 5px; /* Optional: for rounded corners */
+    margin-bottom: 10px; /* Spacing below the image */
+}
+.experience-item {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Centers items vertically */
+    gap: 10px; /* Adds space between items */
+}
+
+
+
+.exp-description {
+    display: none;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.exp-description img {
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    margin-bottom: 10px;
+}
+.info-btn {
+    margin-top: 10px;
+}
+
+
+#work-experience {
+    text-align: center; /* Center the header */
+    padding: 20px;
+    font-size: 24px
+   
+}
+
+
+
+.work-info {
+    display: flex;
+    flex-direction: column; /* Stack title and button vertically */
+    align-items: center; /* Center-align title and button */
+    margin-top: 10px;
+}
+
+.experience-item.left-align {
+    text-align: left;
+}
+
+.experience-item.right-align {
+    text-align: right;
+}
+
+.experience-item.far-right-align {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+
+.work-title {
+    /* Styles for the title */
+    margin-bottom: 10px;
+}
+
+.info-btn {
+    /* Styles for the button */
+}
+.experience-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+
+.center-align {
+    
+        align-items: center;
+        margin-top: -240px; /* Adjust this value as needed */
+    
+}
+
+.experience-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.work-title, .info-btn {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.experience-container {
+    display: flex;
+    justify-content: center; /* Align items to the center */
+    gap: 50px; /* Adjust the gap between items */
+}
+
+
+.left-item, .right-item {
+    flex: 1; /* Equal flex-grow for both items */
+}
+.left-item {
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.right-item {
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.experience-item {
+    /* Other styling for experience items */
 }
