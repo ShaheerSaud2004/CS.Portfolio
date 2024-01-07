@@ -235,3 +235,16 @@ section {
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
+body, a, button {
+    cursor: url('custom-cursor.png'), auto;
+}
+#chartContainer {
+    background-color: white;
+    width: 450px; /* Adjust width as needed */
+    height: 450px; /* Adjust height as needed */
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    margin: 20px auto; /* Centering the container */
+    border-radius: 10px; /* Optional rounded corners */
+}
+
