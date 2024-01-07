@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Shaheer Saud's Portfolio</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -8,6 +9,7 @@
 
 
 </head>
+
 <body>
     <header class="header">
         <nav class="navbar">
@@ -20,11 +22,11 @@
     </header>
     <section id="about">
         <h1>About Me</h1>
-        <p>Hi, I'm Shaheer Saud, a passionate IT professional and software developer currently studying at Rutgers University...</p>
+        <p id="typing"></p> <!-- Changed for typing effect -->
     </section>
     <section id="projects">
         <h1>Projects</h1>
-       
+
         <div class="project-item">
             <div class="project-link" data-href="https://github.com/ShaheerSaud2004/ScarletPlates">
                 <h2>ScarletPlates</h2>
@@ -51,28 +53,44 @@
         </div>
     </section>
     </section>
-   
+
     <section id="work-experience">
         <h1>Work Experience</h1>
         <div class="experience-container">
             <div class="experience-item left-item">
-            <img src="ITLOGO.jpg" alt="Rutgers OIT Logo">
-            <div class="work-title">Rutgers Office of Information Technology</div>
-            <button class="info-btn" data-target="#exp1">More Info</button>
-            <div class="exp-description" id="exp1">
-                <p>Level 2 IT Consultant at Rutgers University...</p>
+                <img src="ITLOGO.jpg" alt="Rutgers OIT Logo">
+                <div class="work-title">Rutgers Office of Information Technology</div>
+                <div class="position-title">Level 2 IT Consultant</div> <!-- Position Title -->
+                <button class="info-btn" data-target="#exp1">More Info</button>
+                <div class="exp-description" id="exp1">
+                    <p>Developed a Python script to automatically consolidate client data from diverse websites into a
+                        singular
+                        document to streamline information gathering to lower caller wait times.</p>
+                    <p>Optimized Wi-Fi networks for Linux devices using network protocols like TCP/IP, DHCP, DNS, and
+                        IEEE
+                        802.11ac wireless standards; bolstered security with WPA2-Enterprise encryption, firewalls, and
+                        access
+                        controls, leading to a more secure network experience</p>
+                    <p>Troubleshooted and rectified Layer 1 to Layer 7 configurations, including cabling, IP address,
+                        NetMask,
+                        DHCP, DNS, TFTP, etc., to ensure continuous network connectivity and smooth data transmission
+                    </p>
+                    <p>Nominated by several supervisors for the "Consultant of the Month" award, a recognition
+                        highlighting exceptional performance, unwavering dedication, and commitment to delivering
+                        top-notch service</p>
+                </div>
             </div>
-        </div>
-        <div class="experience-item right-item">
-            <img src="Seal.png" alt="Legal Intern Icon">
-            <div class="work-title">Assemblyman Sterley Stanley</div>
-            <button class="info-btn" data-target="#exp2">More Info</button>
-            <div class="exp-description" id="exp2">
-                <p>Legal Intern at Assemblyman Sterley Stanley's Office...</p>
+            <div class="experience-item right-item">
+                <img src="Seal.png" alt="Legal Intern Icon">
+                <div class="work-title">Assemblyman Sterley Stanley</div>
+                <div class="position-title">Level 2 IT Consultant</div> <!-- Position Title -->
+                <button class="info-btn" data-target="#exp2">More Info</button>
+                <div class="exp-description" id="exp2">
+                    <p>Collaborated with government officials to craft bills designed for the benefits of New Jersey residents</p>
+                </div>
             </div>
-        </div>
     </section>
-    
+
     </section>
     <section id="contact">
         <h1>Contact</h1>
@@ -82,8 +100,11 @@
     <footer class="footer">
         <p>© 2024 Shaheer Saud. All Rights Reserved.</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="script.js"></script>
-</body>
-</html>
 
+
+</body>
+
+</html>
