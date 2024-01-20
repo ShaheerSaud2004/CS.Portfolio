@@ -321,3 +321,10 @@ section {
 body, a, button {
     cursor: url('custom-cursor.png'), auto;
 }
+#head{
+    font-size: 30px !important;
+}
+
+#Ework{
+    font-size: 30px !important;
+}
