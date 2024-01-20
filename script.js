@@ -10,14 +10,14 @@ $(document).ready(function() {
         }, 500, 'linear');
     });
 
-    // Combine these two into one if they are intended to do the same thing
+    
     $('.info-btn').click(function() {
         var targetId = $(this).data('target');
-        $(targetId).slideToggle(); // Use slideToggle for a cool effect
-        // $(targetId).toggle(); // Comment out or remove if not needed
+        $(targetId).slideToggle();
+     
     });
 
-    // Call simpleType directly here
+
     simpleType();
 });
 
@@ -34,54 +34,7 @@ function simpleType() {
             setTimeout(typeWriter, 50);
         }
     }
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Python', 'Java', 'HTML/CSS', 'C/C++', 'JavaScript', 'R'],
-            datasets: [{
-                label: 'Proficiency',
-                data: [3, 3, 2, 2, 3, 1], // 3 for advanced, 2 for proficient, 1 for beginner
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1,
-                        callback: function(value) {
-                            if (value === 1) {
-                                return 'Beginner';
-                            } else if (value === 2) {
-                                return 'Proficient';
-                            } else if (value === 3) {
-                                return 'Advanced';
-                            }
-                            return '';
-                        }
-                    }
-                }
-            }
-        }
-    });
+   
     
     var particles = [];
 
@@ -115,6 +68,19 @@ function Particle() {
     };
 }
 
+$(document).ready(function() {
+    $('#menu-icon').click(function() {
+        $('#nav-overlay').fadeToggle('fast'); 
+    });
+});
 
+$(document).scroll(function() {
+    var scroll = $(this).scrollTop();
+    if (scroll > 50) {
+        $('.header').css('background-color', '#333');
+    } else {
+        $('.header').css('background-color', 'transparent');
+    }
+});
     typeWriter();
 }
