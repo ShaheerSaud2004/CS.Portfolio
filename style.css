@@ -17,6 +17,9 @@ body {
     font-size: 30px !important;
     margin-bottom: 10px;
 }
+#Ework{
+    font-size: 30px !important;
+}
 
 #about {
     margin-bottom: 20px;
@@ -83,7 +86,7 @@ section {
 }
 
 .work-title {
-    font-size: 20px;
+    font-size: 30px;
     color: black;
     margin-bottom: 10px;
 }
@@ -91,7 +94,12 @@ section {
 .position-title {
     margin-bottom: 10px;
     font-size: 20px;
+    font-weight: bold; /* Specify font weight as bold */
+    font-style: italic; /* Specify font style as italic */
+    color: black; /* Specify text color as black */
 }
+
+
 
 #about h1 {
     font-size: 24px;
@@ -325,6 +333,3 @@ body, a, button {
     font-size: 30px !important;
 }
 
-#Ework{
-    font-size: 30px !important;
-}
