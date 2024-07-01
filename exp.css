@@ -842,3 +842,50 @@ body {
         font-size: 12px;
     }
 }
+
+
+/* Ensure the container has some padding */
+.container {
+    padding: 20px;
+}
+
+/* Adjust the footer */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #333; /* Optional: to ensure the footer stands out */
+    color: #fff;
+    position: relative; /* Ensure it stays within the viewport */
+    bottom: 0;
+    width: 100%;
+}
+
+/* Improve readability of text */
+body {
+    font-size: 18px; /* Increase font size for better readability */
+    line-height: 1.6; /* Increase line height */
+}
+
+/* Ensure images do not overflow and are centered */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .experience-section {
+        margin: 10px 0; /* Add some space between sections */
+        padding: 10px;
+    }
+    .experience-section img {
+        width: 100%; /* Ensure images fit within the section */
+        height: auto;
+    }
+    footer {
+        padding: 20px;
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
