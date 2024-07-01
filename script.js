@@ -32,50 +32,18 @@ function simpleType() {
         }
     }
 
-    var particles = [];
-
-    function setup() {
-        createCanvas(windowWidth, windowHeight);
-        for (var i = 0; i < 100; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function draw() {
-        background(255);
-        particles.forEach(function(p) {
-            p.update();
-            p.display();
-        });
-    }
-
-    function Particle() {
-        this.x = random(width);
-        this.y = random(height);
-        this.r = random(4, 8);
-        this.update = function() {
-            this.x += random(-2, 2);
-            this.y += random(-2, 2);
-        };
-        this.display = function() {
-            noStroke();
-            fill(0);
-            ellipse(this.x, this.y, this.r * 2, this.r * 2);
-        };
-    }
-
-    $('#menu-icon').click(function() {
-        $('#nav-overlay').fadeToggle('fast');
-    });
-
-    $(document).scroll(function() {
-        var scroll = $(this).scrollTop();
-        if (scroll > 50) {
-            $('.header').css('background-color', '#333');
-        } else {
-            $('.header').css('background-color', 'transparent');
-        }
-    });
-
     typeWriter();
 }
+
+$('#menu-icon').click(function() {
+    $('#nav-overlay').fadeToggle('slow');
+});
+
+$(document).scroll(function() {
+    var scroll = $(this).scrollTop();
+    if (scroll > 50) {
+        $('.header').css('background-color', '#333');
+    } else {
+        $('.header').css('background-color', 'transparent');
+    }
+});

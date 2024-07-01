@@ -1,152 +1,105 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Shaheer Saud's Portfolio</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
     <header class="header">
         <nav class="navbar">
-            <!-- Hamburger Icon -->
-            <header class="header">
-                <nav class="navbar">
-                    <ul class="nav-list">
-                        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-                        <li><a href="#projects"><i class="fas fa-briefcase"></i> Projects</a></li>
-                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </nav>
-            </header>
-
+            <ul class="nav-list">
+                <li><a href="#about" class="rainbow-text"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#projects" class="rainbow-text"><i class="fas fa-briefcase"></i> Projects</a></li>
+                <li><a href="#contact" class="rainbow-text"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
         </nav>
     </header>
     <section id="about">
-        <h1 id="about1"> About Me</h1>
-        <p id="typing"></p> <!-- Typing effect -->
+        <h1 id="project1"> About Me</h1>
+        <div class="about-container">
+            <div class="about-text">
+                <div class="text-blurb" id="typing"></div> <!-- Typing effect -->
+            </div>
+            <div class="about-photo">
+                <img src="Shaheer.jpg" alt="Shaheer Saud" class="profile-photo">
+            </div>
+        </div>
     </section>
+
     <section id="projects">
         <h1 id="project1">Projects</h1>
-
+        <div class="project-item">
+            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/DictionaryAttack">
+                <h2>Dictionary Attack | <em>Python, Flask, MD5 Hashing, HashMaps, Heroku, Cybersecurity Hygiene</em></h2>
+                <p>A full-stack CyberSecurity password security tool...</p>
+            </div>
+        </div>
         <div class="project-item">
             <div class="project-link" data-href="https://github.com/ShaheerSaud2004/ScarletPlates">
-                <h2>ScarletPlates | <em>Python, Java, JavaScript, Flask, Beautiful Soup, Node.js, Next.js, React</em>
-                </h2>
+                <h2>ScarletPlates | <em>Python, Java, JavaScript, Flask, Beautiful Soup, Node.js, Next.js, React</em></h2>
                 <p>Full-stack search tool for Rutgers dining services...</p>
             </div>
         </div>
         <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/DictionaryAttack">
-                <h2>Dictionary Attack | <em>Python, MD5 Function</em></h2>
-                <p>A security-focused project implementing a dictionary attack simulation...</p>
-            </div>
-        </div>
-        <div class="project-item">
             <div class="project-link" data-href="https://github.com/ShaheerSaud2004/HandTracking">
-                <h2>Real-Time Hand Gesture Recognition | <em>Python, OpenCV, Google’s Mediapipe, Computer Vision</em>
-                </h2>
+                <h2>Real-Time Hand Gesture Recognition | <em>Python, OpenCV, Google’s Mediapipe, Computer Vision</em></h2>
                 <p>AI-powered system using Python and Mediapipe for hand gesture recognition...</p>
             </div>
         </div>
         <div class="project-item">
             <div class="project-link" data-href="https://github.com/ShaheerSaud2004/Router-Simulation-">
-                <h2>Network Router Simulation | <em>Java, HashMaps, Routing Tables, Subnetting and IP Address
-                        Allocation</em></h2>
+                <h2>Network Router Simulation | <em>Java, HashMaps, Routing Tables, Subnetting and IP Address Allocation</em></h2>
                 <p>Java-based router simulation program for efficient data flow and IP tracking...</p>
             </div>
         </div>
-       
         <div class="project-item">
             <div class="project-link" data-href="https://play.unity.com/mg/other/webgl-builds-384947">
-                <h2>Galaxy Striker | <em>Unity, C#, Physics Simulation, Game Design </em>
-                </h2>
+                <h2>Galaxy Striker | <em>Unity, C#, Physics Simulation, Game Design </em></h2>
                 <p>A Unity-based 2D space shooter game with over with over 20 C# scripts that...</p>
             </div>
         </div>
     </section>
-
     <section id="work-experience">
-        <h1 id="Ework">Work Experience</h1>
+        <h1 id="project1">Work Experience</h1>
         <div class="experience-container">
-
-
-            <div class="experience-item right-item">
-                <img src="Colgate.jpeg" alt="Information Secuirty Intern">
+            <div class="experience-item">
+                <img src="Colgate.jpeg" alt="Information Security Intern">
                 <div class="work-title">Colgate-Palmolive</div>
-                <div class="position-title">Information Security Intern</div>
-                <button class="info-btn" data-target="#exp3">More Info</button>
-                <div class="exp-description" id="exp3">
-                    <!-- Job Responsibilities Popup Content -->
-                    <span class="close-btn"></span>
-                    <p>• Spearheaded integration of advanced Privileged Access Management tools, reducing data breaches
-                        by 40% and ensuring compliance with industry-specific regulations to safeguard sensitive
-                        information</p>
-                    <p>• Crafted essential documentation for a new application, reaching over 1,000 Colgate employees,
-                        to streamline adoption and boost productivity with clear, user-friendly guides and
-                        troubleshooting tips</p>
-                    <p>• Utilized PowerShell alongside the Colgate-Palmolive API to securely extract and migrate over
-                        1000 IT user profiles from an outdated application to a modern platform, ensuring complete data
-                        integrity and the safe transfer of sensitive information, including private details and
-                        passwords</p>
-                </div>
+                <div class="position-title">Security Engineer Intern</div>
+                <a class="info-btn" href="colgate-experience.html">More Info</a>
             </div>
-            <div class="experience-item left-item">
+            <div class="experience-item">
+                <img src="Bp.png" alt="Bergen's Promise Logo">
+                <div class="work-title">Bergen's Promise</div>
+                <div class="position-title">Software Development Intern</div>
+                <a class="info-btn" href="bergens-promise.html">More Info</a>
+            </div>
+            <div class="experience-item">
                 <img src="ITLOGO.jpg" alt="Rutgers OIT Logo">
-                <div class="work-title">Rutgers OIT</div>
-                <div class="position-title">Level 2 IT Consultant</div>
-                <button class="info-btn" data-target="#exp1-description">More Info</button>
-
-                <div class="exp-description" id="exp1-description">
-
-                    <p>• Resolved over 300 IT tickets using ServiceNow and Splunk, covering hacked/compromised accounts,
-                        slow internet access, network/system outages, overloaded access points, with a commitment to
-                        cybersecurity and network hygiene, achieving a 25% faster resolution rate and enhanced network
-                        stability</p>
-                    <p>• Troubleshooted and rectified Layer 1 to Layer 7 configurations, including cabling, IP address,
-                        DHCP, DNS, etc, to ensure continuous network connectivity and smooth data transmission</p>
-                    <p>• Developed a Python script to automatically consolidate client data from diverse websites into a
-                        singular document to streamline information gathering to lower caller wait times</p>
-                    <p>• Nominated by several supervisors for the "Consultant of the Month" award, a recognition
-                        highlighting exceptional performance, unwavering dedication, and commitment to delivering
-                        excellent customer service</p>
-
-
-                </div>
+                <div class="work-title">Rutgers's OIT</div>
+                <div class="position-title">Information Technology Supervisor</div>
+                <a class="info-btn" href="rutgers-oit.html">More Info</a>
             </div>
-            <div class="experience-item right-item">
+            <div class="experience-item">
                 <img src="Seal.png" alt="Legal Intern Icon">
                 <div class="work-title">Assy. Sterley Stanley</div>
                 <div class="position-title">Legal Intern</div>
-                <button class="info-btn" data-target="#exp2">More Info</button>
-                <div class="exp-description" id="exp2">
-                    <p>• Collaborated with government officials to craft bills designed for the benefits of New Jersey
-                        residents.</p>
-                    <p>
-                        • Enhanced office cybersecurity posture by facilitating communication and education on best
-                        practices and protective measures to mitigate digital threats such as phishing, malware, and
-                        social engineering attacks
-                    </p>
-                </div>
+                <a class="info-btn" href="legal.html">More Info</a>
             </div>
-
+            
+        </div>
     </section>
-
-
-
     <section id="contact">
         <h1 id="head">Contact</h1>
-        <p>Reach out to me at shaheer.saud@rutgers.edu or call me at 732-314-8699.</p>
+        <p id = "txt">Reach out to me at shaheersaud.internship@gmail.com or call me at 732-314-8699.</p>
     </section>
-
     <footer class="footer">
         <p>© 2024 Shaheer Saud. All Rights Reserved.</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </body>
-
 </html>
