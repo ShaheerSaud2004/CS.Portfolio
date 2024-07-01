@@ -588,7 +588,7 @@ section {
 
 .experience-item {
     flex: 1; /* Allow items to grow and fill space equally */
-    max-width: 22%; /* Ensure all items have the same maximum width */
+    max-width:100%; /* Ensure all items have the same maximum width */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     margin: 20px; /* Add some margin for spacing */
     display: flex;
@@ -664,29 +664,18 @@ section {
 }
 
 
-
-.contact-container {
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-    gap: 20px; /* Space between the email and phone number */
-    align-items: center; /* Center the items vertically */
+.container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
 }
 
-.contact-link {
-    display: flex;
-    align-items: center; /* Center icon and text vertically */
-    color: #333;
-    text-decoration: none;
-    font-size: 20px;
-    gap: 10px; /* Space between the icon and text */
-    transition: color 0.3s ease;
-}
-
-.contact-link i {
-    font-size: 24px;
-}
-
-.contact-link:hover {
-    color: white;
-    transform: scale(1.1); /* Slightly enlarge the link on hover */
+.line {
+    border-bottom: 2px solid black; /* Light grey line */
+    margin: 20px 0; /* Margin to create space around the line */
+    width: 100%; /* Full width of the container */
+    color: black;
 }
