@@ -1,133 +1,448 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Shaheer Saud's Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaheer Saud - Computer Science Student & Software Developer</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="header">
+    <!-- Navigation -->
         <nav class="navbar">
-            <ul class="nav-list">
-                <li><a href="#about" class="rainbow-text"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="#projects" class="rainbow-text"><i class="fas fa-briefcase"></i> Projects</a></li>
-                <li><a href="#work-experience" class="rainbow-text"><i class="fas fa-user-tie"></i> Work Experience</a></li>
-                <li><a href="#contact" class="rainbow-text"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="Shaheer_Saud_Resume_Offical.pdf" class="rainbow-text" target="_blank"><i class="fas fa-file-pdf"></i> Resume</a></li>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#hero">Shaheer Saud</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="Shaheer_Saud_Resume_Offical.pdf" class="nav-link resume-btn" target="_blank">Resume</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Shaheer Saud</span>
+                </h1>
+                <p class="hero-subtitle">Computer Science Student & Software Developer</p>
+                <p class="hero-description">
+                    Pursuing a BS in Computer Science with a minor in Data Science and Criminology at Rutgers University. 
+                    Passionate about cybersecurity, data analytics, and building innovative software solutions.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View My Work</a>
+                </div>
+                <div class="hero-social">
+                    <a href="mailto:shaheersaud.internship@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/shaheer-saud" aria-label="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/shaheersaud2004" aria-label="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="Shaheer.jpg" alt="Shaheer Saud" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a dedicated Computer Science student at Rutgers University with a passion for technology, 
+                        cybersecurity, and data science. Currently pursuing a BS in Computer Science with a minor in 
+                        Data Science and Criminology, expected to graduate in May 2026.
+                    </p>
+                    <p>
+                        Over the last few years I've worn a lot of hats – security engineer, full-stack developer, 
+                        data-science TA, and freelance cyber-consultant. Whether I'm deploying PAM pipelines at 
+                        <strong>Colgate-Palmolive</strong> or standing up an LLM benchmarking suite at <strong>AT&amp;T</strong>, 
+                        I'm most alive when I'm solving security-centric problems that sit at the intersection of code 
+                        and people.
+                    </p>
+                    <!-- Personal highlights -->
+                    <div class="about-highlights">
+                        <div class="highlight-card" data-icon="🎓">
+                            <h4>Education & Awards</h4>
+                            <ul>
+                                <li>BS Computer Science, Rutgers '26 (Dean's List)</li>
+                                <li>Minor in Data Science &amp; Criminology</li>
+                                <li>Cyber Knights CTF – 1st place (2024)</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-card" data-icon="🛡️">
+                            <h4>Cipher Consulting</h4>
+                            <p>
+                                I run a small freelance practice helping non-profits threat-model, pen-test and secure their 
+                                cloud apps. 20+ clients served → <strong>0</strong> breaches to date.
+                            </p>
+                        </div>
+                        <div class="highlight-card" data-icon="🚀">
+                            <h4>Beyond Coding</h4>
+                            <p>
+                                Hackathon mentor, robotics coach and avid astrophotography nerd – if I'm not at my keyboard 
+                        My experience spans across cybersecurity, software development, and data analytics. I've had 
+                        the opportunity to work with leading companies like AT&T and Colgate-Palmolive, where I've 
+                        contributed to security infrastructure improvements and developed innovative solutions.
+                    </p>
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4>Languages</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Java</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">HTML/CSS</span>
+                                    <span class="skill-tag">C/C++</span>
+                                    <span class="skill-tag">SQL</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Frameworks & Tools</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Flask</span>
+                                    <span class="skill-tag">React</span>
+                                    <span class="skill-tag">Node.js</span>
+                                    <span class="skill-tag">Docker</span>
+                                    <span class="skill-tag">AWS</span>
+                                    <span class="skill-tag">PowerShell</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Specializations</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Cybersecurity</span>
+                                    <span class="skill-tag">Data Analytics</span>
+                                    <span class="skill-tag">Machine Learning</span>
+                                    <span class="skill-tag">Web Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="experience-horizontal">
+                <!-- AT&T -->
+                <div class="timeline-item">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="ATTlogo.png" alt="AT&T Logo" style="width:60px;height:60px;object-fit:contain;">
+                                <span class="experience-year">2025</span>
+                                <span class="experience-period">May 2025 – Present</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>AT&T</h3>
+                                <h4>Cyber AI Engineering Intern</h4>
+                                <p class="location">Middletown, NJ</p>
+                                <ul class="experience-achievements">
+                                    <li>Designed/optimized AI model configurations for AT&T's proprietary LLM by adjusting hyperparameters</li>
+                                    <li>Programmed a benchmarking tool to evaluate LLM configurations, reducing testing time by 78%</li>
+                                    <li>Streamlined knowledge retrieval to improve model inference performance and accuracy</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colgate-Palmolive -->
+                <div class="timeline-item">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="Colgate.jpeg" alt="Colgate-Palmolive">
+                                <span class="experience-year">2024</span>
+                                <span class="experience-period">Feb 2024 – Present</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Colgate-Palmolive</h3>
+                                <h4>Security Engineer Intern</h4>
+                                <p class="location">Piscataway, NJ</p>
+                                <ul class="experience-achievements">
+                                    <li>Developed an AI-powered chatbot for advanced PAM queries, reducing response time by 98%</li>
+                                    <li>Executed end-to-end log analysis with Splunk (SIEM), Okta (identity), and Tanium (endpoint)</li>
+                                    <li>Automated migration of over 1,000 IT profiles using PowerShell, Python, and Colgate-Palmolive's API</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rutgers OIT -->
+                <div class="timeline-item">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="ITLOGO.jpg" alt="Rutgers OIT">
+                                <span class="experience-year">2023</span>
+                                <span class="experience-period">Apr 2023 – Present</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Rutgers OIT</h3>
+                                <h4>Information Technology Supervisor</h4>
+                                <p class="location">New Brunswick, NJ</p>
+                                <ul class="experience-achievements">
+                                    <li>Deployed a secure Python automation script with Selenium for data aggregation across multiple platforms</li>
+                                    <li>Leveraged expertise in OSI Layer 1 to 7 configurations, including secure IP address management</li>
+                                    <li>Led and trained 200 consultants, resolving over 300 IT tickets via ServiceNow</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bergen's Promise -->
+                <div class="timeline-item">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="Bp.png" alt="Bergen's Promise">
+                                <span class="experience-year">2023</span>
+                                <span class="experience-period">Mar 2023 – Present</span>
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Bergen's Promise</h3>
+                                <h4>Software Development Intern</h4>
+                                <p class="location">Hackensack, NJ</p>
+                                <ul class="experience-achievements">
+                                    <li>Built a full-stack IoT honeypot mimicking a smart home system to log attacker behavior</li>
+                                    <li>Created a real-time web crawler using Python, FastAPI, Asyncio, NLP, Chart.js, and Unicorn</li>
+                                    <li>Coded an asynchronous brute-force testing framework with concurrency limits and randomized delays</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Dictionary Attack Security Tool</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ShaheerSaud2004/DictionaryAttack" target="_blank" aria-label="View Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://password-checker-81c2ae152311.herokuapp.com/" target="_blank" aria-label="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        A full-stack cybersecurity password security tool that demonstrates dictionary attack vulnerabilities 
+                        and promotes cybersecurity hygiene through educational testing.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">MD5 Hashing</span>
+                        <span class="tech-tag">Heroku</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ScarletPlates</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ShaheerSaud2004/ScarletPlates" target="_blank" aria-label="View Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Full-stack search tool for Rutgers dining services with real-time menu tracking, 
+                        nutritional analysis, and personalized meal recommendations.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Beautiful Soup</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Ransomware Simulation</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ShaheerSaud2004/RansomwareSimulation" target="_blank" aria-label="View Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Educational simulation demonstrating ransomware encryption/decryption processes 
+                        for cybersecurity awareness and training purposes.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">AES Encryption</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Real-Time Hand Gesture Recognition</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ShaheerSaud2004/HandTracking" target="_blank" aria-label="View Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        AI-powered system using computer vision for real-time hand gesture recognition 
+                        and tracking with high accuracy and performance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">MediaPipe</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                </div>
                 
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Network Router Simulation</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ShaheerSaud2004/Router-Simulation-" target="_blank" aria-label="View Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Java-based router simulation program implementing efficient data flow management, 
+                        IP tracking, and network routing algorithms.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">HashMaps</span>
+                        <span class="tech-tag">Networking</span>
+                        <span class="tech-tag">Algorithms</span>
+                    </div>
+                </div>
 
-            </ul>
-        </nav>
-    </header>
-    <section id="about">
-        <h1 id="project1">About Me</h1>
-        <div class="about-container">
-            <div class="about-text">
-                <div class="text-blurb" id="typing"></div> <!-- Typing effect -->
-            </div>
-            <div class="about-photo">
-                <img src="Shaheer.jpg" alt="Shaheer Saud" class="profile-photo">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Galaxy Striker Game</h3>
+                        <div class="project-links">
+                            <a href="https://play.unity.com/mg/other/webgl-builds-384947" target="_blank" aria-label="Play Game">
+                                <i class="fas fa-gamepad"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Unity-based 2D space shooter game featuring advanced physics simulation, 
+                        multiple enemy types, and engaging gameplay mechanics.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Game Design</span>
+                        <span class="tech-tag">Physics</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Cipher</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/ShaheerSaud2004/Cipher" target="_blank" aria-label="View Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Cryptographic toolkit that showcases classic ciphers (Caesar, Vigenère, Playfair) with interactive 
+                        playground and visual explanations for educational purposes.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Cryptography</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <section id="projects">
-        <h1 id="project1">Projects</h1>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/DictionaryAttack">
-                <h2>Dictionary Attack | <em>Python, Flask, MD5 Hashing, HashMaps, Heroku, Cybersecurity Hygiene</em></h2>
-                <p>A full-stack CyberSecurity password security tool...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/RansomwareSimulation?tab=readme-ov-file">
-                <h2>Ransomware Simulation | <em>Python, Flask, AES Encryption, PyCryptodome, Bootstrap</em></h2>
-                <p>A project that simulates the encryption and decryption process akin to ransomware...</p>
-            </div>
-        </div>
-        
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/ScarletPlates">
-                <h2>ScarletPlates | <em>Python, Java, JavaScript, Flask, Beautiful Soup, Node.js, Next.js, React</em></h2>
-                <p>Full-stack search tool for Rutgers dining services...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/HandTracking">
-                <h2>Real-Time Hand Gesture Recognition | <em>Python, OpenCV, Google’s Mediapipe, Computer Vision</em></h2>
-                <p>AI-powered system using Python and Mediapipe for hand gesture recognition...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/Router-Simulation-">
-                <h2>Network Router Simulation | <em>Java, HashMaps, Routing Tables, Subnetting and IP Address Allocation</em></h2>
-                <p>Java-based router simulation program for efficient data flow and IP tracking...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://play.unity.com/mg/other/webgl-builds-384947">
-                <h2>Galaxy Striker | <em>Unity, C#, Physics Simulation, Game Design </em></h2>
-                <p>A Unity-based 2D space shooter game with over with over 20 C# scripts that...</p>
-            </div>
-        </div>
-    </section>
-    <section id="work-experience">
-        <h1 id="project1">Work Experience</h1>
-        <div class="experience-container">
-            
-            <div class="experience-item">
-                <img src="Colgate.jpeg" alt="Information Security Intern">
-                <div class="work-title">Colgate-Palmolive</div>
-                <div class="position-title">Security Engineer Intern</div>
-                <a class="info-btn" href="colgate-experience.html">More Info</a>
-            </div>
 
-            <div class="experience-item">
-                <img src="Bp.png" alt="Bergen's Promise Logo">
-                <div class="work-title">Bergen's Promise</div>
-                <div class="position-title">Software Development Intern</div>
-                <a class="info-btn" href="bergens-promise.html">More Info</a>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <p>
+                        I'm always interested in new opportunities and collaborations. 
+                        Whether you're looking for an intern, have a project idea, or just want to connect, 
+                        I'd love to hear from you!
+                    </p>
+                </div>
+                <div class="contact-info">
+                    <a href="mailto:shaheersaud.internship@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>shaheersaud.internship@gmail.com</span>
+                    </a>
+                    <a href="https://linkedin.com/in/shaheer-saud" class="contact-item" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/shaheersaud2004" class="contact-item" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
             </div>
-
-            <div class="experience-item">
-                <img src="ITLOGO.jpg" alt="Rutgers OIT Logo">
-                <div class="work-title">Office of InfoTech</div>
-                <div class="position-title">Information Technology Supervisor</div>
-                <a class="info-btn" href="Rutgers-oit.html">More Info</a>
-            </div>
-
-            <div class="experience-item">
-                <img src="Seal.png" alt="Legal Intern Icon">
-                <div class="work-title">Assemblyman Sterley Stanley</div>
-                <div class="position-title">Policy Legislative Intern</div>
-                <a class="info-btn" href="Legal.html">More Info</a>
-            </div>
-            
-            
-        </div>
-    </section>
-    <section id="contact">
-        <h1 id="head">Contact</h1>
-        <div class="contact-container">
-            <p>
-                <a href="mailto:shaheersaud.internship@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> shaheersaud.internship@gmail.com
-                </a>
-            </p>
-            <p>
-              
-            </p>
         </div>
     </section>
     
-    
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 Shaheer Saud. All Rights Reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Shaheer Saud. All rights reserved.</p>
+        </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
