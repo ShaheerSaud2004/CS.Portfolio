@@ -1,5 +1,6 @@
 /* ============================================
    SKYRIM PORTFOLIO - THE ELDER SCROLLS THEME
+   MATCHING ACTUAL SKYRIM MENU AESTHETIC
    ============================================ */
 
 * {
@@ -13,9 +14,9 @@ html {
 }
 
 body {
-    font-family: 'Crimson Text', serif;
-    background: #0a0e27;
-    color: #d4af37;
+    font-family: 'Cinzel', serif;
+    background: #0a0a0a;
+    color: #a9a9a9;
     overflow-x: hidden;
 }
 
@@ -25,7 +26,7 @@ body {
 
 .skyrim-container {
     min-height: 100vh;
-    background: #0a0e27;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
     position: relative;
     overflow: hidden;
 }
@@ -46,54 +47,44 @@ body {
     width: 100%;
     height: 100%;
     background-image:
-        radial-gradient(2px 2px at 20px 30px, #eee, rgba(255,255,255,.2)),
-        radial-gradient(2px 2px at 60px 70px, #fff, rgba(255,255,255,.3)),
-        radial-gradient(1px 1px at 50px 50px, #ddd, rgba(255,255,255,.2)),
-        radial-gradient(1px 1px at 130px 80px, #fff, rgba(255,255,255,.2)),
-        radial-gradient(2px 2px at 90px 10px, #eee, rgba(255,255,255,.3));
+        radial-gradient(1px 1px at 20px 30px, #555, rgba(255,255,255,.1)),
+        radial-gradient(1px 1px at 60px 70px, #666, rgba(255,255,255,.15)),
+        radial-gradient(0.5px 0.5px at 50px 50px, #444, rgba(255,255,255,.08)),
+        radial-gradient(1px 1px at 130px 80px, #555, rgba(255,255,255,.1));
     background-repeat: repeat;
-    background-size: 200px 200px;
-    animation: twinkle 5s ease-in-out infinite;
+    background-size: 300px 300px;
+    animation: twinkle 8s ease-in-out infinite;
 }
 
 @keyframes twinkle {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
 }
 
-/* Mountains */
+/* Mountains - More Subtle */
 .mountains {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60%;
+    height: 100%;
     background: linear-gradient(180deg,
         transparent 0%,
-        rgba(20, 20, 40, 0.3) 20%,
-        rgba(15, 15, 35, 0.6) 50%,
-        rgba(10, 10, 30, 0.9) 100%);
-    clip-path: polygon(
-        0% 80%, 5% 75%, 10% 70%, 15% 75%, 20% 68%, 25% 72%, 30% 65%, 35% 70%, 40% 62%, 45% 68%, 50% 60%, 55% 65%, 60% 58%, 65% 62%, 70% 55%, 75% 60%, 80% 52%, 85% 58%, 90% 50%, 95% 55%, 100% 45%, 100% 100%, 0% 100%
-    );
+        rgba(30, 30, 30, 0.2) 30%,
+        rgba(20, 20, 20, 0.5) 60%,
+        rgba(10, 10, 10, 0.8) 100%);
 }
 
-/* Dragon Silhouette */
+/* Dragon Silhouette - Large Central Element */
 .dragon-silhouette {
     position: absolute;
-    bottom: 25%;
-    right: -10%;
-    width: 400px;
-    height: 300px;
-    opacity: 0.3;
-    animation: dragonFly 20s ease-in-out infinite;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><path d="M100,150 Q150,100 200,80 Q250,60 300,100 L320,150 Q300,180 250,200 Q200,220 150,200 Q120,180 100,150 M200,150 L180,160 M240,140 L260,130" fill="none" stroke="rgba(212,175,55,0.4)" stroke-width="8"/></svg>') no-repeat;
-    background-size: contain;
-}
-
-@keyframes dragonFly {
-    0%, 100% { transform: translateY(20px) scaleX(1); }
-    50% { transform: translateY(-20px) scaleX(1); }
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 30px rgba(100, 100, 100, 0.3));
 }
 
 /* Fog Effect */
@@ -105,19 +96,13 @@ body {
     height: 100%;
     background: linear-gradient(180deg,
         transparent 0%,
-        rgba(20, 20, 40, 0.1) 40%,
-        rgba(20, 20, 40, 0.3) 70%,
-        rgba(20, 20, 40, 0.5) 100%);
-    animation: fogWave 15s ease-in-out infinite;
-}
-
-@keyframes fogWave {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+        rgba(20, 20, 20, 0.2) 40%,
+        rgba(20, 20, 20, 0.4) 70%,
+        rgba(10, 10, 10, 0.6) 100%);
 }
 
 /* ============================================
-   SKYRIM MENU
+   SKYRIM MENU - MINIMAL STYLE
    ============================================ */
 
 .skyrim-menu {
@@ -126,134 +111,109 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     min-height: 100vh;
-    padding: 40px 20px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.4);
+    padding: 60px 80px;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.3);
 }
 
-/* Title Section */
+/* Title Section - Hidden on initial load, shown on hover */
 .title-section {
-    margin-bottom: 80px;
-    animation: fadeInDown 1s ease-out;
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.skyrim-menu:hover .title-section {
+    opacity: 1;
 }
 
 .main-title {
     font-family: 'Cinzel', serif;
-    font-size: 4rem;
+    font-size: 2.2rem;
     font-weight: 700;
-    color: #d4af37;
+    color: #888;
     text-shadow:
-        0 0 20px rgba(212, 175, 55, 0.8),
-        0 0 40px rgba(212, 175, 55, 0.4),
+        0 0 20px rgba(100, 100, 100, 0.3),
         2px 2px 4px rgba(0, 0, 0, 0.8);
-    letter-spacing: 8px;
+    letter-spacing: 4px;
     margin-bottom: 10px;
-    animation: glow 3s ease-in-out infinite;
-}
-
-@keyframes glow {
-    0%, 100% {
-        text-shadow:
-            0 0 20px rgba(212, 175, 55, 0.8),
-            0 0 40px rgba(212, 175, 55, 0.4);
-    }
-    50% {
-        text-shadow:
-            0 0 30px rgba(212, 175, 55, 1),
-            0 0 60px rgba(212, 175, 55, 0.6),
-            2px 2px 4px rgba(0, 0, 0, 0.8);
-    }
 }
 
 .subtitle {
     font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    color: #b8860b;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
-
-.divider {
-    width: 300px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
-    margin: 30px auto;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-}
-
-.tagline {
-    font-size: 1.1rem;
-    color: #a89960;
-    font-style: italic;
-    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #666;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-/* Menu Items */
+.divider {
+    width: 250px;
+    height: 1px;
+    background: #666;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(100, 100, 100, 0.2);
+}
+
+.tagline {
+    font-size: 0.95rem;
+    color: #555;
+    font-style: italic;
+    margin-top: 20px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Menu Items - Right aligned, minimal */
 .menu-items {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    margin-bottom: 100px;
-    animation: fadeInUp 1s ease-out 0.3s both;
+    gap: 30px;
+    margin-bottom: 60px;
+    animation: fadeInRight 1s ease-out;
 }
 
 .menu-item {
     position: relative;
-    padding: 15px 40px;
+    padding: 12px 0;
     font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
-    color: #d4af37;
+    font-size: 1.6rem;
+    color: #a9a9a9;
     text-decoration: none;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     transition: all 0.4s ease;
     cursor: pointer;
     text-transform: uppercase;
-    border: 2px solid transparent;
+    border: none;
+    background: transparent;
+    text-align: right;
 }
 
 .menu-item::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 50%;
-    width: 30px;
-    height: 2px;
-    background: #d4af37;
-    transform: translateY(-50%) scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-}
-
-.menu-item::after {
-    content: '';
-    position: absolute;
     right: 0;
-    top: 50%;
-    width: 30px;
-    height: 2px;
-    background: #d4af37;
-    transform: translateY(-50%) scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s ease;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-}
-
-.menu-item:hover::before,
-.menu-item:hover::after {
-    transform: translateY(-50%) scaleX(1);
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: #a9a9a9;
+    transition: width 0.4s ease;
 }
 
 .menu-item:hover {
-    color: #fff;
-    text-shadow:
-        0 0 20px rgba(212, 175, 55, 1),
-        0 0 40px rgba(212, 175, 55, 0.6);
-    transform: scale(1.1);
+    color: #d4d4d4;
+    text-shadow: 0 0 15px rgba(150, 150, 150, 0.5);
+    letter-spacing: 5px;
+}
+
+.menu-item:hover::before {
+    width: 100%;
 }
 
 .menu-text {
@@ -263,13 +223,13 @@ body {
 /* Menu Footer */
 .menu-footer {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: #8b7355;
-    font-size: 0.9rem;
-    animation: fadeIn 2s ease-out 1s both;
+    bottom: 40px;
+    right: 80px;
+    text-align: right;
+    color: #555;
+    font-size: 0.75rem;
+    animation: fadeIn 2s ease-out 0.5s both;
+    letter-spacing: 1px;
 }
 
 .menu-footer p {
@@ -286,8 +246,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.97);
+    backdrop-filter: blur(8px);
     z-index: 20;
     display: none;
     overflow-y: auto;
@@ -302,14 +262,14 @@ body {
 
 .close-btn {
     position: fixed;
-    top: 30px;
-    right: 30px;
-    background: rgba(212, 175, 55, 0.2);
-    border: 2px solid #d4af37;
-    color: #d4af37;
-    padding: 10px 20px;
+    top: 40px;
+    right: 60px;
+    background: transparent;
+    border: 1px solid #888;
+    color: #a9a9a9;
+    padding: 12px 24px;
     font-family: 'Cinzel', serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     z-index: 25;
     transition: all 0.3s ease;
@@ -318,27 +278,26 @@ body {
 }
 
 .close-btn:hover {
-    background: rgba(212, 175, 55, 0.4);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
-    transform: scale(1.1);
+    color: #d4d4d4;
+    border-color: #a9a9a9;
+    text-shadow: 0 0 10px rgba(150, 150, 150, 0.4);
 }
 
 .content-container {
-    max-width: 900px;
-    margin: 100px auto;
-    padding: 60px;
-    background: rgba(20, 20, 40, 0.8);
-    border: 2px solid #d4af37;
-    border-radius: 0;
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 80px;
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid #555;
     box-shadow:
-        0 0 30px rgba(212, 175, 55, 0.5),
-        inset 0 0 30px rgba(212, 175, 55, 0.1);
+        0 0 40px rgba(100, 100, 100, 0.2),
+        inset 0 0 40px rgba(100, 100, 100, 0.05);
 }
 
 /* Content Sections */
 .content-section {
     display: none;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.6s ease;
 }
 
 .content-section.active {
@@ -347,29 +306,29 @@ body {
 
 .content-section h2 {
     font-family: 'Cinzel', serif;
-    font-size: 2.5rem;
-    color: #d4af37;
+    font-size: 2.2rem;
+    color: #a9a9a9;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     margin-bottom: 30px;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    border-bottom: 2px solid #d4af37;
+    text-shadow: 0 0 15px rgba(100, 100, 100, 0.2);
+    border-bottom: 1px solid #555;
     padding-bottom: 20px;
 }
 
 .content-section h3 {
     font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: #b8860b;
+    font-size: 1.3rem;
+    color: #999;
     margin: 25px 0 15px 0;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .content-section p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.8;
-    color: #d4af37;
+    color: #999;
     margin-bottom: 15px;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
@@ -383,36 +342,37 @@ body {
 .achievement-list li {
     padding: 10px 0 10px 30px;
     position: relative;
-    color: #d4af37;
-    font-size: 1rem;
+    color: #888;
+    font-size: 0.95rem;
     margin-bottom: 10px;
 }
 
 .achievement-list li::before {
-    content: '▶';
+    content: '⊳';
     position: absolute;
     left: 0;
-    color: #b8860b;
+    color: #666;
 }
 
 /* Skills Columns */
 .skills-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
     margin: 30px 0;
 }
 
 .skill-column {
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid #d4af37;
+    background: rgba(100, 100, 100, 0.05);
+    border: 1px solid #444;
     padding: 20px;
-    border-radius: 0;
 }
 
 .skill-column h3 {
-    color: #d4af37;
+    color: #a9a9a9;
     margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
 }
 
 .skill-column ul {
@@ -420,14 +380,9 @@ body {
 }
 
 .skill-column li {
-    color: #d4af37;
+    color: #888;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    font-size: 0.95rem;
-}
-
-.skill-column li:last-child {
-    border-bottom: none;
+    font-size: 0.9rem;
 }
 
 /* Projects List */
@@ -439,26 +394,26 @@ body {
 }
 
 .project-entry {
-    background: rgba(212, 175, 55, 0.08);
-    border-left: 3px solid #d4af37;
+    background: rgba(100, 100, 100, 0.05);
+    border-left: 2px solid #666;
     padding: 20px;
     transition: all 0.3s ease;
 }
 
 .project-entry:hover {
-    background: rgba(212, 175, 55, 0.15);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    background: rgba(100, 100, 100, 0.1);
+    border-left-color: #a9a9a9;
     transform: translateX(10px);
 }
 
 .project-entry h3 {
-    color: #d4af37;
+    color: #a9a9a9;
     margin-bottom: 10px;
 }
 
 .project-entry p {
     margin-bottom: 15px;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 /* Experience List */
@@ -470,37 +425,36 @@ body {
 }
 
 .exp-entry {
-    background: rgba(212, 175, 55, 0.08);
-    border: 1px solid #d4af37;
+    background: rgba(100, 100, 100, 0.05);
+    border: 1px solid #555;
     padding: 25px;
-    border-radius: 0;
     transition: all 0.3s ease;
 }
 
 .exp-entry.featured {
-    background: rgba(212, 175, 55, 0.15);
-    border: 2px solid #d4af37;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    background: rgba(100, 100, 100, 0.1);
+    border: 1px solid #888;
 }
 
 .exp-entry:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 20px rgba(100, 100, 100, 0.2);
 }
 
 .exp-entry h3 {
-    color: #d4af37;
+    color: #a9a9a9;
     margin-bottom: 8px;
 }
 
 .exp-date {
-    color: #b8860b;
+    color: #777;
     font-style: italic;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-bottom: 10px;
 }
 
 .exp-entry p {
     margin-bottom: 15px;
+    font-size: 0.95rem;
 }
 
 /* Contact List */
@@ -514,57 +468,47 @@ body {
 .contact-link {
     display: inline-block;
     padding: 15px 25px;
-    background: rgba(212, 175, 55, 0.1);
-    border: 2px solid #d4af37;
-    color: #d4af37;
+    background: rgba(100, 100, 100, 0.05);
+    border: 1px solid #666;
+    color: #a9a9a9;
     text-decoration: none;
     transition: all 0.3s ease;
     font-family: 'Cinzel', serif;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 .contact-link:hover {
-    background: rgba(212, 175, 55, 0.25);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-    transform: scale(1.05);
+    background: rgba(100, 100, 100, 0.15);
+    border-color: #a9a9a9;
+    color: #d4d4d4;
 }
 
 /* Links */
 .link {
-    color: #b8860b;
+    color: #888;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .link:hover {
-    color: #d4af37;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    color: #a9a9a9;
+    text-shadow: 0 0 8px rgba(150, 150, 150, 0.4);
 }
 
 /* ============================================
    ANIMATIONS
    ============================================ */
 
-@keyframes fadeInDown {
+@keyframes fadeInRight {
     from {
         opacity: 0;
-        transform: translateY(-50px);
+        transform: translateX(50px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
@@ -581,79 +525,145 @@ body {
    RESPONSIVE DESIGN
    ============================================ */
 
-@media (max-width: 768px) {
-    .main-title {
-        font-size: 2.5rem;
-        letter-spacing: 4px;
+@media (max-width: 1024px) {
+    .skyrim-menu {
+        padding: 40px 60px;
     }
 
-    .subtitle {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
+    .dragon-silhouette {
+        width: 350px;
+        height: 350px;
+        left: 2%;
     }
 
-    .menu-items {
-        gap: 15px;
-    }
-
-    .menu-item {
-        font-size: 1rem;
-        padding: 10px 20px;
+    .menu-footer {
+        right: 60px;
+        bottom: 30px;
     }
 
     .content-container {
-        margin: 80px auto;
+        margin: 60px auto;
+        padding: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skyrim-menu {
+        align-items: center;
+        text-align: center;
+        padding: 40px 30px;
+    }
+
+    .menu-items {
+        gap: 20px;
+    }
+
+    .menu-item {
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .menu-item::before {
+        display: none;
+    }
+
+    .menu-item:hover {
+        letter-spacing: 2px;
+    }
+
+    .title-section {
+        position: static;
+        transform: none;
+        opacity: 1;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .dragon-silhouette {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 30%;
+        width: 250px;
+        height: 250px;
+        opacity: 0.3;
+    }
+
+    .menu-footer {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .close-btn {
+        top: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    .content-container {
+        margin: 60px auto;
         padding: 30px 20px;
     }
 
     .content-section h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .skills-columns {
         grid-template-columns: 1fr;
     }
-
-    .close-btn {
-        top: 15px;
-        right: 15px;
-        padding: 8px 15px;
-        font-size: 0.8rem;
-    }
 }
 
 @media (max-width: 480px) {
+    .skyrim-menu {
+        padding: 20px 15px;
+        min-height: auto;
+    }
+
     .main-title {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         letter-spacing: 2px;
     }
 
     .subtitle {
-        font-size: 1rem;
-        letter-spacing: 1px;
-    }
-
-    .divider {
-        width: 200px;
+        font-size: 0.8rem;
     }
 
     .menu-item {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+        font-size: 1rem;
+    }
+
+    .divider {
+        width: 150px;
+    }
+
+    .dragon-silhouette {
+        width: 150px;
+        height: 150px;
+        opacity: 0.2;
     }
 
     .content-container {
-        margin: 60px auto;
+        margin: 40px auto;
         padding: 20px;
-        border: 1px solid #d4af37;
+        border: 1px solid #444;
     }
 
     .content-section h2 {
-        font-size: 1.5rem;
-        letter-spacing: 2px;
-    }
-
-    .tagline {
-        font-size: 0.9rem;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
     }
 }
