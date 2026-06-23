@@ -1,38 +1,8 @@
 // ============================================
-// SKYRIM PORTFOLIO - MENU & CONTENT MANAGEMENT
+// SKYRIM PORTFOLIO - MENU CONTROL
 // ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
-    setupMenuListeners();
-    setupContentCloseListeners();
-});
-
-// Setup menu item click listeners
-function setupMenuListeners() {
-    const menuItems = document.querySelectorAll('.menu-item');
-
-    menuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            // Don't prevent default for links that open new tabs (resume)
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('http')) {
-                return;
-            }
-
-            e.preventDefault();
-            const menuType = this.getAttribute('data-menu');
-
-            if (menuType === 'resume') {
-                window.open(href, '_blank');
-            } else {
-                showContent(menuType);
-            }
-        });
-    });
-}
-
-// Show content section
-function showContent(sectionId) {
+function openSection(sectionId) {
     const overlay = document.getElementById('contentOverlay');
     const sections = document.querySelectorAll('.content-section');
 
@@ -50,58 +20,40 @@ function showContent(sectionId) {
     }
 }
 
-// Close content overlay
-function closeContent() {
+function closeSection() {
     const overlay = document.getElementById('contentOverlay');
     overlay.classList.remove('active');
 }
 
-// Setup close button and overlay click
-function setupContentCloseListeners() {
-    const overlay = document.getElementById('contentOverlay');
-
-    if (overlay) {
-        overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) {
-                closeContent();
-            }
-        });
-    }
-
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeContent();
-        }
-    });
-}
-
-// Setup smooth scroll for anchor links in content
-document.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
-        const href = e.target.getAttribute('href');
-        if (href === '#') return;
-
-        // Open the appropriate section first
-        const sectionId = href.substring(1);
-        if (sectionId) {
-            showContent(sectionId);
-        }
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeSection();
     }
 });
 
-// Add glow effect to menu on hover
-const menuItems = document.querySelectorAll('.menu-item');
-menuItems.forEach(item => {
+// Close when clicking outside the content
+document.addEventListener('click', function(e) {
+    const overlay = document.getElementById('contentOverlay');
+    const container = document.querySelector('.content-container');
+
+    if (overlay.classList.contains('active') &&
+        e.target === overlay) {
+        closeSection();
+    }
+});
+
+// Add hover effects to menu items
+document.querySelectorAll('.menu-item').forEach(item => {
     item.addEventListener('mouseenter', function() {
-        this.style.color = '#fff';
+        this.style.color = '#d4d4d4';
     });
 
     item.addEventListener('mouseleave', function() {
-        this.style.color = '#d4af37';
+        this.style.color = '#888';
     });
 });
 
 // Console message
-console.log('%c⚔️ Welcome to the Elder Scrolls Portfolio ⚔️', 'color: #d4af37; font-size: 16px; font-weight: bold; text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);');
-console.log('%cPress any menu option to begin your quest...', 'color: #b8860b; font-size: 12px;');
+console.log('%c⚔️ SKYRIM PORTFOLIO ⚔️', 'color: #999; font-size: 18px; font-weight: bold; text-shadow: 0 0 10px rgba(100, 100, 100, 0.5);');
+console.log('%cSeek knowledge in these realms...', 'color: #777; font-size: 12px;');

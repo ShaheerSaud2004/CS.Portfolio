@@ -3,72 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaheer Saud - The Portfolio</title>
+    <title>Shaheer Saud - Portfolio</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="favicon.png" type="image/x-icon">
 </head>
 <body>
     <div class="skyrim-container">
-        <!-- Animated Background -->
+        <!-- Background -->
         <div class="skyrim-bg">
-            <div class="mountains"></div>
-            <div class="stars"></div>
-            <div class="dragon-silhouette"></div>
-            <div class="fog"></div>
+            <div class="bg-texture"></div>
+            <div class="dragon-helmet"></div>
         </div>
 
         <!-- Main Menu -->
         <div class="skyrim-menu">
-            <!-- Title Section -->
-            <div class="title-section">
-                <h1 class="main-title">SHAHEER SAUD</h1>
-                <p class="subtitle">AI Security Engineer</p>
-                <div class="divider"></div>
-                <p class="tagline">One does not simply ignore security...</p>
-            </div>
-
-            <!-- Menu Items -->
+            <!-- Menu Items - Right Side -->
             <nav class="menu-items">
-                <a href="#about" class="menu-item" data-menu="about">
-                    <span class="menu-text">About Me</span>
+                <a href="#about" class="menu-item" onclick="openSection('about')">
+                    <span>ABOUT</span>
                 </a>
-                <a href="#skills" class="menu-item" data-menu="skills">
-                    <span class="menu-text">Skills & Perks</span>
+                <a href="#skills" class="menu-item" onclick="openSection('skills')">
+                    <span>SKILLS</span>
                 </a>
-                <a href="#projects" class="menu-item" data-menu="projects">
-                    <span class="menu-text">Projects & Quests</span>
+                <a href="#projects" class="menu-item" onclick="openSection('projects')">
+                    <span>PROJECTS</span>
                 </a>
-                <a href="#experience" class="menu-item" data-menu="experience">
-                    <span class="menu-text">Experience</span>
+                <a href="#experience" class="menu-item" onclick="openSection('experience')">
+                    <span>EXPERIENCE</span>
                 </a>
-                <a href="#contact" class="menu-item" data-menu="contact">
-                    <span class="menu-text">Contact</span>
+                <a href="#contact" class="menu-item" onclick="openSection('contact')">
+                    <span>CONTACT</span>
                 </a>
-                <a href="Shaheer_Saud_Resume_Offical.pdf" target="_blank" class="menu-item" data-menu="resume">
-                    <span class="menu-text">Resume</span>
+                <a href="Shaheer_Saud_Resume_Offical.pdf" class="menu-item" target="_blank">
+                    <span>RESUME</span>
                 </a>
             </nav>
 
-            <!-- Footer Text -->
-            <div class="menu-footer">
-                <p>© 2024 by Shaheer Saud</p>
-                <p>Dragonborn of the Digital Realm</p>
+            <!-- Logo/Credits -->
+            <div class="menu-credits">
+                <p>SHAHEER SAUD</p>
+                <p>AI Security Engineer @ AT&T</p>
             </div>
         </div>
 
-        <!-- Content Sections (Hidden by default, show on click) -->
+        <!-- Content Overlay -->
         <div class="content-overlay" id="contentOverlay">
-            <button class="close-btn" onclick="closeContent()">✕ Back</button>
+            <button class="close-btn" onclick="closeSection()">✕ BACK</button>
             <div class="content-container">
+
                 <!-- About Section -->
                 <section id="about" class="content-section">
-                    <h2>About Me</h2>
+                    <h2>ABOUT</h2>
                     <p>Greetings, traveler. I am Shaheer Saud, an AI Security Engineer at AT&T, dedicated to protecting the digital realms from threats both known and unknown.</p>
                     <p>Currently pursuing a degree in Computer Science with minors in Data Science and Criminology from Rutgers University. My journey spans from implementing advanced security solutions to developing AI-powered systems that defend critical infrastructure.</p>
                     <h3>Notable Achievements:</h3>
-                    <ul class="achievement-list">
+                    <ul>
                         <li>40% reduction in data breaches through PAM solutions</li>
                         <li>1000+ IT profile migrations executed flawlessly</li>
                         <li>Advanced threat detection systems implemented</li>
@@ -78,46 +69,46 @@
 
                 <!-- Skills Section -->
                 <section id="skills" class="content-section">
-                    <h2>Skills & Perks</h2>
-                    <div class="skills-columns">
-                        <div class="skill-column">
+                    <h2>SKILLS</h2>
+                    <div class="skills-grid">
+                        <div class="skill-box">
                             <h3>Security & AI</h3>
                             <ul>
-                                <li>⚔️ Machine Learning</li>
-                                <li>🛡️ Threat Detection</li>
-                                <li>🔐 Cryptography</li>
-                                <li>🎯 Anomaly Detection</li>
-                                <li>🏰 PAM Solutions</li>
+                                <li>Machine Learning</li>
+                                <li>Threat Detection</li>
+                                <li>Cryptography</li>
+                                <li>PAM Solutions</li>
+                                <li>Anomaly Detection</li>
                             </ul>
                         </div>
-                        <div class="skill-column">
+                        <div class="skill-box">
                             <h3>Cloud & Infrastructure</h3>
                             <ul>
-                                <li>☁️ AWS</li>
-                                <li>☁️ Azure</li>
-                                <li>🐳 Docker</li>
-                                <li>⚙️ Kubernetes</li>
-                                <li>📊 Splunk</li>
+                                <li>AWS</li>
+                                <li>Azure</li>
+                                <li>Docker</li>
+                                <li>Kubernetes</li>
+                                <li>Splunk</li>
                             </ul>
                         </div>
-                        <div class="skill-column">
+                        <div class="skill-box">
                             <h3>Programming</h3>
                             <ul>
-                                <li>🐍 Python</li>
-                                <li>☕ Java</li>
-                                <li>⚡ JavaScript</li>
-                                <li>🔧 PowerShell</li>
-                                <li>🗄️ SQL</li>
+                                <li>Python</li>
+                                <li>Java</li>
+                                <li>JavaScript</li>
+                                <li>PowerShell</li>
+                                <li>SQL</li>
                             </ul>
                         </div>
-                        <div class="skill-column">
+                        <div class="skill-box">
                             <h3>Web & Full-Stack</h3>
                             <ul>
-                                <li>⚛️ React</li>
-                                <li>➡️ Next.js</li>
-                                <li>🍶 Flask</li>
-                                <li>📦 Node.js</li>
-                                <li>🌐 REST APIs</li>
+                                <li>React</li>
+                                <li>Next.js</li>
+                                <li>Flask</li>
+                                <li>Node.js</li>
+                                <li>REST APIs</li>
                             </ul>
                         </div>
                     </div>
@@ -125,94 +116,103 @@
 
                 <!-- Projects Section -->
                 <section id="projects" class="content-section">
-                    <h2>Projects & Quests</h2>
-                    <div class="projects-list">
-                        <div class="project-entry">
-                            <h3>🛡️ Ransomware Simulation</h3>
-                            <p>A dangerous artifact demonstrating AES encryption and ransomware attack patterns.</p>
-                            <a href="https://github.com/ShaheerSaud2004/RansomwareSimulation" target="_blank" class="link">View on GitHub →</a>
+                    <h2>PROJECTS</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h3>Ransomware Simulation</h3>
+                            <p>Advanced encryption/decryption simulation demonstrating AES encryption principles.</p>
+                            <a href="https://github.com/ShaheerSaud2004/RansomwareSimulation" target="_blank" class="btn-link">VIEW →</a>
                         </div>
-                        <div class="project-entry">
-                            <h3>🔑 Dictionary Attack Tool</h3>
-                            <p>A full-stack security tool for password strength validation and cryptographic analysis.</p>
-                            <a href="https://github.com/ShaheerSaud2004/DictionaryAttack" target="_blank" class="link">View on GitHub →</a>
+                        <div class="project-card">
+                            <h3>Dictionary Attack Tool</h3>
+                            <p>Full-stack security tool for password strength validation using dictionary attacks.</p>
+                            <a href="https://github.com/ShaheerSaud2004/DictionaryAttack" target="_blank" class="btn-link">VIEW →</a>
                         </div>
-                        <div class="project-entry">
-                            <h3>🍽️ ScarletPlates</h3>
-                            <p>Full-stack search application for Rutgers dining. Aggregates real-time data seamlessly.</p>
-                            <a href="https://github.com/ShaheerSaud2004/ScarletPlates" target="_blank" class="link">View on GitHub →</a>
+                        <div class="project-card">
+                            <h3>ScarletPlates</h3>
+                            <p>Full-stack search application for Rutgers dining with real-time data aggregation.</p>
+                            <a href="https://github.com/ShaheerSaud2004/ScarletPlates" target="_blank" class="btn-link">VIEW →</a>
                         </div>
-                        <div class="project-entry">
-                            <h3>✋ Hand Gesture Recognition</h3>
+                        <div class="project-card">
+                            <h3>Hand Gesture Recognition</h3>
                             <p>AI system using Mediapipe for real-time hand tracking and gesture recognition.</p>
-                            <a href="https://github.com/ShaheerSaud2004/HandTracking" target="_blank" class="link">View on GitHub →</a>
+                            <a href="https://github.com/ShaheerSaud2004/HandTracking" target="_blank" class="btn-link">VIEW →</a>
                         </div>
-                        <div class="project-entry">
-                            <h3>🌐 Network Router Simulation</h3>
+                        <div class="project-card">
+                            <h3>Network Router Simulation</h3>
                             <p>Java-based router with subnetting, routing tables, and IP address allocation.</p>
-                            <a href="https://github.com/ShaheerSaud2004/Router-Simulation-" target="_blank" class="link">View on GitHub →</a>
+                            <a href="https://github.com/ShaheerSaud2004/Router-Simulation-" target="_blank" class="btn-link">VIEW →</a>
                         </div>
-                        <div class="project-entry">
-                            <h3>🎮 Galaxy Striker</h3>
+                        <div class="project-card">
+                            <h3>Galaxy Striker</h3>
                             <p>2D space shooter game built in Unity with advanced physics and game design.</p>
-                            <a href="https://play.unity.com/mg/other/webgl-builds-384947" target="_blank" class="link">Play Now →</a>
+                            <a href="https://play.unity.com/mg/other/webgl-builds-384947" target="_blank" class="btn-link">VIEW →</a>
                         </div>
                     </div>
                 </section>
 
                 <!-- Experience Section -->
                 <section id="experience" class="content-section">
-                    <h2>Experience</h2>
-                    <div class="experience-list">
-                        <div class="exp-entry featured">
-                            <h3>⚡ AT&T - AI Security Engineer</h3>
-                            <p class="exp-date">Current</p>
+                    <h2>EXPERIENCE</h2>
+                    <div class="exp-grid">
+                        <div class="exp-card featured">
+                            <h3>AT&T</h3>
+                            <p class="job-title">AI Security Engineer</p>
+                            <p class="job-date">Current</p>
                             <p>Building AI and ML solutions for threat detection and network security at enterprise scale.</p>
-                            <a href="att-experience.html" class="link">Learn More →</a>
+                            <a href="att-experience.html" class="btn-link">LEARN MORE →</a>
                         </div>
-                        <div class="exp-entry">
-                            <h3>🛡️ Colgate-Palmolive - Security Engineer Intern</h3>
-                            <p class="exp-date">February 2024 - Present</p>
-                            <p>Implemented PAM solutions, reduced data breaches by 40%, managed migrations of 1000+ profiles.</p>
-                            <a href="colgate-experience.html" class="link">Learn More →</a>
+                        <div class="exp-card">
+                            <h3>Colgate-Palmolive</h3>
+                            <p class="job-title">Security Engineer Intern</p>
+                            <p class="job-date">Feb 2024 - Present</p>
+                            <p>Implemented PAM solutions, reduced breaches by 40%, managed 1000+ profile migrations.</p>
+                            <a href="colgate-experience.html" class="btn-link">LEARN MORE →</a>
                         </div>
-                        <div class="exp-entry">
-                            <h3>⚙️ Rutgers OIT - IT Supervisor</h3>
-                            <p class="exp-date">2023 - 2024</p>
+                        <div class="exp-card">
+                            <h3>Rutgers OIT</h3>
+                            <p class="job-title">IT Supervisor</p>
+                            <p class="job-date">2023 - 2024</p>
                             <p>Supervised IT operations, ensured infrastructure security, managed technical support.</p>
-                            <a href="Rutgers-oit.html" class="link">Learn More →</a>
+                            <a href="Rutgers-oit.html" class="btn-link">LEARN MORE →</a>
                         </div>
-                        <div class="exp-entry">
-                            <h3>💻 Bergen's Promise - Software Developer Intern</h3>
-                            <p class="exp-date">2023</p>
+                        <div class="exp-card">
+                            <h3>Bergen's Promise</h3>
+                            <p class="job-title">Software Developer Intern</p>
+                            <p class="job-date">2023</p>
                             <p>Developed full-stack web applications and contributed to tech initiatives.</p>
-                            <a href="bergens-promise.html" class="link">Learn More →</a>
+                            <a href="bergens-promise.html" class="btn-link">LEARN MORE →</a>
                         </div>
-                        <div class="exp-entry">
-                            <h3>📜 Assemblyman Sterley Stanley - Legislative Intern</h3>
-                            <p class="exp-date">2022 - 2023</p>
+                        <div class="exp-card">
+                            <h3>Assemblyman Sterley Stanley</h3>
+                            <p class="job-title">Legislative Intern</p>
+                            <p class="job-date">2022 - 2023</p>
                             <p>Policy research and legislative support for New Jersey state representative.</p>
-                            <a href="Legal.html" class="link">Learn More →</a>
+                            <a href="Legal.html" class="btn-link">LEARN MORE →</a>
                         </div>
                     </div>
                 </section>
 
                 <!-- Contact Section -->
                 <section id="contact" class="content-section">
-                    <h2>Contact</h2>
+                    <h2>CONTACT</h2>
                     <p>Seek me out in the digital realms:</p>
-                    <div class="contact-list">
-                        <a href="mailto:shaheersaud2004@gmail.com" class="contact-link">
-                            📧 shaheersaud2004@gmail.com
+                    <div class="contact-grid">
+                        <a href="mailto:shaheersaud2004@gmail.com" class="contact-card">
+                            <p class="contact-icon">📧</p>
+                            <p>shaheersaud2004@gmail.com</p>
                         </a>
-                        <a href="https://github.com/ShaheerSaud2004" target="_blank" class="contact-link">
-                            🐙 github.com/ShaheerSaud2004
+                        <a href="https://github.com/ShaheerSaud2004" target="_blank" class="contact-card">
+                            <p class="contact-icon">🐙</p>
+                            <p>github.com/ShaheerSaud2004</p>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" class="contact-link">
-                            💼 LinkedIn Profile
+                        <a href="https://linkedin.com" target="_blank" class="contact-card">
+                            <p class="contact-icon">💼</p>
+                            <p>LinkedIn Profile</p>
                         </a>
                     </div>
                 </section>
+
             </div>
         </div>
     </div>
