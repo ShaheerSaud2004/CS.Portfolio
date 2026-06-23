@@ -146,20 +146,7 @@ body {
     }
 }
 
-/* Daedric Symbol Canvas - Smooth Fade & Glow */
-#daedricCanvas {
-    position: absolute;
-    left: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 450px;
-    height: 550px;
-    opacity: 0;
-    filter: drop-shadow(0 0 50px rgba(90, 170, 90, 0.3));
-    animation: symbolFadeInGlow 3s ease-out forwards, symbolBreathing 4s ease-in-out 3s infinite;
-    z-index: 2;
-}
-
+/* Daedric Symbol - Transparent Image with Glow */
 .dragon-helmet {
     position: absolute;
     left: 5%;
@@ -167,6 +154,12 @@ body {
     transform: translateY(-50%);
     width: 450px;
     height: 550px;
+    background: url('daedric-symbol.png') no-repeat center;
+    background-size: contain;
+    opacity: 0;
+    filter: drop-shadow(0 0 50px rgba(90, 170, 90, 0.3));
+    animation: symbolFadeInGlow 3s ease-out forwards, symbolBreathing 4s ease-in-out 3s infinite;
+    z-index: 2;
 }
 
 @keyframes symbolFadeInGlow {
