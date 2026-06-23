@@ -146,7 +146,7 @@ body {
     }
 }
 
-/* Daedric Symbol - Your Custom Image with Glow */
+/* Daedric Symbol - Your Custom JPEG Image with Glow */
 .dragon-helmet {
     position: absolute;
     left: 5%;
@@ -154,10 +154,10 @@ body {
     transform: translateY(-50%);
     width: 450px;
     height: 550px;
-    background: url('daedric-symbol.svg') no-repeat center;
+    background: url('daedric-symbol.jpg') no-repeat center;
     background-size: contain;
     opacity: 0;
-    filter: drop-shadow(0 0 50px rgba(90, 170, 90, 0.3));
+    filter: drop-shadow(0 0 50px rgba(90, 170, 90, 0.5)) brightness(1.15) contrast(1.15);
     animation: symbolFadeInGlow 3s ease-out forwards, symbolBreathing 4s ease-in-out 3s infinite;
     z-index: 2;
 }
