@@ -146,7 +146,7 @@ body {
     }
 }
 
-/* Daedric Symbol - Transparent Image with Glow */
+/* Daedric Symbol - Embedded Image with Glow */
 .dragon-helmet {
     position: absolute;
     left: 5%;
@@ -154,7 +154,7 @@ body {
     transform: translateY(-50%);
     width: 450px;
     height: 550px;
-    background: url('daedric-symbol.png') no-repeat center;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400"><defs><filter id="shadow"><feGaussianBlur in="SourceGraphic" stdDeviation="2"/></filter></defs><g filter="url(%23shadow)"><path d="M150,30 L170,80 L180,120 L175,180 L170,220 L160,260 L150,300 L140,260 L130,220 L125,180 L120,120 L130,80 Z" fill="%23333" stroke="%23666" stroke-width="2"/><path d="M150,80 Q120,90 100,130 Q85,160 95,200 Q120,220 150,180" fill="%23333" stroke="%23666" stroke-width="2"/><path d="M150,80 Q180,90 200,130 Q215,160 205,200 Q180,220 150,180" fill="%23333" stroke="%23666" stroke-width="2"/><path d="M100,130 L60,110 L80,145 Z" fill="%23555"/><path d="M200,130 L240,110 L220,145 Z" fill="%23555"/><path d="M130,100 Q120,60 110,40" stroke="%23666" stroke-width="2" fill="none"/><path d="M170,100 Q180,60 190,40" stroke="%23666" stroke-width="2" fill="none"/><path d="M150,300 L140,340 L150,330 Z" fill="%23555"/><path d="M150,300 L160,340 L150,330 Z" fill="%23555"/><circle cx="150" cy="170" r="12" fill="%235a8a5a" opacity="0.7"/><circle cx="150" cy="170" r="8" fill="%236aaa6a" opacity="0.9"/></g></svg>') no-repeat center;
     background-size: contain;
     opacity: 0;
     filter: drop-shadow(0 0 50px rgba(90, 170, 90, 0.3));
