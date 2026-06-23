@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main symbol outline -->
+  <g filter="url(#glow)" opacity="0.9">
+    <!-- Center vertical blade -->
+    <path d="M150,20 L160,80 L165,200 L160,280 L150,350 L140,280 L135,200 L140,80 Z" 
+          fill="none" stroke="#5a7a5a" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Left curved wing -->
+    <path d="M150,80 Q100,100 80,150 Q70,180 85,220 Q110,240 140,200" 
+          fill="none" stroke="#5a7a5a" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Right curved wing -->
+    <path d="M150,80 Q200,100 220,150 Q230,180 215,220 Q190,240 160,200" 
+          fill="none" stroke="#5a7a5a" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Left side point -->
+    <path d="M80,150 L50,140 L60,160 Z" fill="#5a7a5a"/>
+    
+    <!-- Right side point -->
+    <path d="M220,150 L250,140 L240,160 Z" fill="#5a7a5a"/>
+    
+    <!-- Bottom points -->
+    <path d="M140,280 L120,320 L140,310 Z" fill="#5a7a5a"/>
+    <path d="M160,280 L180,320 L160,310 Z" fill="#5a7a5a"/>
+    
+    <!-- Green glow in center -->
+    <circle cx="150" cy="150" r="15" fill="#4a8a4a" opacity="0.6"/>
+    <circle cx="150" cy="150" r="10" fill="#6aaa6a" opacity="0.8"/>
+    <circle cx="150" cy="150" r="5" fill="#8aca8a" opacity="0.9"/>
+  </g>
+</svg>

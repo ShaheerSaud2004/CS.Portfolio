@@ -69,15 +69,27 @@ body {
 /* Dragon Helmet - Large Left Side Element */
 .dragon-helmet {
     position: absolute;
-    left: -5%;
+    left: 5%;
     top: 50%;
     transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400"><defs><linearGradient id="metalGrad" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%23444;stop-opacity:1" /><stop offset="50%25" style="stop-color:%23222;stop-opacity:1" /><stop offset="100%25" style="stop-color:%23111;stop-opacity:1" /></linearGradient><filter id="shadow"><feGaussianBlur in="SourceGraphic" stdDeviation="3" /></filter></defs><g filter="url(%23shadow)"><path d="M150,50 Q180,80 180,120 L180,180 Q180,220 150,240 Q120,220 120,180 L120,120 Q120,80 150,50" fill="url(%23metalGrad)" stroke="%23666" stroke-width="2"/><path d="M100,120 Q80,140 70,180 Q80,200 100,190" fill="url(%23metalGrad)" stroke="%23666" stroke-width="2"/><path d="M200,120 Q220,140 230,180 Q220,200 200,190" fill="url(%23metalGrad)" stroke="%23666" stroke-width="2"/><circle cx="110" cy="150" r="8" fill="%23555" opacity="0.8"/><circle cx="190" cy="150" r="8" fill="%23555" opacity="0.8"/><path d="M140,250 Q150,280 150,320 L150,380 Q140,390 130,380 L130,320 Q130,280 140,250" fill="%23333" stroke="%23555" stroke-width="1"/><path d="M160,250 Q150,280 150,320 L150,380 Q160,390 170,380 L170,320 Q170,280 160,250" fill="%23333" stroke="%23555" stroke-width="1"/></g></svg>') no-repeat center;
+    width: 400px;
+    height: 500px;
+    background: url('daedric-symbol.svg') no-repeat center;
     background-size: contain;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 40px rgba(100, 100, 100, 0.4));
+    opacity: 0.85;
+    filter: drop-shadow(0 0 50px rgba(90, 170, 90, 0.4));
+    animation: symbolGlow 4s ease-in-out infinite;
+}
+
+@keyframes symbolGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 30px rgba(90, 170, 90, 0.3));
+        opacity: 0.75;
+    }
+    50% {
+        filter: drop-shadow(0 0 60px rgba(90, 170, 90, 0.6));
+        opacity: 0.95;
+    }
 }
 
 /* ============================================
@@ -446,9 +458,9 @@ body {
     }
 
     .dragon-helmet {
-        width: 450px;
+        width: 350px;
         height: 450px;
-        left: -10%;
+        left: 3%;
     }
 
     .menu-credits {
