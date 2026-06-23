@@ -1,133 +1,386 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Shaheer Saud's Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaheer Saud - AI Security Engineer | AT&T</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="favicon.png" type="image/x-icon">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <ul class="nav-list">
-                <li><a href="#about" class="rainbow-text"><i class="fas fa-user"></i> About</a></li>
-                <li><a href="#projects" class="rainbow-text"><i class="fas fa-briefcase"></i> Projects</a></li>
-                <li><a href="#work-experience" class="rainbow-text"><i class="fas fa-user-tie"></i> Work Experience</a></li>
-                <li><a href="#contact" class="rainbow-text"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="Shaheer_Saud_Resume_Offical.pdf" class="rainbow-text" target="_blank"><i class="fas fa-file-pdf"></i> Resume</a></li>
-                
-
-            </ul>
-        </nav>
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <span class="logo-accent">$</span> shaheer.dev
+            </div>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+                    <li><a href="#projects" class="nav-link"><i class="fas fa-briefcase"></i> Projects</a></li>
+                    <li><a href="#experience" class="nav-link"><i class="fas fa-building"></i> Experience</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="Shaheer_Saud_Resume_Offical.pdf" class="nav-link nav-btn" target="_blank"><i class="fas fa-download"></i> Resume</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </header>
-    <section id="about">
-        <h1 id="project1">About Me</h1>
-        <div class="about-container">
-            <div class="about-text">
-                <div class="text-blurb" id="typing"></div> <!-- Typing effect -->
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Hi, I'm <span class="accent">Shaheer Saud</span></h1>
+                <p class="hero-subtitle">AI Security Engineer @ AT&T</p>
+                <p class="hero-description">Building secure, intelligent systems at scale | Cybersecurity | Machine Learning | Cloud Security</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://github.com/ShaheerSaud2004" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:shaheersaud2004@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
-            <div class="about-photo">
-                <img src="Shaheer.jpg" alt="Shaheer Saud" class="profile-photo">
+            <div class="hero-image">
+                <img src="Shaheer.jpg" alt="Shaheer Saud" class="profile-image">
             </div>
         </div>
     </section>
-    <section id="projects">
-        <h1 id="project1">Projects</h1>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/DictionaryAttack">
-                <h2>Dictionary Attack | <em>Python, Flask, MD5 Hashing, HashMaps, Heroku, Cybersecurity Hygiene</em></h2>
-                <p>A full-stack CyberSecurity password security tool...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/RansomwareSimulation?tab=readme-ov-file">
-                <h2>Ransomware Simulation | <em>Python, Flask, AES Encryption, PyCryptodome, Bootstrap</em></h2>
-                <p>A project that simulates the encryption and decryption process akin to ransomware...</p>
-            </div>
-        </div>
-        
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/ScarletPlates">
-                <h2>ScarletPlates | <em>Python, Java, JavaScript, Flask, Beautiful Soup, Node.js, Next.js, React</em></h2>
-                <p>Full-stack search tool for Rutgers dining services...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/HandTracking">
-                <h2>Real-Time Hand Gesture Recognition | <em>Python, OpenCV, Google’s Mediapipe, Computer Vision</em></h2>
-                <p>AI-powered system using Python and Mediapipe for hand gesture recognition...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://github.com/ShaheerSaud2004/Router-Simulation-">
-                <h2>Network Router Simulation | <em>Java, HashMaps, Routing Tables, Subnetting and IP Address Allocation</em></h2>
-                <p>Java-based router simulation program for efficient data flow and IP tracking...</p>
-            </div>
-        </div>
-        <div class="project-item">
-            <div class="project-link" data-href="https://play.unity.com/mg/other/webgl-builds-384947">
-                <h2>Galaxy Striker | <em>Unity, C#, Physics Simulation, Game Design </em></h2>
-                <p>A Unity-based 2D space shooter game with over with over 20 C# scripts that...</p>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="lead-text">I'm an AI Security Engineer at AT&T, passionate about leveraging machine learning and advanced security techniques to protect critical infrastructure and data.</p>
+
+                    <p>Currently pursuing a BS in Computer Science with minors in Data Science and Criminology from Rutgers University. My experience spans from implementing advanced PAM solutions at Colgate-Palmolive to developing full-stack applications and AI-powered security tools.</p>
+
+                    <p>I specialize in:</p>
+                    <ul class="expertise-list">
+                        <li><strong>AI Security:</strong> Machine learning for threat detection, anomaly detection, and security intelligence</li>
+                        <li><strong>Cloud Security:</strong> Secure architecture design, IAM, and compliance</li>
+                        <li><strong>Full-Stack Development:</strong> Building scalable, secure applications</li>
+                        <li><strong>Security Operations:</strong> PAM solutions, log analysis, incident response</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years in Security</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Breach Reduction (Colgate)</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <section id="work-experience">
-        <h1 id="project1">Work Experience</h1>
-        <div class="experience-container">
-            
-            <div class="experience-item">
-                <img src="Colgate.jpeg" alt="Information Security Intern">
-                <div class="work-title">Colgate-Palmolive</div>
-                <div class="position-title">Security Engineer Intern</div>
-                <a class="info-btn" href="colgate-experience.html">More Info</a>
-            </div>
 
-            <div class="experience-item">
-                <img src="Bp.png" alt="Bergen's Promise Logo">
-                <div class="work-title">Bergen's Promise</div>
-                <div class="position-title">Software Development Intern</div>
-                <a class="info-btn" href="bergens-promise.html">More Info</a>
-            </div>
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-lock"></i> Security & AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Threat Detection</span>
+                        <span class="skill-tag">Anomaly Detection</span>
+                        <span class="skill-tag">PAM Solutions</span>
+                        <span class="skill-tag">Incident Response</span>
+                        <span class="skill-tag">Penetration Testing</span>
+                        <span class="skill-tag">Cryptography</span>
+                    </div>
+                </div>
 
-            <div class="experience-item">
-                <img src="ITLOGO.jpg" alt="Rutgers OIT Logo">
-                <div class="work-title">Office of InfoTech</div>
-                <div class="position-title">Information Technology Supervisor</div>
-                <a class="info-btn" href="Rutgers-oit.html">More Info</a>
-            </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">Okta</span>
+                    </div>
+                </div>
 
-            <div class="experience-item">
-                <img src="Seal.png" alt="Legal Intern Icon">
-                <div class="work-title">Assemblyman Sterley Stanley</div>
-                <div class="position-title">Policy Legislative Intern</div>
-                <a class="info-btn" href="Legal.html">More Info</a>
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PowerShell</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Bash</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-globe"></i> Web & Full-Stack</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
             </div>
-            
-            
         </div>
     </section>
-    <section id="contact">
-        <h1 id="head">Contact</h1>
-        <div class="contact-container">
-            <p>
-                <a href="mailto:shaheersaud.internship@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> shaheersaud.internship@gmail.com
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Ransomware Simulation</h3>
+                        <a href="https://github.com/ShaheerSaud2004/RansomwareSimulation" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <p class="project-description">Advanced encryption/decryption simulation tool demonstrating AES encryption principles and ransomware attack patterns.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Dictionary Attack Tool</h3>
+                        <a href="https://github.com/ShaheerSaud2004/DictionaryAttack" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <p class="project-description">Full-stack cybersecurity tool for password strength validation using dictionary attacks and MD5 hashing analysis.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Cybersecurity</span>
+                        <span class="tech-tag">Heroku</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ScarletPlates</h3>
+                        <a href="https://github.com/ShaheerSaud2004/ScarletPlates" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <p class="project-description">Full-stack search application for Rutgers dining services. Scrapes, aggregates, and presents real-time dining data.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Beautiful Soup</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Hand Gesture Recognition</h3>
+                        <a href="https://github.com/ShaheerSaud2004/HandTracking" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <p class="project-description">Real-time AI system using Mediapipe and OpenCV for hand gesture recognition and tracking.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Mediapipe</span>
+                        <span class="tech-tag">ML</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Network Router Simulation</h3>
+                        <a href="https://github.com/ShaheerSaud2004/Router-Simulation-" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <p class="project-description">Java-based router simulation with routing tables, subnetting, and IP address allocation logic.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Networking</span>
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Algorithms</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Galaxy Striker</h3>
+                        <a href="https://play.unity.com/mg/other/webgl-builds-384947" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <p class="project-description">2D space shooter game built in Unity with 20+ C# scripts, physics simulation, and game design.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Game Design</span>
+                        <span class="tech-tag">Physics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+
+            <div class="experience-timeline">
+                <div class="timeline-item featured">
+                    <div class="timeline-marker featured-marker"></div>
+                    <div class="timeline-content">
+                        <div class="experience-header">
+                            <div class="company-info">
+                                <h3 class="company-name">AT&T</h3>
+                                <p class="job-title">AI Security Engineer</p>
+                                <p class="job-date">Current</p>
+                            </div>
+                        </div>
+                        <p class="job-description">Building cutting-edge AI and machine learning solutions for threat detection and network security at one of the world's largest telecommunications companies.</p>
+                        <a href="att-experience.html" class="more-btn">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="experience-header">
+                            <div class="company-info">
+                                <h3 class="company-name">Colgate-Palmolive</h3>
+                                <p class="job-title">Security Engineer Intern</p>
+                                <p class="job-date">February 2024 - Present</p>
+                            </div>
+                        </div>
+                        <p class="job-description">Implemented PAM solutions, reduced data breaches by 40%, managed log analysis with Splunk, migrated 1000+ IT profiles.</p>
+                        <a href="colgate-experience.html" class="more-btn">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="experience-header">
+                            <div class="company-info">
+                                <h3 class="company-name">Office of InfoTech, Rutgers</h3>
+                                <p class="job-title">Information Technology Supervisor</p>
+                                <p class="job-date">2023 - 2024</p>
+                            </div>
+                        </div>
+                        <p class="job-description">Supervised IT operations, managed technical support, and ensured infrastructure security and uptime.</p>
+                        <a href="Rutgers-oit.html" class="more-btn">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="experience-header">
+                            <div class="company-info">
+                                <h3 class="company-name">Bergen's Promise</h3>
+                                <p class="job-title">Software Development Intern</p>
+                                <p class="job-date">2023</p>
+                            </div>
+                        </div>
+                        <p class="job-description">Developed full-stack web applications and contributed to organizational technology initiatives.</p>
+                        <a href="bergens-promise.html" class="more-btn">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="experience-header">
+                            <div class="company-info">
+                                <h3 class="company-name">Assemblyman Sterley Stanley</h3>
+                                <p class="job-title">Policy Legislative Intern</p>
+                                <p class="job-date">2022 - 2023</p>
+                            </div>
+                        </div>
+                        <p class="job-description">Provided policy research and legislative support for a New Jersey state representative.</p>
+                        <a href="Legal.html" class="more-btn">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-subtitle">I'm always interested in hearing about new projects and opportunities.</p>
+
+            <div class="contact-grid">
+                <a href="mailto:shaheersaud2004@gmail.com" class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>shaheersaud2004@gmail.com</p>
                 </a>
-            </p>
-            <p>
-              
-            </p>
+
+                <a href="https://github.com/ShaheerSaud2004" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>ShaheerSaud2004</p>
+                </a>
+
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me</p>
+                </a>
+            </div>
         </div>
     </section>
-    
-    
+
     <footer class="footer">
-        <p>© 2024 Shaheer Saud. All Rights Reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Shaheer Saud. Crafted with <span class="heart">❤</span> for security and innovation.</p>
+        </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
