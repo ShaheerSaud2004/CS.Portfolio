@@ -1,222 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaheer Saud - Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="favicon.png" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#080a09" />
+
+<title>Shaheer Saud // Cyber AI Engineer (AI + Security)</title>
+<meta name="description" content="Shaheer Saud — Cyber AI Engineer building at the intersection of AI and security. RAG/LLM pipelines, LLM benchmarking, SIEM threat detection, honeypots, and on-device model compression. Experience at AT&T, Colgate-Palmolive, and Rutgers." />
+<meta name="author" content="Shaheer Saud" />
+<link rel="canonical" href="https://shaheersaud.dev/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Shaheer Saud // Cyber AI Engineer (AI + Security)" />
+<meta property="og:description" content="Cyber AI Engineer building where machine learning meets security — RAG/LLM pipelines, SIEM-driven threat detection, honeypots, and edge ML." />
+<meta property="og:url" content="https://shaheersaud.dev/" />
+<meta property="og:image" content="https://shaheersaud.dev/Shaheer.jpg" />
+<meta property="og:site_name" content="Shaheer Saud" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Shaheer Saud // Cyber AI Engineer (AI + Security)" />
+<meta name="twitter:description" content="Cyber AI Engineer building where machine learning meets security — RAG/LLM pipelines, SIEM threat detection, honeypots, edge ML." />
+<meta name="twitter:image" content="https://shaheersaud.dev/Shaheer.jpg" />
+
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="skyrim-container">
-        <!-- Background -->
-        <div class="skyrim-bg">
-            <div class="bg-texture"></div>
-            <div class="dragon-helmet"></div>
-        </div>
 
-        <!-- Main Menu -->
-        <div class="skyrim-menu">
-            <!-- Menu Items - Right Side -->
-            <nav class="menu-items">
-                <a href="#about" class="menu-item" onclick="openSection('about')">
-                    <span>ABOUT</span>
-                </a>
-                <a href="#skills" class="menu-item" onclick="openSection('skills')">
-                    <span>SKILLS</span>
-                </a>
-                <a href="#projects" class="menu-item" onclick="openSection('projects')">
-                    <span>PROJECTS</span>
-                </a>
-                <a href="#experience" class="menu-item" onclick="openSection('experience')">
-                    <span>EXPERIENCE</span>
-                </a>
-                <a href="#contact" class="menu-item" onclick="openSection('contact')">
-                    <span>CONTACT</span>
-                </a>
-                <a href="Shaheer_Saud_Resume_Offical.pdf" class="menu-item" target="_blank">
-                    <span>RESUME</span>
-                </a>
-            </nav>
+<a href="#main" class="skip">Skip to content</a>
 
-            <!-- Logo/Credits -->
-            <div class="menu-credits">
-                <p>SHAHEER SAUD</p>
-                <p>AI Security Engineer @ AT&T</p>
+<!-- ===== BOOT SCREEN (optional, fast, skippable) ===== -->
+<div id="boot" aria-hidden="true">
+  <div class="boot-inner">
+    <div id="boot-log"></div>
+    <div class="boot-bar-wrap"><span class="boot-bar"><i id="boot-bar-fill"></i></span><span id="boot-pct">0%</span></div>
+    <button type="button" id="boot-skip" class="boot-skip">press any key / click to skip &rsaquo;</button>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="brand" aria-label="Shaheer Saud — home">
+      <span class="dots" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i></span>
+      <span class="path">shaheer@cyber-ai:<b>~</b>$</span>
+    </a>
+    <nav class="menu" id="menu" aria-label="Primary">
+      <a href="#about"><span class="pr">~/</span>about</a>
+      <a href="#experience"><span class="pr">~/</span>experience</a>
+      <a href="#projects"><span class="pr">~/</span>projects</a>
+      <a href="#skills"><span class="pr">~/</span>skills</a>
+      <a href="#education"><span class="pr">~/</span>education</a>
+      <a href="#contact"><span class="pr">~/</span>contact</a>
+    </nav>
+    <a class="nav-cta" id="navResume" href="Shaheer_Saud_Resume.pdf" download target="_blank" rel="noopener noreferrer">
+      <i class="fa-solid fa-download" aria-hidden="true"></i> resume.pdf
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== FULL-SCREEN MOBILE MENU ===== -->
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+  <a href="#about"><span class="num">01</span>about</a>
+  <a href="#experience"><span class="num">02</span>experience</a>
+  <a href="#projects"><span class="num">03</span>projects</a>
+  <a href="#skills"><span class="num">04</span>skills</a>
+  <a href="#education"><span class="num">05</span>education</a>
+  <a href="#contact"><span class="num">06</span>contact</a>
+  <a href="Shaheer_Saud_Resume.pdf" download target="_blank" rel="noopener noreferrer"><span class="num">&darr;</span>resume.pdf</a>
+</nav>
+
+<main id="main">
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" aria-label="Introduction">
+    <div class="wrap">
+      <div class="hero-grid">
+
+        <div class="hero-term rv">
+          <div class="term-bar">
+            <span class="dots" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i></span>
+            <span class="ttl">shaheer@cyber-ai — -zsh — 96&times;24</span>
+          </div>
+          <div class="term-body">
+            <p class="hl"><span class="pmt">$</span> whoami</p>
+            <h1 class="hero-name" aria-label="Shaheer Saud">
+              <span class="line"><span>Shaheer</span></span>
+              <span class="line"><span><em>Saud</em></span></span>
+            </h1>
+            <p class="hero-role">Cyber AI Engineer <span class="amb">// AI + Security</span></p>
+            <p class="hero-desc">
+              I build at the seam where <span class="g">machine learning</span> meets <span class="g">security engineering</span> —
+              RAG/LLM pipelines, SIEM-driven threat detection, honeypots, and on-device model compression.
+              Shipped systems at <span class="g">AT&amp;T</span> and <span class="g">Colgate-Palmolive</span>; currently
+              wrapping a CS degree at Rutgers.
+            </p>
+            <div class="hero-btns">
+              <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-folder-tree" aria-hidden="true"></i> ls projects/</a>
+              <a class="btn btn-ghost" href="#contact"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> ./contact.sh</a>
             </div>
-        </div>
-
-        <!-- Content Overlay -->
-        <div class="content-overlay" id="contentOverlay">
-            <button class="close-btn" onclick="closeSection()">✕ BACK</button>
-            <div class="content-container">
-
-                <!-- About Section -->
-                <section id="about" class="content-section">
-                    <h2>ABOUT</h2>
-                    <p>Greetings, traveler. I am Shaheer Saud, an AI Security Engineer at AT&T, dedicated to protecting the digital realms from threats both known and unknown.</p>
-                    <p>Currently pursuing a degree in Computer Science with minors in Data Science and Criminology from Rutgers University. My journey spans from implementing advanced security solutions to developing AI-powered systems that defend critical infrastructure.</p>
-                    <h3>Notable Achievements:</h3>
-                    <ul>
-                        <li>40% reduction in data breaches through PAM solutions</li>
-                        <li>1000+ IT profile migrations executed flawlessly</li>
-                        <li>Advanced threat detection systems implemented</li>
-                        <li>Multiple security-focused projects completed</li>
-                    </ul>
-                </section>
-
-                <!-- Skills Section -->
-                <section id="skills" class="content-section">
-                    <h2>SKILLS</h2>
-                    <div class="skills-grid">
-                        <div class="skill-box">
-                            <h3>Security & AI</h3>
-                            <ul>
-                                <li>Machine Learning</li>
-                                <li>Threat Detection</li>
-                                <li>Cryptography</li>
-                                <li>PAM Solutions</li>
-                                <li>Anomaly Detection</li>
-                            </ul>
-                        </div>
-                        <div class="skill-box">
-                            <h3>Cloud & Infrastructure</h3>
-                            <ul>
-                                <li>AWS</li>
-                                <li>Azure</li>
-                                <li>Docker</li>
-                                <li>Kubernetes</li>
-                                <li>Splunk</li>
-                            </ul>
-                        </div>
-                        <div class="skill-box">
-                            <h3>Programming</h3>
-                            <ul>
-                                <li>Python</li>
-                                <li>Java</li>
-                                <li>JavaScript</li>
-                                <li>PowerShell</li>
-                                <li>SQL</li>
-                            </ul>
-                        </div>
-                        <div class="skill-box">
-                            <h3>Web & Full-Stack</h3>
-                            <ul>
-                                <li>React</li>
-                                <li>Next.js</li>
-                                <li>Flask</li>
-                                <li>Node.js</li>
-                                <li>REST APIs</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Projects Section -->
-                <section id="projects" class="content-section">
-                    <h2>PROJECTS</h2>
-                    <div class="projects-grid">
-                        <div class="project-card">
-                            <h3>Ransomware Simulation</h3>
-                            <p>Advanced encryption/decryption simulation demonstrating AES encryption principles.</p>
-                            <a href="https://github.com/ShaheerSaud2004/RansomwareSimulation" target="_blank" class="btn-link">VIEW →</a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Dictionary Attack Tool</h3>
-                            <p>Full-stack security tool for password strength validation using dictionary attacks.</p>
-                            <a href="https://github.com/ShaheerSaud2004/DictionaryAttack" target="_blank" class="btn-link">VIEW →</a>
-                        </div>
-                        <div class="project-card">
-                            <h3>ScarletPlates</h3>
-                            <p>Full-stack search application for Rutgers dining with real-time data aggregation.</p>
-                            <a href="https://github.com/ShaheerSaud2004/ScarletPlates" target="_blank" class="btn-link">VIEW →</a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Hand Gesture Recognition</h3>
-                            <p>AI system using Mediapipe for real-time hand tracking and gesture recognition.</p>
-                            <a href="https://github.com/ShaheerSaud2004/HandTracking" target="_blank" class="btn-link">VIEW →</a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Network Router Simulation</h3>
-                            <p>Java-based router with subnetting, routing tables, and IP address allocation.</p>
-                            <a href="https://github.com/ShaheerSaud2004/Router-Simulation-" target="_blank" class="btn-link">VIEW →</a>
-                        </div>
-                        <div class="project-card">
-                            <h3>Galaxy Striker</h3>
-                            <p>2D space shooter game built in Unity with advanced physics and game design.</p>
-                            <a href="https://play.unity.com/mg/other/webgl-builds-384947" target="_blank" class="btn-link">VIEW →</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Experience Section -->
-                <section id="experience" class="content-section">
-                    <h2>EXPERIENCE</h2>
-                    <div class="exp-grid">
-                        <div class="exp-card featured">
-                            <h3>AT&T</h3>
-                            <p class="job-title">AI Security Engineer</p>
-                            <p class="job-date">Current</p>
-                            <p>Building AI and ML solutions for threat detection and network security at enterprise scale.</p>
-                            <a href="att-experience.html" class="btn-link">LEARN MORE →</a>
-                        </div>
-                        <div class="exp-card">
-                            <h3>Colgate-Palmolive</h3>
-                            <p class="job-title">Security Engineer Intern</p>
-                            <p class="job-date">Feb 2024 - Present</p>
-                            <p>Implemented PAM solutions, reduced breaches by 40%, managed 1000+ profile migrations.</p>
-                            <a href="colgate-experience.html" class="btn-link">LEARN MORE →</a>
-                        </div>
-                        <div class="exp-card">
-                            <h3>Rutgers OIT</h3>
-                            <p class="job-title">IT Supervisor</p>
-                            <p class="job-date">2023 - 2024</p>
-                            <p>Supervised IT operations, ensured infrastructure security, managed technical support.</p>
-                            <a href="Rutgers-oit.html" class="btn-link">LEARN MORE →</a>
-                        </div>
-                        <div class="exp-card">
-                            <h3>Bergen's Promise</h3>
-                            <p class="job-title">Software Developer Intern</p>
-                            <p class="job-date">2023</p>
-                            <p>Developed full-stack web applications and contributed to tech initiatives.</p>
-                            <a href="bergens-promise.html" class="btn-link">LEARN MORE →</a>
-                        </div>
-                        <div class="exp-card">
-                            <h3>Assemblyman Sterley Stanley</h3>
-                            <p class="job-title">Legislative Intern</p>
-                            <p class="job-date">2022 - 2023</p>
-                            <p>Policy research and legislative support for New Jersey state representative.</p>
-                            <a href="Legal.html" class="btn-link">LEARN MORE →</a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Contact Section -->
-                <section id="contact" class="content-section">
-                    <h2>CONTACT</h2>
-                    <p>Seek me out in the digital realms:</p>
-                    <div class="contact-grid">
-                        <a href="mailto:shaheersaud2004@gmail.com" class="contact-card">
-                            <p class="contact-icon">📧</p>
-                            <p>shaheersaud2004@gmail.com</p>
-                        </a>
-                        <a href="https://github.com/ShaheerSaud2004" target="_blank" class="contact-card">
-                            <p class="contact-icon">🐙</p>
-                            <p>github.com/ShaheerSaud2004</p>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" class="contact-card">
-                            <p class="contact-icon">💼</p>
-                            <p>LinkedIn Profile</p>
-                        </a>
-                    </div>
-                </section>
-
+            <div class="hero-socials" aria-label="Social links">
+              <a href="https://github.com/ShaheerSaud2004" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+              <a href="https://linkedin.com/in/shaheer-saud" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+              <a href="mailto:shaheersaud.internship@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+              <a href="https://cipherconsulting.net" target="_blank" rel="noopener noreferrer" aria-label="Cipher Consulting website"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></a>
+              <a href="https://khafi.org" target="_blank" rel="noopener noreferrer" aria-label="Khafi website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
             </div>
+          </div>
         </div>
+
+        <aside class="hero-side rv">
+          <!-- Animated SVG radar sweep (decorative) -->
+          <div class="radar-card" aria-hidden="true">
+            <div class="radar-head">
+              <span>node://saud.soc</span>
+              <span class="live"><i class="fa-solid fa-circle"></i> live sweep</span>
+            </div>
+            <div class="radar-wrap">
+              <svg id="radar" viewBox="0 0 300 300" width="100%" height="100%" role="img" aria-label="Animated radar sweep">
+                <defs>
+                  <radialGradient id="rg" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="rgba(67,249,127,.12)"/>
+                    <stop offset="100%" stop-color="rgba(67,249,127,0)"/>
+                  </radialGradient>
+                  <linearGradient id="sweepG" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="rgba(67,249,127,0)"/>
+                    <stop offset="100%" stop-color="rgba(67,249,127,.55)"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="150" cy="150" r="146" fill="url(#rg)"/>
+                <circle cx="150" cy="150" r="146" fill="none" stroke="#1c2a23" stroke-width="1"/>
+                <circle cx="150" cy="150" r="100" fill="none" stroke="#162b20" stroke-width="1"/>
+                <circle cx="150" cy="150" r="54"  fill="none" stroke="#162b20" stroke-width="1"/>
+                <line x1="4" y1="150" x2="296" y2="150" stroke="#162b20" stroke-width="1"/>
+                <line x1="150" y1="4" x2="150" y2="296" stroke="#162b20" stroke-width="1"/>
+                <line x1="46" y1="46" x2="254" y2="254" stroke="#101e16" stroke-width="1"/>
+                <line x1="254" y1="46" x2="46" y2="254" stroke="#101e16" stroke-width="1"/>
+                <g id="sweep">
+                  <path d="M150 150 L150 4 A146 146 0 0 1 256 56 Z" fill="url(#sweepG)"/>
+                </g>
+                <g id="blips"></g>
+              </svg>
+            </div>
+            <div class="photo-chip">
+              <img src="Shaheer.jpg" alt="" loading="lazy" width="44" height="44" />
+              <div class="pc-t">
+                <b>operator: shaheer_saud</b>
+                <span>clearance: AI + Security &middot; status: available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live status / ID card -->
+          <div class="id-card">
+            <h2 class="id-h">./status --whoami</h2>
+            <div class="id-row"><span>role</span><b>Cyber AI Engineer</b></div>
+            <div class="id-row"><span>location</span><b>New Jersey, US</b></div>
+            <div class="id-row"><span>focus</span><b>AI &middot; Security</b></div>
+            <div class="id-row"><span>grad</span><b>May 2026</b></div>
+            <div class="id-row"><span>status</span><b class="ok"><span class="pulse" aria-hidden="true"></span>open to roles</b></div>
+          </div>
+
+          <!-- Uplinks -->
+          <div class="id-card">
+            <h2 class="id-h">./uplinks</h2>
+            <div class="id-row"><span>github</span><b>@ShaheerSaud2004</b></div>
+            <div class="id-row"><span>linkedin</span><b>/in/shaheer-saud</b></div>
+            <div class="id-row"><span>web</span><b>cipherconsulting.net</b></div>
+          </div>
+        </aside>
+
+      </div>
     </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- ===== MARQUEE / COMPETENCIES BAND ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>RAG Pipelines</span><span>LLM Benchmarking</span><span>IAM / PAM</span><span>Threat Detection</span><span>Splunk &amp; SIEM</span><span>Honeypots</span><span>Model Compression</span><span>Security Automation</span><span>Edge ML</span>
+      <span>RAG Pipelines</span><span>LLM Benchmarking</span><span>IAM / PAM</span><span>Threat Detection</span><span>Splunk &amp; SIEM</span><span>Honeypots</span><span>Model Compression</span><span>Security Automation</span><span>Edge ML</span>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" aria-label="About">
+    <div class="wrap">
+      <div class="cmd rv"><span class="pmt">$</span> <span class="typed">cat <b>about/profile.md</b></span></div>
+      <p class="out-note rv">rendering markdown // 1 file</p>
+      <div class="about-grid">
+        <figure class="photo-frame rv">
+          <div class="scan" aria-hidden="true"></div>
+          <img src="Shaheer.jpg" alt="Portrait of Shaheer Saud, Cyber AI Engineer" loading="lazy" width="1170" height="789" />
+          <figcaption class="photo-cap">~/about/shaheer.jpg</figcaption>
+        </figure>
+        <div class="about-body rv">
+          <p>
+            I'm a <span class="g">Cyber AI Engineer</span> who treats security and machine learning as one discipline.
+            On AT&amp;T's Cyber Security Data Analytics team I architected a <span class="g">RAG LLM pipeline</span> that cut
+            document processing from weeks to seconds and pushed IAM/PAM query accuracy to <span class="a">96%</span>.
+          </p>
+          <p>
+            At Colgate-Palmolive I built an AI chatbot for PAM queries, ran threat hunts across <span class="g">Splunk,
+            Okta, and Tanium</span>, and automated identity migrations at scale. Across roles, my throughline is the
+            same: turn slow, manual security work into <span class="a">fast, reliable, auditable</span> automation.
+          </p>
+          <p>
+            Outside of work I ship offensive and defensive side projects — honeypots, data-exposure crawlers, and
+            edge-deployed LLMs — and lead IT teams at Rutgers OIT. I care about systems that are both <span class="g">secure
+            and explainable</span>.
+          </p>
+          <div class="tags">
+            <span class="tag">RAG / LLMOps</span>
+            <span class="tag">Threat Detection</span>
+            <span class="tag">IAM / PAM</span>
+            <span class="tag">Edge ML</span>
+            <span class="tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8-tile metric grid with sparklines + count-up -->
+      <h2 class="sr-only">Impact metrics</h2>
+      <div class="metrics" id="metrics">
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="96">0</span><span class="suf">%</span></div>
+          <div class="lbl">IAM/PAM query accuracy on AT&amp;T RAG pipeline</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,22 18,18 36,20 54,12 72,14 90,6 108,8 120,3"/></svg>
+        </div>
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="90">0</span><span class="suf">%</span></div>
+          <div class="lbl">faster LLM evaluation via RAGAS benchmarking</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,20 18,15 36,17 54,9 72,12 90,5 108,7 120,2"/></svg>
+        </div>
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="98">0</span><span class="suf">%</span></div>
+          <div class="lbl">help-desk workload cut by PAM AI chatbot</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,21 18,16 36,18 54,11 72,13 90,6 108,8 120,3"/></svg>
+        </div>
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="85">0</span><span class="suf">%</span></div>
+          <div class="lbl">reduction in caller wait times via automation</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,19 18,14 36,16 54,10 72,11 90,7 108,8 120,4"/></svg>
+        </div>
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="80">0</span><span class="suf">%</span></div>
+          <div class="lbl">less manual effort migrating 1,000+ IT profiles</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,18 18,15 36,16 54,11 72,13 90,8 108,9 120,5"/></svg>
+        </div>
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="200">0</span><span class="suf">+</span></div>
+          <div class="lbl">consultants led &amp; trained at Rutgers OIT</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,23 18,20 36,18 54,15 72,12 90,9 108,6 120,3"/></svg>
+        </div>
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="300">0</span><span class="suf">+</span></div>
+          <div class="lbl">IT tickets resolved via ServiceNow</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,22 18,19 36,16 54,17 72,11 90,8 108,5 120,2"/></svg>
+        </div>
+        <div class="metric rv">
+          <div class="num"><span class="cu" data-to="1000">0</span><span class="suf">+</span></div>
+          <div class="lbl">labeled examples in LLM benchmarking framework</div>
+          <svg class="spark" viewBox="0 0 120 26" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,21 18,17 36,18 54,13 72,10 90,9 108,6 120,2"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" aria-label="Experience">
+    <div class="wrap">
+      <div class="cmd rv"><span class="pmt">$</span> <span class="typed">cat <b>experience/*.md</b> --reverse-chron</span></div>
+      <p class="out-note rv">3 records found // most recent first</p>
+
+      <article class="exp tilt rv">
+        <div class="exp-head">
+          <div><span class="exp-role">Cyber AI Engineer</span> <span class="exp-co">@ AT&amp;T</span></div>
+          <div class="exp-meta"><span class="date">May 2025 – Aug 2025</span><br>Middletown, NJ</div>
+        </div>
+        <p class="exp-sub">Cyber Security Data Analytics Team</p>
+        <ul>
+          <li>Architected AT&amp;T <b>RAG LLM pipeline</b> by integrating new data sources and automating ingestion, cutting document processing from <b>weeks to seconds</b> and improving IAM/PAM query accuracy to <b>96%</b>.</li>
+          <li>Developed an <b>LLM benchmarking framework</b> using RAGAS and Hugging Face to evaluate model configurations on <b>1,000+ labeled examples</b>, cutting evaluation time by <b>90%</b> and accelerating optimization.</li>
+          <li>Designed AI model configurations for AT&amp;T's <b>proprietary LLM</b> by adjusting hyperparameters and refining embedding architectures, improving accuracy, reducing latency, and strengthening inference reliability.</li>
+        </ul>
+      </article>
+
+      <article class="exp tilt rv">
+        <div class="exp-head">
+          <div><span class="exp-role">Security Engineer Intern</span> <span class="exp-co">@ Colgate-Palmolive</span></div>
+          <div class="exp-meta"><span class="date">Feb 2024 – Dec 2025</span><br>Piscataway, NJ</div>
+        </div>
+        <ul>
+          <li>Constructed an <b>AI chatbot for PAM queries</b> by ingesting and curating documentation, reducing resolution time from <b>1 week to minutes</b> and cutting help-desk workload by <b>98%</b>.</li>
+          <li>Performed <b>log analysis with Splunk, Okta, and Tanium</b> to detect unauthorized access, anomalies, and misconfigurations, improving detection speed, strengthening response, and enhancing security posture.</li>
+          <li>Automated migration of <b>over 1,000 IT profiles</b> using PowerShell, Python, and the Colgate-Palmolive API, cutting manual effort by <b>80%</b> and securely transferring credentials and secrets at scale.</li>
+        </ul>
+      </article>
+
+      <article class="exp tilt rv">
+        <div class="exp-head">
+          <div><span class="exp-role">Information Technology Supervisor</span> <span class="exp-co">@ Rutgers OIT</span></div>
+          <div class="exp-meta"><span class="date">Apr 2023 – Present</span><br>New Brunswick, NJ</div>
+        </div>
+        <p class="exp-sub">Office of Information Technology</p>
+        <ul>
+          <li>Deployed a secure <b>Python automation script with Selenium</b> to streamline data aggregation across multiple platforms, reducing caller wait times by <b>85%</b> and enhancing data integrity.</li>
+          <li>Leveraged expertise in <b>OSI Layer 1–7</b> configurations, including secure IP address management, TCP/IP protocols, and DNS security, to resolve network challenges and ensure uninterrupted, secure data flow.</li>
+          <li>Led and trained <b>200 consultants</b>, resolving <b>over 300 IT tickets</b> via ServiceNow, focusing on mitigating security breaches and preventing network interruptions, significantly improving incident response times.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" aria-label="Featured projects">
+    <div class="wrap">
+      <div class="cmd rv"><span class="pmt">$</span> <span class="typed">ls <b>projects/</b> --featured</span></div>
+      <p class="out-note rv">3 featured builds // ai · security · full-stack</p>
+
+      <div class="proj-grid">
+        <article class="proj tilt rv">
+          <div class="pico"><i class="fa-solid fa-microchip" aria-hidden="true"></i></div>
+          <h3>On-Device LLM Compression &amp; Deployment</h3>
+          <p class="adv">Advisor: Dr. Rabiul Islam</p>
+          <p>Compressed and optimized BERT/GPT-2 for edge deployment, reducing size and latency with minimal accuracy loss while deploying int8 models on Raspberry Pi and validating with LIME/SHAP.</p>
+          <div class="stack"><span>PyTorch</span><span>Hugging Face</span><span>int8</span><span>LIME/SHAP</span><span>Raspberry Pi</span></div>
+        </article>
+
+        <article class="proj tilt rv">
+          <div class="pico"><i class="fa-solid fa-house-lock" aria-hidden="true"></i></div>
+          <h3>Smart Home Honeypot Dashboard</h3>
+          <p class="adv">Full-stack IoT deception</p>
+          <p>Built a full-stack IoT honeypot simulating a smart home, using fake login portals, Telnet exploits, and firmware traps to capture attacker behavior; visualized threats in real time via a custom dashboard.</p>
+          <div class="stack"><span>Python</span><span>Flask</span><span>SQLite</span><span>WebSockets</span><span>GeoIP</span><span>Telnet</span><span>Jinja2</span></div>
+        </article>
+
+        <article class="proj tilt rv">
+          <div class="pico"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i></div>
+          <h3>Sensitive Data Exposure Crawler</h3>
+          <p class="adv">Real-time NLP scanning</p>
+          <p>Created a real-time web crawler that scans public URLs for exposed personal data using NLP filters and visualizes scan results through a live dashboard with 100+ concurrent scanning workers.</p>
+          <div class="stack"><span>Python</span><span>FastAPI</span><span>Asyncio</span><span>NLP</span><span>Chart.js</span><span>Uvicorn</span><span>WebSockets</span></div>
+        </article>
+      </div>
+
+      <div class="gh-list rv">
+        <div class="gh-h"><i class="fa-brands fa-github" aria-hidden="true"></i> <b>git log</b> --more &nbsp;//&nbsp; additional repositories</div>
+        <a class="gh-row" href="https://github.com/ShaheerSaud2004/DictionaryAttack" target="_blank" rel="noopener noreferrer">
+          <span class="gi"><i class="fa-solid fa-key" aria-hidden="true"></i></span>
+          <span class="gn">Dictionary Attack</span>
+          <span class="gt"><span>Python</span><span>Flask</span><span>MD5</span></span>
+          <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i>
+        </a>
+        <a class="gh-row" href="https://github.com/ShaheerSaud2004/RansomwareSimulation" target="_blank" rel="noopener noreferrer">
+          <span class="gi"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+          <span class="gn">Ransomware Simulation</span>
+          <span class="gt"><span>Python</span><span>Flask</span><span>AES</span></span>
+          <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i>
+        </a>
+        <a class="gh-row" href="https://github.com/ShaheerSaud2004/ScarletPlates" target="_blank" rel="noopener noreferrer">
+          <span class="gi"><i class="fa-solid fa-car" aria-hidden="true"></i></span>
+          <span class="gn">ScarletPlates</span>
+          <span class="gt"><span>React</span><span>Next.js</span><span>Flask</span><span>BeautifulSoup</span></span>
+          <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i>
+        </a>
+        <a class="gh-row" href="https://github.com/ShaheerSaud2004/HandTracking" target="_blank" rel="noopener noreferrer">
+          <span class="gi"><i class="fa-solid fa-hand" aria-hidden="true"></i></span>
+          <span class="gn">Hand Gesture Recognition</span>
+          <span class="gt"><span>Python</span><span>OpenCV</span><span>Mediapipe</span></span>
+          <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i>
+        </a>
+        <a class="gh-row" href="https://github.com/ShaheerSaud2004/Router-Simulation-" target="_blank" rel="noopener noreferrer">
+          <span class="gi"><i class="fa-solid fa-network-wired" aria-hidden="true"></i></span>
+          <span class="gn">Network Router Simulation</span>
+          <span class="gt"><span>Java</span></span>
+          <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i>
+        </a>
+        <a class="gh-row" href="https://play.unity.com/mg/other/webgl-builds-384947" target="_blank" rel="noopener noreferrer">
+          <span class="gi"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></span>
+          <span class="gn">Galaxy Striker</span>
+          <span class="gt"><span>Unity</span><span>C#</span></span>
+          <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" aria-label="Skills">
+    <div class="wrap">
+      <div class="cmd rv"><span class="pmt">$</span> <span class="typed">cat <b>skills/stack.json</b> | jq</span></div>
+      <p class="out-note rv">3 groups // languages · tooling · creds</p>
+
+      <div class="skills-grid">
+        <div class="skill-card rv">
+          <h3><i class="fa-solid fa-code" aria-hidden="true"></i> Technical</h3>
+          <p class="fn">~/skills/technical</p>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span>
+            <span class="chip">C / C++</span><span class="chip">SQL</span><span class="chip">PowerShell</span>
+            <span class="chip">HTML / CSS</span><span class="chip">PyTorch</span><span class="chip">Hugging Face</span>
+          </div>
+        </div>
+        <div class="skill-card rv">
+          <h3><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Security / IT Tools</h3>
+          <p class="fn">~/skills/security</p>
+          <div class="chips">
+            <span class="chip">Splunk</span><span class="chip">Tanium</span><span class="chip">Okta</span>
+            <span class="chip">IAM / PAM</span><span class="chip">SIEM</span><span class="chip">Honeypots</span>
+            <span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">OSI 1–7</span>
+          </div>
+        </div>
+        <div class="skill-card rv">
+          <h3><i class="fa-solid fa-certificate" aria-hidden="true"></i> Certifications &amp; Involvement</h3>
+          <p class="fn">~/skills/credentials</p>
+          <div class="chips">
+            <span class="chip">Cisco Cybersecurity</span><span class="chip">CCNA (in progress)</span>
+            <span class="chip">MSA Treasurer</span><span class="chip">HackRU 2023–2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" aria-label="Education">
+    <div class="wrap">
+      <div class="cmd rv"><span class="pmt">$</span> <span class="typed">cat <b>education/degree.md</b></span></div>
+      <p class="out-note rv">1 record</p>
+      <div class="edu rv">
+        <div class="edu-top">
+          <div>
+            <h3>Rutgers University</h3>
+            <p class="uni">The State University of New Jersey — New Brunswick</p>
+          </div>
+          <span class="grad">Expected May 2026</span>
+        </div>
+        <p class="deg">B.A. in Computer Science</p>
+        <div class="stats">
+          <div class="stat"><span>gpa</span><b><span class="cu" data-to="3.65" data-dec="2">0.00</span></b></div>
+          <div class="stat"><span>honors</span><b class="honor">Cum Laude</b></div>
+          <div class="stat"><span>track</span><b>AI &amp; Security</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" aria-label="Contact">
+    <div class="wrap">
+      <div class="cmd rv"><span class="pmt">$</span> <span class="typed">./<b>contact.sh</b> --connect</span></div>
+      <p class="out-note rv">establishing secure channels...</p>
+      <div class="contact-term rv">
+        <div class="term-bar">
+          <span class="dots" aria-hidden="true"><i class="r"></i><i class="y"></i><i class="g"></i></span>
+          <span class="ttl">contact.sh — secure session</span>
+        </div>
+        <div class="contact-body">
+          <p class="line"><span class="pmt">$</span> echo "let's build something secure"</p>
+          <h2>Let's connect.</h2>
+          <p>Open to Cyber AI / security engineering roles and collaborations. The fastest way to reach me is email — external links below open in a new tab.</p>
+          <div class="contact-links">
+            <a class="cl" href="mailto:shaheersaud.internship@gmail.com">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span class="ct"><span>email</span><b>shaheersaud.internship@gmail.com</b></span>
+            </a>
+            <a class="cl" href="https://linkedin.com/in/shaheer-saud" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              <span class="ct"><span>linkedin</span><b>/in/shaheer-saud</b></span>
+            </a>
+            <a class="cl" href="https://github.com/ShaheerSaud2004" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <span class="ct"><span>github</span><b>@ShaheerSaud2004</b></span>
+            </a>
+            <a class="cl" href="https://cipherconsulting.net" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              <span class="ct"><span>website</span><b>cipherconsulting.net</b></span>
+            </a>
+            <a class="cl" href="https://khafi.org" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-globe" aria-hidden="true"></i>
+              <span class="ct"><span>website</span><b>khafi.org</b></span>
+            </a>
+            <a class="cl" href="Shaheer_Saud_Resume.pdf" download target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+              <span class="ct"><span>download</span><b>Shaheer_Saud_Resume.pdf</b></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span><span class="g">$</span> echo "© 2026 Shaheer Saud — all systems nominal"</span>
+    <span>built with <span class="g">vanilla JS</span> · no frameworks · phosphor green</span>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>

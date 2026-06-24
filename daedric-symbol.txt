@@ -1,3 +1,0 @@
-The user has provided a high-quality Daedric symbol image.
-This should be saved as daedric-symbol.png in the portfolio root.
-The image has a transparent background and shows the authentic Skyrim Daedric symbol.
