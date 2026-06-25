@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shaheer Saud — Cyber AI Engineer</title>
+<meta name="description" content="Shaheer Saud — Cyber AI Engineer working at the intersection of artificial intelligence and security. An editorial portfolio." />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  :root{
+    --paper:#f4efe6;
+    --paper-2:#ece4d6;
+    --ink:#1c1a17;
+    --ink-soft:#4a463f;
+    --muted:#8c8576;
+    --accent:#7c2230;        /* oxblood */
+    --accent-deep:#5e1822;
+    --line:#cdc4b3;
+    --line-soft:#ddd5c5;
+    --white:#fbf8f2;
+    --maxw:1240px;
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    font-weight:400;
+  }
+  ::selection{background:var(--accent);color:var(--white)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  body{overflow-wrap:break-word}
+
+  /* paper grain overlay */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    opacity:.035;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;position:relative}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 40px;
+    background:rgba(244,239,230,0);
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  .nav.scrolled{
+    background:rgba(244,239,230,.86);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    padding:14px 40px;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .nav__brand{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:.01em;
+    display:flex;align-items:center;gap:.55rem;
+  }
+  .nav__brand .dot{color:var(--accent)}
+  .nav__links{display:flex;align-items:center;gap:34px;list-style:none}
+  .nav__links a{
+    font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;font-weight:500;
+    color:var(--ink-soft);position:relative;padding:4px 0;
+  }
+  .nav__links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;
+    background:var(--accent);transition:width .35s cubic-bezier(.6,0,.2,1);
+  }
+  .nav__links a:hover,.nav__links a.active{color:var(--ink)}
+  .nav__links a.active::after,.nav__links a:hover::after{width:100%}
+  .nav__cta{
+    border:1px solid var(--ink);border-radius:999px;
+    padding:9px 20px !important;
+    font-size:.72rem;display:inline-flex;align-items:center;gap:.5rem;
+    transition:background .3s,color .3s,border-color .3s;
+  }
+  .nav__cta::after{display:none}
+  .nav__cta:hover{background:var(--ink);color:var(--paper)}
+
+  .burger{display:none;background:none;border:none;cursor:pointer;width:34px;height:26px;position:relative;z-index:110}
+  .burger span{position:absolute;left:0;height:2px;width:100%;background:var(--ink);transition:.35s cubic-bezier(.6,0,.2,1)}
+  .burger span:nth-child(1){top:3px}
+  .burger span:nth-child(2){top:12px}
+  .burger span:nth-child(3){top:21px}
+  .burger.open span:nth-child(1){top:12px;transform:rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){top:12px;transform:rotate(-45deg)}
+
+  .mobile-menu{
+    position:fixed;inset:0;z-index:105;background:var(--paper);
+    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:0 48px;gap:6px;
+    transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);
+  }
+  .mobile-menu.open{transform:translateY(0)}
+  .mobile-menu a{
+    font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--ink);
+    padding:8px 0;line-height:1.1;opacity:0;transform:translateY(18px);
+    transition:opacity .5s,transform .5s,color .3s;
+  }
+  .mobile-menu a span{color:var(--accent);font-size:.9rem;font-family:var(--sans);vertical-align:super;margin-right:.5rem;letter-spacing:.1em}
+  .mobile-menu.open a{opacity:1;transform:translateY(0)}
+  .mobile-menu.open a:nth-child(1){transition-delay:.08s}
+  .mobile-menu.open a:nth-child(2){transition-delay:.14s}
+  .mobile-menu.open a:nth-child(3){transition-delay:.20s}
+  .mobile-menu.open a:nth-child(4){transition-delay:.26s}
+  .mobile-menu.open a:nth-child(5){transition-delay:.32s}
+  .mobile-menu.open a:nth-child(6){transition-delay:.38s}
+  .mobile-menu.open a:nth-child(7){transition-delay:.44s}
+  .mobile-menu a:hover{color:var(--accent)}
+
+  /* ============ shared editorial bits ============ */
+  .eyebrow{
+    font-size:.72rem;text-transform:uppercase;letter-spacing:.28em;font-weight:600;
+    color:var(--accent);display:inline-flex;align-items:center;gap:.7rem;
+  }
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--accent);display:inline-block}
+  .sect-num{
+    font-family:var(--serif);font-size:.9rem;color:var(--muted);
+    font-weight:500;letter-spacing:.05em;
+  }
+  .rule{height:1px;background:var(--line);width:100%}
+  section{position:relative;z-index:2}
+
+  .section-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:30px;
+    border-top:1px solid var(--ink);padding-top:18px;margin-bottom:54px;
+  }
+  .section-head h2{
+    font-family:var(--serif);font-weight:400;line-height:.98;
+    font-size:clamp(2.4rem,6vw,4.6rem);letter-spacing:-.02em;
+    font-optical-sizing:auto;
+  }
+  .section-head h2 em{font-style:italic;color:var(--accent)}
+  .section-head .meta{text-align:right;flex-shrink:0;max-width:280px}
+  .section-head .meta .sect-num{display:block;margin-bottom:8px}
+  .section-head .meta p{font-size:.86rem;color:var(--ink-soft)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal[data-d="1"]{transition-delay:.1s}
+  .reveal[data-d="2"]{transition-delay:.2s}
+  .reveal[data-d="3"]{transition-delay:.3s}
+  .reveal[data-d="4"]{transition-delay:.4s}
+
+  /* ============ HERO ============ */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:60px}
+  .hero__top{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    font-size:.74rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft);
+    border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:40px;
+    flex-wrap:wrap;gap:12px;
+  }
+  .hero__grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .hero__title{
+    font-family:var(--serif);font-weight:300;font-optical-sizing:auto;
+    font-size:clamp(3.4rem,12vw,10rem);line-height:.86;letter-spacing:-.03em;
+  }
+  .hero__title .l1{display:block;overflow:hidden}
+  .hero__title .l2{display:block;overflow:hidden;font-style:italic;font-weight:400;color:var(--accent)}
+  .hero__title .l1 span,.hero__title .l2 span{display:inline-block;transform:translateY(110%);transition:transform 1.1s cubic-bezier(.7,0,.15,1)}
+  .hero.loaded .hero__title span{transform:translateY(0)}
+  .hero__title .l2 span{transition-delay:.12s}
+
+  .hero__tag{
+    margin-top:30px;max-width:540px;font-size:1.05rem;color:var(--ink-soft);
+    line-height:1.7;opacity:0;transform:translateY(20px);transition:opacity 1s .5s,transform 1s .5s;
+  }
+  .hero.loaded .hero__tag{opacity:1;transform:none}
+  .hero__tag strong{color:var(--ink);font-weight:600}
+
+  .hero__photo{
+    width:230px;height:300px;position:relative;flex-shrink:0;
+    opacity:0;transform:translateY(30px) scale(.96);transition:opacity 1.1s .35s,transform 1.1s .35s;
+  }
+  .hero.loaded .hero__photo{opacity:1;transform:none}
+  .hero__photo img{
+    width:100%;height:100%;object-fit:cover;object-position:center 20%;
+    filter:grayscale(1) contrast(1.05);border:1px solid var(--line);
+    transition:filter .6s;
+  }
+  .hero__photo:hover img{filter:grayscale(0) contrast(1)}
+  .hero__photo figcaption{
+    position:absolute;bottom:-26px;left:0;font-size:.66rem;text-transform:uppercase;
+    letter-spacing:.18em;color:var(--muted);
+  }
+
+  .hero__cta{
+    display:flex;gap:18px;align-items:center;margin-top:46px;flex-wrap:wrap;
+    opacity:0;transform:translateY(20px);transition:opacity 1s .65s,transform 1s .65s;
+  }
+  .hero.loaded .hero__cta{opacity:1;transform:none}
+  .btn{
+    display:inline-flex;align-items:center;gap:.65rem;font-size:.78rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.14em;padding:15px 28px;border-radius:999px;
+    transition:transform .3s,background .3s,color .3s,border-color .3s,box-shadow .3s;
+  }
+  .btn--solid{background:var(--accent);color:var(--white)}
+  .btn--solid:hover{background:var(--accent-deep);transform:translateY(-3px);box-shadow:0 14px 30px -12px rgba(124,34,48,.6)}
+  .btn--ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn--ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px)}
+
+  /* marquee */
+  .marquee{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;white-space:nowrap;margin-top:70px;padding:18px 0;position:relative;
+  }
+  .marquee__track{display:inline-flex;gap:0;animation:scroll-x 38s linear infinite;will-change:transform}
+  .marquee:hover .marquee__track{animation-play-state:paused}
+  .marquee__track span{
+    font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ink);
+    padding:0 30px;display:inline-flex;align-items:center;gap:30px;
+  }
+  .marquee__track span::after{content:"✦";font-style:normal;color:var(--accent);font-size:.8rem}
+  @keyframes scroll-x{to{transform:translateX(-50%)}}
+
+  /* ============ ABOUT ============ */
+  .about{padding:120px 0}
+  .about__grid{display:grid;grid-template-columns:1.4fr 1fr;gap:70px;align-items:start}
+  .about__lead{font-family:var(--serif);font-weight:300;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.35;letter-spacing:-.01em}
+  .about__lead .drop{
+    float:left;font-family:var(--serif);font-weight:500;font-size:5.6rem;line-height:.72;
+    padding:10px 16px 0 0;color:var(--accent);font-style:normal;
+  }
+  .about__body{font-size:1rem;color:var(--ink-soft);line-height:1.8}
+  .about__body p+p{margin-top:18px}
+  .about__side{border-left:1px solid var(--line);padding-left:34px}
+  .about__side h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-bottom:14px;font-weight:600}
+  .about__side ul{list-style:none}
+  .about__side li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:.92rem}
+  .about__side li i{color:var(--accent);width:18px;text-align:center;margin-top:3px}
+  .about__side li:last-child{border-bottom:none}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:84px;border-top:1px solid var(--ink)}
+  .metric{padding:34px 24px 30px;border-right:1px solid var(--line)}
+  .metric:last-child{border-right:none}
+  .metric .num{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5vw,4rem);line-height:1;letter-spacing:-.02em;color:var(--ink)}
+  .metric .num .suf{color:var(--accent);font-size:.5em;vertical-align:super}
+  .metric .lbl{margin-top:14px;font-size:.78rem;color:var(--ink-soft);line-height:1.5}
+
+  /* ============ EXPERIENCE ============ */
+  .exp{padding:120px 0}
+  .role{
+    display:grid;grid-template-columns:.85fr 2fr;gap:50px;
+    padding:48px 0;border-top:1px solid var(--line);position:relative;
+  }
+  .role:first-of-type{border-top:none}
+  .role__meta .when{font-size:.74rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);font-weight:600}
+  .role__meta .place{margin-top:10px;font-size:.86rem;color:var(--muted)}
+  .role__meta .idx{font-family:var(--serif);font-size:3rem;color:var(--line);font-weight:500;line-height:1;margin-bottom:18px;display:block}
+  .role__main h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.1;letter-spacing:-.01em}
+  .role__main .org{display:block;font-family:var(--sans);font-size:.86rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-soft);margin-top:10px;margin-bottom:24px}
+  .role__main ul{list-style:none}
+  .role__main li{
+    position:relative;padding-left:34px;padding-top:14px;padding-bottom:14px;
+    font-size:1rem;color:var(--ink-soft);line-height:1.65;border-bottom:1px solid var(--line-soft);
+  }
+  .role__main li:last-child{border-bottom:none}
+  .role__main li::before{
+    content:"";position:absolute;left:0;top:23px;width:14px;height:1px;background:var(--accent);
+  }
+  .role__main li b{color:var(--ink);font-weight:600}
+
+  /* ============ PROJECTS ============ */
+  .projects{padding:120px 0}
+  .proj{
+    display:grid;grid-template-columns:.5fr 2fr 1fr;gap:40px;align-items:start;
+    padding:50px 0;border-top:1px solid var(--line);
+    transition:background .4s;
+  }
+  .proj:hover{background:linear-gradient(90deg,rgba(124,34,48,.04),transparent)}
+  .proj__no{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--accent);line-height:.9;font-style:italic}
+  .proj__body h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:8px;transition:color .3s}
+  .proj:hover .proj__body h3{color:var(--accent)}
+  .proj__advisor{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:16px}
+  .proj__body p{font-size:1rem;color:var(--ink-soft);line-height:1.7;max-width:60ch}
+  .proj__tech{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+  .proj__tech span{
+    font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);
+    border:1px solid var(--line);padding:5px 11px;border-radius:999px;transition:.3s;
+  }
+  .proj:hover .proj__tech span{border-color:var(--accent);color:var(--accent)}
+
+  /* secondary github list */
+  .repos{margin-top:80px;border-top:1px solid var(--ink);padding-top:46px}
+  .repos h4{font-family:var(--serif);font-size:1.4rem;font-weight:500;margin-bottom:8px}
+  .repos .sub{font-size:.84rem;color:var(--muted);margin-bottom:32px}
+  .repo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 60px}
+  .repo{
+    display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+    padding:18px 0;border-bottom:1px solid var(--line-soft);transition:padding .35s,color .3s;
+  }
+  .repo:hover{padding-left:12px;color:var(--accent)}
+  .repo .rname{font-family:var(--serif);font-size:1.15rem;font-weight:500;display:flex;align-items:center;gap:12px}
+  .repo .rname i{font-size:.8rem;opacity:0;transform:translateX(-8px);transition:.35s;color:var(--accent)}
+  .repo:hover .rname i{opacity:1;transform:translateX(0)}
+  .repo .rtech{font-size:.74rem;color:var(--muted);text-align:right;text-transform:uppercase;letter-spacing:.06em;flex-shrink:0}
+
+  /* ============ SKILLS ============ */
+  .skills{padding:120px 0}
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .skill-col{padding:0 38px;border-right:1px solid var(--line)}
+  .skill-col:first-child{padding-left:0}
+  .skill-col:last-child{border-right:none;padding-right:0}
+  .skill-col .ch{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:1.1rem}
+  .skill-col h3{font-family:var(--serif);font-weight:500;font-size:1.5rem;margin:6px 0 26px;line-height:1.1}
+  .skill-col ul{list-style:none}
+  .skill-col li{
+    font-size:1rem;padding:13px 0;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);
+    display:flex;justify-content:space-between;align-items:center;transition:color .3s,padding .3s;
+  }
+  .skill-col li:hover{color:var(--ink);padding-left:8px}
+  .skill-col li:last-child{border-bottom:none}
+  .skill-col li::after{content:"›";color:var(--line);font-size:1.1rem;transition:color .3s}
+  .skill-col li:hover::after{color:var(--accent)}
+
+  /* ============ EDUCATION ============ */
+  .edu{padding:120px 0}
+  .edu__card{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:center;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:54px 0}
+  .edu__card h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,4vw,3rem);line-height:1.05;letter-spacing:-.01em}
+  .edu__card .deg{font-size:1.05rem;color:var(--ink-soft);margin-top:16px}
+  .edu__card .deg em{font-style:italic;color:var(--accent);font-family:var(--serif)}
+  .edu__stats{text-align:right;display:flex;gap:48px}
+  .edu__stat .v{font-family:var(--serif);font-size:2.4rem;font-weight:400;color:var(--ink);line-height:1}
+  .edu__stat .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-top:8px}
+
+  /* ============ CONTACT ============ */
+  .contact{padding:130px 0 90px}
+  .contact__head{font-family:var(--serif);font-weight:300;font-size:clamp(2.8rem,9vw,7.5rem);line-height:.92;letter-spacing:-.03em;margin-bottom:50px}
+  .contact__head em{font-style:italic;color:var(--accent)}
+  .contact__head a{display:inline-flex;align-items:center;gap:.4rem;transition:opacity .3s}
+  .contact__head a:hover{opacity:.65}
+  .contact__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink)}
+  .clink{
+    padding:30px 24px 28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:8px;
+    transition:background .4s;position:relative;overflow:hidden;
+  }
+  .clink:last-child{border-right:none}
+  .clink:hover{background:var(--ink)}
+  .clink .k{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);transition:color .3s}
+  .clink .v{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--ink);transition:color .3s;display:flex;align-items:center;gap:.5rem;word-break:break-word}
+  .clink:hover .k{color:var(--paper)}
+  .clink:hover .v{color:var(--paper)}
+  .clink .v i{color:var(--accent);font-size:.85rem}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  footer .dot{color:var(--accent)}
+
+  /* focus */
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:3px}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:980px){
+    .hero__grid{grid-template-columns:1fr}
+    .hero__photo{display:none}
+    .about__grid{grid-template-columns:1fr;gap:48px}
+    .about__side{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:30px}
+    .metrics{grid-template-columns:repeat(2,1fr)}
+    .metric:nth-child(2){border-right:none}
+    .role{grid-template-columns:1fr;gap:24px}
+    .proj{grid-template-columns:1fr;gap:18px}
+    .proj__no{font-size:2.4rem}
+    .repo-grid{grid-template-columns:1fr;gap:0}
+    .skill-grid{grid-template-columns:1fr}
+    .skill-col{border-right:none;border-bottom:1px solid var(--line);padding:30px 0}
+    .skill-col:last-child{border-bottom:none}
+    .skill-col h3{margin-bottom:14px}
+    .edu__card{grid-template-columns:1fr;gap:30px}
+    .edu__stats{text-align:left}
+    .contact__grid{grid-template-columns:1fr 1fr}
+    .clink:nth-child(2){border-right:none}
+  }
+  @media(max-width:680px){
+    .wrap{padding:0 22px}
+    .nav{padding:16px 22px}
+    .nav.scrolled{padding:12px 22px}
+    .nav__links{display:none}
+    .nav__cta{display:none}
+    .burger{display:block}
+    .section-head{flex-direction:column;gap:14px}
+    .section-head .meta{text-align:left;max-width:none}
+    .metrics{grid-template-columns:1fr 1fr}
+    .contact__grid{grid-template-columns:1fr}
+    .clink{border-right:none;border-bottom:1px solid var(--line)}
+    .edu__stats{gap:30px}
+  }
+  @media(max-width:400px){
+    .wrap{padding:0 16px}
+    .nav{padding:14px 16px}
+    .nav.scrolled{padding:12px 16px}
+    .clink .v{font-size:1.05rem}
+    .hero__top{font-size:.68rem}
+    .edu__stats{flex-wrap:wrap;gap:20px 30px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+    .reveal{opacity:1 !important;transform:none !important}
+    .hero__title span{transform:none !important}
+    .hero__tag,.hero__photo,.hero__cta{opacity:1 !important;transform:none !important}
+    .marquee__track{animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="#top" class="nav__brand">Shaheer Saud<span class="dot">.</span></a>
+  <ul class="nav__links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a class="nav__cta" href="Shaheer_Saud_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé <i class="fa-solid fa-arrow-down"></i></a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"><span>01</span>About</a>
+  <a href="#experience"><span>02</span>Experience</a>
+  <a href="#projects"><span>03</span>Work</a>
+  <a href="#skills"><span>04</span>Skills</a>
+  <a href="#education"><span>05</span>Education</a>
+  <a href="#contact"><span>06</span>Contact</a>
+  <a href="Shaheer_Saud_Resume.pdf" target="_blank" rel="noopener noreferrer"><span>↗</span>Résumé</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero__top">
+        <span>The Portfolio of a Cyber AI Engineer</span>
+        <span>Edition No. 01 — New Jersey, USA</span>
+        <span>Est. 2026</span>
+      </div>
+      <div class="hero__grid">
+        <div>
+          <h1 class="hero__title">
+            <span class="l1"><span>Shaheer</span></span>
+            <span class="l2"><span>Saud</span></span>
+          </h1>
+          <p class="hero__tag">
+            <strong>Cyber AI Engineer</strong> working where artificial intelligence meets security — building RAG pipelines, hardening systems, and turning weeks of manual work into seconds. Currently finishing a B.A. in Computer Science at Rutgers, <em>Cum Laude.</em>
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--solid" href="#contact">Get in touch <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn btn--ghost" href="Shaheer_Saud_Resume.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-file-lines"></i> View Résumé</a>
+          </div>
+        </div>
+        <figure class="hero__photo">
+          <img src="Shaheer.jpg" alt="Portrait of Shaheer Saud" />
+          <figcaption>Fig. 01 — The Engineer</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marquee">
+        <span>Artificial Intelligence</span><span>Cybersecurity</span><span>RAG Pipelines</span><span>LLM Benchmarking</span><span>IAM / PAM</span><span>SIEM &amp; Threat Detection</span><span>PyTorch</span><span>Splunk</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>An <em>introduction.</em></h2>
+        <div class="meta">
+          <span class="sect-num">§ 01 — About</span>
+          <p>Profile</p>
+        </div>
+      </div>
+
+      <div class="about__grid">
+        <div class="reveal">
+          <p class="about__lead">
+            <span class="drop">I</span> build at the intersection of <em style="color:var(--accent);font-family:var(--serif)">AI and security</em> — designing language-model systems that are fast, accurate, and trustworthy enough to ship.
+          </p>
+          <div class="about__body" style="margin-top:30px">
+            <p>From architecting AT&amp;T's RAG LLM pipeline to constructing AI chatbots and honeypots, my work lives where intelligent automation has to be defensible. I've cut document processing from weeks to seconds, pushed query accuracy to 96%, and automated migrations across thousands of profiles — always with a security-first lens.</p>
+            <p>Alongside enterprise work, I compress models for edge devices, crawl the web for exposed data, and lead teams of consultants. I care about the craft underneath the metric: reliable inference, clean data, and systems that hold up under pressure.</p>
+          </div>
+        </div>
+        <aside class="about__side reveal" data-d="1">
+          <h4>At a glance</h4>
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i> Based in New Jersey, USA</li>
+            <li><i class="fa-solid fa-graduation-cap"></i> Rutgers University — CS, Cum Laude</li>
+            <li><i class="fa-solid fa-robot"></i> Cyber AI Engineer (AI + Security)</li>
+            <li><i class="fa-solid fa-shield-halved"></i> RAG, LLMs, SIEM, IAM/PAM</li>
+            <li><i class="fa-solid fa-calendar-check"></i> Graduating May 2026</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="metrics">
+        <div class="metric reveal"><div class="num"><span class="count" data-to="96">0</span><span class="suf">%</span></div><div class="lbl">IAM/PAM query accuracy on the AT&amp;T RAG pipeline</div></div>
+        <div class="metric reveal" data-d="1"><div class="num"><span class="count" data-to="90">0</span><span class="suf">%</span></div><div class="lbl">Faster LLM evaluation via a custom benchmarking framework</div></div>
+        <div class="metric reveal" data-d="2"><div class="num"><span class="count" data-to="98">0</span><span class="suf">%</span></div><div class="lbl">Reduction in help-desk workload from an AI PAM chatbot</div></div>
+        <div class="metric reveal" data-d="3"><div class="num"><span class="count" data-to="1000">0</span><span class="suf">+</span></div><div class="lbl">IT profiles migrated through automated tooling at scale</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="exp" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Selected <em>experience.</em></h2>
+        <div class="meta">
+          <span class="sect-num">§ 02 — Career</span>
+          <p>Three roles across enterprise AI &amp; security</p>
+        </div>
+      </div>
+
+      <article class="role reveal">
+        <div class="role__meta">
+          <span class="idx">01</span>
+          <div class="when">May 2025 — Aug 2025</div>
+          <div class="place">AT&amp;T · Middletown, NJ<br/>Cyber Security Data Analytics Team</div>
+        </div>
+        <div class="role__main">
+          <h3>Cyber AI Engineer<span class="org">AT&amp;T</span></h3>
+          <ul>
+            <li>Architected AT&amp;T's <b>RAG LLM pipeline</b> by integrating new data sources and automating ingestion, cutting document processing from weeks to seconds and improving IAM/PAM query accuracy to <b>96%</b>.</li>
+            <li>Developed an <b>LLM benchmarking framework</b> using RAGAS and Hugging Face to evaluate model configurations on 1,000+ labeled examples, cutting evaluation time by <b>90%</b> and accelerating optimization.</li>
+            <li>Designed AI model configurations for AT&amp;T's proprietary LLM by adjusting hyperparameters and refining embedding architectures, improving accuracy, reducing latency, and strengthening inference reliability.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role reveal">
+        <div class="role__meta">
+          <span class="idx">02</span>
+          <div class="when">Feb 2024 — Dec 2025</div>
+          <div class="place">Colgate-Palmolive · Piscataway, NJ</div>
+        </div>
+        <div class="role__main">
+          <h3>Security Engineer Intern<span class="org">Colgate-Palmolive</span></h3>
+          <ul>
+            <li>Constructed an <b>AI chatbot for PAM queries</b> by ingesting and curating documentation, reducing resolution time from a week to minutes and cutting help-desk workload by <b>98%</b>.</li>
+            <li>Performed log analysis with <b>Splunk, Okta, and Tanium</b> to detect unauthorized access, anomalies, and misconfigurations — improving detection speed, strengthening response, and enhancing security posture.</li>
+            <li>Automated migration of over <b>1,000 IT profiles</b> using PowerShell, Python, and the Colgate-Palmolive API, cutting manual effort by 80% and securely transferring credentials and secrets at scale.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role reveal">
+        <div class="role__meta">
+          <span class="idx">03</span>
+          <div class="when">Apr 2023 — Present</div>
+          <div class="place">Rutgers Office of Information Technology · New Brunswick, NJ</div>
+        </div>
+        <div class="role__main">
+          <h3>Information Technology Supervisor<span class="org">Rutgers OIT</span></h3>
+          <ul>
+            <li>Deployed a secure <b>Python automation script with Selenium</b> to streamline data aggregation across multiple platforms, reducing caller wait times by <b>85%</b> and enhancing data integrity.</li>
+            <li>Leveraged expertise in <b>OSI Layers 1–7</b> — including secure IP address management, TCP/IP protocols, and DNS security — to resolve network challenges and ensure uninterrupted, secure data flow.</li>
+            <li>Led and trained <b>200 consultants</b>, resolving over 300 IT tickets via ServiceNow with a focus on mitigating security breaches and preventing network interruptions, significantly improving incident response times.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Featured <em>work.</em></h2>
+        <div class="meta">
+          <span class="sect-num">§ 03 — Projects</span>
+          <p>Where the research meets the build</p>
+        </div>
+      </div>
+
+      <article class="proj reveal">
+        <div class="proj__no">01</div>
+        <div class="proj__body">
+          <h3>On-Device LLM Compression &amp; Deployment</h3>
+          <p class="proj__advisor">Advisor: Dr. Rabiul Islam</p>
+          <p>Compressed and optimized BERT/GPT-2 for edge deployment, reducing size and latency with minimal accuracy loss — deploying int8 models on a Raspberry Pi and validating behavior with LIME and SHAP.</p>
+        </div>
+        <div class="proj__tech"><span>PyTorch</span><span>Hugging Face</span><span>int8</span><span>LIME</span><span>SHAP</span></div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj__no">02</div>
+        <div class="proj__body">
+          <h3>Smart Home Honeypot Dashboard</h3>
+          <p>Built a full-stack IoT honeypot simulating a smart home — using fake login portals, Telnet exploits, and firmware traps to capture attacker behavior, then visualizing threats in real time through a custom dashboard.</p>
+        </div>
+        <div class="proj__tech"><span>Python</span><span>Flask</span><span>SQLite</span><span>WebSockets</span><span>GeoIP</span><span>Telnet</span><span>Jinja2</span></div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj__no">03</div>
+        <div class="proj__body">
+          <h3>Sensitive Data Exposure Crawler</h3>
+          <p>Created a real-time web crawler that scans public URLs for exposed personal data using NLP filters, visualizing scan results through a live dashboard powered by 100+ concurrent scanning workers.</p>
+        </div>
+        <div class="proj__tech"><span>Python</span><span>FastAPI</span><span>Asyncio</span><span>NLP</span><span>Chart.js</span><span>Uvicorn</span><span>WebSockets</span></div>
+      </article>
+
+      <div class="repos reveal">
+        <h4>From the archive</h4>
+        <p class="sub">A selection of additional open-source experiments on GitHub.</p>
+        <div class="repo-grid">
+          <a class="repo" href="https://github.com/ShaheerSaud2004/DictionaryAttack" target="_blank" rel="noopener noreferrer"><span class="rname"><i class="fa-solid fa-arrow-up-right-from-square"></i>Dictionary Attack</span><span class="rtech">Python · Flask · MD5</span></a>
+          <a class="repo" href="https://github.com/ShaheerSaud2004/RansomwareSimulation" target="_blank" rel="noopener noreferrer"><span class="rname"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ransomware Simulation</span><span class="rtech">Python · Flask · AES</span></a>
+          <a class="repo" href="https://github.com/ShaheerSaud2004/ScarletPlates" target="_blank" rel="noopener noreferrer"><span class="rname"><i class="fa-solid fa-arrow-up-right-from-square"></i>ScarletPlates</span><span class="rtech">React · Next.js · Flask</span></a>
+          <a class="repo" href="https://github.com/ShaheerSaud2004/HandTracking" target="_blank" rel="noopener noreferrer"><span class="rname"><i class="fa-solid fa-arrow-up-right-from-square"></i>Hand Gesture Recognition</span><span class="rtech">Python · OpenCV · Mediapipe</span></a>
+          <a class="repo" href="https://github.com/ShaheerSaud2004/Router-Simulation-" target="_blank" rel="noopener noreferrer"><span class="rname"><i class="fa-solid fa-arrow-up-right-from-square"></i>Network Router Simulation</span><span class="rtech">Java</span></a>
+          <a class="repo" href="https://play.unity.com/mg/other/webgl-builds-384947" target="_blank" rel="noopener noreferrer"><span class="rname"><i class="fa-solid fa-arrow-up-right-from-square"></i>Galaxy Striker</span><span class="rtech">Unity · C#</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>The <em>toolkit.</em></h2>
+        <div class="meta">
+          <span class="sect-num">§ 04 — Skills</span>
+          <p>Languages, security tooling &amp; credentials</p>
+        </div>
+      </div>
+
+      <div class="skill-grid">
+        <div class="skill-col reveal">
+          <span class="ch">i.</span>
+          <h3>Technical</h3>
+          <ul>
+            <li>Python</li><li>Java</li><li>JavaScript</li><li>C / C++</li><li>SQL</li><li>PowerShell</li><li>HTML / CSS</li><li>PyTorch</li><li>Hugging Face</li>
+          </ul>
+        </div>
+        <div class="skill-col reveal" data-d="1">
+          <span class="ch">ii.</span>
+          <h3>Security &amp; IT Tools</h3>
+          <ul>
+            <li>Splunk</li><li>Tanium</li><li>Okta</li><li>IAM / PAM</li><li>SIEM</li><li>Honeypots</li><li>TCP / IP</li><li>DNS</li><li>OSI Layers 1–7</li>
+          </ul>
+        </div>
+        <div class="skill-col reveal" data-d="2">
+          <span class="ch">iii.</span>
+          <h3>Certifications &amp; Involvement</h3>
+          <ul>
+            <li>Cisco Cybersecurity</li><li>CCNA (in progress)</li><li>MSA Treasurer</li><li>HackRU 2023 — 2025</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="edu" id="education">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>The <em>foundation.</em></h2>
+        <div class="meta">
+          <span class="sect-num">§ 05 — Education</span>
+          <p>Academic record</p>
+        </div>
+      </div>
+
+      <div class="edu__card reveal">
+        <div>
+          <h3>Rutgers, The State University of New Jersey</h3>
+          <p class="deg">New Brunswick — B.A. in Computer Science, <em>Cum Laude.</em> Expected May 2026.</p>
+        </div>
+        <div class="edu__stats">
+          <div class="edu__stat"><div class="v"><span class="count" data-to="3.65" data-dec="2">0</span></div><div class="k">GPA</div></div>
+          <div class="edu__stat"><div class="v">’26</div><div class="k">Class of</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow reveal" style="margin-bottom:24px">§ 06 — Contact</p>
+      <h2 class="contact__head reveal">Let's build something <br/><em>worth shipping.</em> <a href="mailto:shaheersaud.internship@gmail.com" aria-label="Email Shaheer">↗</a></h2>
+
+      <div class="contact__grid reveal" data-d="1">
+        <a class="clink" href="mailto:shaheersaud.internship@gmail.com">
+          <span class="k">Email</span>
+          <span class="v"><i class="fa-solid fa-envelope"></i> shaheersaud.internship@gmail.com</span>
+        </a>
+        <a class="clink" href="https://linkedin.com/in/shaheer-saud" target="_blank" rel="noopener noreferrer">
+          <span class="k">LinkedIn</span>
+          <span class="v"><i class="fa-brands fa-linkedin"></i> shaheer-saud</span>
+        </a>
+        <a class="clink" href="https://github.com/ShaheerSaud2004" target="_blank" rel="noopener noreferrer">
+          <span class="k">GitHub</span>
+          <span class="v"><i class="fa-brands fa-github"></i> ShaheerSaud2004</span>
+        </a>
+        <a class="clink" href="https://cipherconsulting.net" target="_blank" rel="noopener noreferrer">
+          <span class="k">Website</span>
+          <span class="v"><i class="fa-solid fa-globe"></i> cipherconsulting.net</span>
+        </a>
+      </div>
+      <div class="contact__grid reveal" data-d="2" style="border-top:none">
+        <a class="clink" href="https://khafi.org" target="_blank" rel="noopener noreferrer">
+          <span class="k">Website</span>
+          <span class="v"><i class="fa-solid fa-globe"></i> khafi.org</span>
+        </a>
+        <a class="clink" href="Shaheer_Saud_Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <span class="k">Document</span>
+          <span class="v"><i class="fa-regular fa-file-lines"></i> Download Résumé</span>
+        </a>
+        <div class="clink" style="cursor:default">
+          <span class="k">Location</span>
+          <span class="v"><i class="fa-solid fa-location-dot"></i> New Jersey, USA</span>
+        </div>
+        <div class="clink" style="cursor:default">
+          <span class="k">Status</span>
+          <span class="v"><i class="fa-solid fa-circle" style="font-size:.5rem"></i> Open to opportunities</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;width:100%">
+      <span>© 2026 Shaheer Saud<span class="dot">.</span> All rights reserved</span>
+      <span>Cyber AI Engineer — AI + Security</span>
+      <span>Editorial Edition №01</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* hero entrance */
+  var hero = document.getElementById("hero");
+  if(hero){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ hero.classList.add("loaded"); }); }); }
+
+  /* nav scrolled state */
+  var nav = document.getElementById("nav");
+  if(nav){
+    var onScroll = function(){ if(window.scrollY > 30) nav.classList.add("scrolled"); else nav.classList.remove("scrolled"); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive:true});
+  }
+
+  /* mobile menu */
+  var burger = document.getElementById("burger");
+  var menu = document.getElementById("mobileMenu");
+  if(burger && menu){
+    var closeMenu = function(){ menu.classList.remove("open"); burger.classList.remove("open"); burger.setAttribute("aria-expanded","false"); document.body.style.overflow=""; };
+    burger.addEventListener("click", function(){
+      var open = menu.classList.toggle("open");
+      burger.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open ? "true":"false");
+      document.body.style.overflow = open ? "hidden" : "";
+    });
+    Array.prototype.forEach.call(menu.querySelectorAll("a"), function(a){ a.addEventListener("click", closeMenu); });
+  }
+
+  /* marquee duplicate for seamless loop */
+  var mq = document.getElementById("marquee");
+  if(mq){ mq.innerHTML += mq.innerHTML; }
+
+  /* scroll reveal */
+  var reveals = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    Array.prototype.forEach.call(reveals, function(el){ el.classList.add("in"); });
+  } else {
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); ro.unobserve(e.target); } });
+    }, {threshold:.14, rootMargin:"0px 0px -8% 0px"});
+    Array.prototype.forEach.call(reveals, function(el){ ro.observe(el); });
+  }
+
+  /* count-up */
+  function animateCount(el){
+    var to = parseFloat(el.getAttribute("data-to"));
+    var dec = parseInt(el.getAttribute("data-dec")||"0",10);
+    if(reduce){ el.textContent = to.toFixed(dec); return; }
+    var dur = 1600, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      var val = to*eased;
+      el.textContent = dec ? val.toFixed(dec) : Math.round(val).toLocaleString();
+      if(p<1) requestAnimationFrame(step); else el.textContent = dec ? to.toFixed(dec) : to.toLocaleString();
+    }
+    requestAnimationFrame(step);
+  }
+  var counts = document.querySelectorAll(".count");
+  if(reduce || !("IntersectionObserver" in window)){
+    Array.prototype.forEach.call(counts, function(el){ var t=parseFloat(el.getAttribute("data-to")); var d=parseInt(el.getAttribute("data-dec")||"0",10); el.textContent = d? t.toFixed(d): t.toLocaleString(); });
+  } else {
+    var co = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ animateCount(e.target); co.unobserve(e.target); } });
+    }, {threshold:.6});
+    Array.prototype.forEach.call(counts, function(el){ co.observe(el); });
+  }
+
+  /* active link highlighting */
+  var sections = ["about","experience","projects","skills","education","contact"];
+  var navLinks = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav__links a[href^="#"]'), function(a){
+    navLinks[a.getAttribute("href").slice(1)] = a;
+  });
+  if("IntersectionObserver" in window){
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          for(var k in navLinks){ navLinks[k].classList.remove("active"); }
+          var id = e.target.id;
+          if(navLinks[id]) navLinks[id].classList.add("active");
+        }
+      });
+    }, {rootMargin:"-45% 0px -50% 0px"});
+    sections.forEach(function(id){ var s=document.getElementById(id); if(s) so.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
