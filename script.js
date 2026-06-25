@@ -460,17 +460,21 @@
      KNOWLEDGE BASE (résumé chunks) — shared by the terminal `ask` RAG demo
      =================================================================== */
   var KB = [
-    { id: "about", src: "about/profile.md", kw: "who you are summary cyber ai engineer security machine learning discipline overview intro background", text: "I'm a Cyber AI Engineer who treats security and machine learning as one discipline — turning slow, manual security work into fast, reliable, auditable automation." },
-    { id: "att", src: "experience/att.md", kw: "at&t att cyber ai engineer rag llm pipeline ingestion iam pam 96% accuracy ragas hugging face benchmarking 1000 labeled examples 90% hyperparameters embeddings proprietary llm middletown 2025 most recent current job", text: "At AT&T (Cyber AI Engineer, May–Aug 2025) I architected a RAG LLM pipeline that cut document processing from weeks to seconds and pushed IAM/PAM query accuracy to 96%, built an LLM benchmarking framework with RAGAS + Hugging Face over 1,000+ examples (90% faster eval), and tuned hyperparameters/embeddings for AT&T's proprietary LLM." },
+    { id: "about", src: "about/profile.md", kw: "who you are summary ai security engineer cyber security machine learning discipline overview intro background researcher builder", text: "I'm an AI Security Engineer at AT&T and a Rutgers CS grad (Cum Laude). I treat security and machine learning as one discipline — building trustworthy AI, publishing research, and shipping products." },
+    { id: "attft", src: "experience/att-fulltime.md", kw: "at&t att full time current now ai security engineer developing ai for the business production trustworthy secure 2026 present job role what do you do where do you work", text: "I'm now a full-time AI Security Engineer at AT&T (2026–present), developing and securing AI/LLM systems for the business and taking my internship's RAG, evaluation, and model-tuning work into production." },
+    { id: "att", src: "experience/att-intern.md", kw: "at&t att cyber ai engineer intern internship rag llm pipeline ingestion iam pam 96% accuracy ragas hugging face benchmarking 1000 labeled examples 90% hyperparameters embeddings proprietary llm middletown 2025 summer", text: "As a Cyber AI Engineer Intern at AT&T (Cyber Security Data Analytics, May–Aug 2025) I architected a RAG LLM pipeline that cut document processing from weeks to seconds and pushed IAM/PAM query accuracy to 96%, built an LLM benchmarking framework with RAGAS + Hugging Face over 1,000+ examples (90% faster eval), and tuned hyperparameters/embeddings for AT&T's proprietary LLM. I now work there full-time." },
     { id: "colgate", src: "experience/colgate.md", kw: "colgate palmolive security engineer intern pam chatbot help desk 98% splunk okta tanium log analysis threat detection anomalies migration 1000 it profiles powershell python api 80% piscataway 2024", text: "At Colgate-Palmolive (Security Engineer Intern, Feb 2024–Dec 2025) I built an AI chatbot for PAM queries that cut help-desk workload 98%, hunted threats across Splunk/Okta/Tanium, and automated migration of 1,000+ IT profiles (80% less manual effort)." },
     { id: "rutgers", src: "experience/rutgers.md", kw: "rutgers oit office information technology supervisor selenium python automation caller wait 85% osi layer tcp ip dns network 200 consultants 300 tickets servicenow new brunswick 2023", text: "At Rutgers OIT (IT Supervisor, Apr 2023–present) I deployed a Selenium/Python automation that cut caller wait times 85%, applied OSI L1–7 / TCP-IP / DNS expertise, and led & trained 200 consultants resolving 300+ tickets via ServiceNow." },
+    { id: "masjidly", src: "projects/masjidly", kw: "masjidly app product pwa android google play masjid mosque muslim prayer salah jamat iqamah community announcements awards $500 hackathon launched built shipped startup founder side project", text: "I built Masjidly — 'the community platform for masjids': a privacy-first PWA + Android app for finding nearby masjids, accurate Salah/Jamat times, and real-time community announcements. It has won $500+ in awards and is live at masjidly.com (still in active development, not yet advertised)." },
+    { id: "habsburg", src: "research/habsburg-ai", kw: "habsburg ai paper research contamination detection collapse monitoring model collapse ai text detection synthetictextprobe habsburgdetector raid hc3 auc 0.915 reproducible writing publishing eight generators llm independent", text: "I'm writing an independent research paper, 'Contamination Detection Is Not Collapse Monitoring,' showing per-document AI-text detection is not a reliable model-collapse monitor. My SyntheticTextProbe reaches 0.915 mean AUC across eight LLMs (RAID + HC3). Read more at habsburg-ai.vercel.app." },
     { id: "p1", src: "projects/llm-compression", kw: "project on device llm compression deployment bert gpt-2 edge int8 raspberry pi lime shap pytorch advisor rabiul islam model", text: "Project — On-Device LLM Compression & Deployment (advisor Dr. Rabiul Islam): compressed BERT/GPT-2 for edge, deployed int8 on Raspberry Pi, validated with LIME/SHAP." },
     { id: "p2", src: "projects/honeypot", kw: "project smart home honeypot dashboard iot flask sqlite websockets geoip telnet jinja attacker deception real time threats", text: "Project — Smart Home Honeypot Dashboard: a full-stack IoT honeypot (Python/Flask/SQLite/WebSockets/GeoIP/Telnet) capturing attacker behavior with a real-time threat dashboard." },
     { id: "p3", src: "projects/crawler", kw: "project sensitive data exposure crawler fastapi asyncio nlp chartjs uvicorn websockets pii scan public urls 100 concurrent workers", text: "Project — Sensitive Data Exposure Crawler: a real-time crawler (FastAPI/Asyncio/NLP) scanning public URLs for exposed PII with 100+ concurrent workers." },
     { id: "skills", src: "skills/stack.json", kw: "skills languages tools python java javascript c c++ sql powershell pytorch hugging face splunk tanium okta iam pam siem honeypots tcp ip dns osi tech stack", text: "Skills — Python, Java, JavaScript, C/C++, SQL, PowerShell, PyTorch, Hugging Face; Splunk, Tanium, Okta, IAM/PAM, SIEM, honeypots, TCP/IP, DNS, OSI 1–7." },
-    { id: "edu", src: "education/degree.md", kw: "education rutgers university bachelor computer science cum laude gpa 3.65 may 2026 degree school college", text: "Education — Rutgers University, B.A. Computer Science, Cum Laude, GPA 3.65, expected May 2026." },
-    { id: "contact", src: "contact.sh", kw: "contact email hire reach linkedin github website cipherconsulting khafi resume available roles", text: "Contact — email shaheersaud.internship@gmail.com · github.com/ShaheerSaud2004 · linkedin.com/in/shaheer-saud · cipherconsulting.net · khafi.org" }
+    { id: "edu", src: "education/degree.md", kw: "education rutgers university bachelor computer science cum laude gpa 3.65 may 2026 degree school college graduated", text: "Education — Rutgers University, B.A. Computer Science, Cum Laude, GPA 3.65, graduated May 2026." },
+    { id: "contact", src: "contact.sh", kw: "contact email hire reach linkedin github website cipherconsulting khafi resume collaborate research", text: "Contact — email shaheersaud.internship@gmail.com · github.com/ShaheerSaud2004 · linkedin.com/in/shaheer-saud · cipherconsulting.net · khafi.org" }
   ];
+  function kb(id) { for (var i = 0; i < KB.length; i++) { if (KB[i].id === id) return KB[i]; } return { text: "" }; }
   var STOP = { the:1,a:1,an:1,and:1,or:1,of:1,to:1,in:1,on:1,at:1,for:1,with:1,is:1,are:1,was:1,were:1,do:1,did:1,does:1,you:1,your:1,what:1,which:1,how:1,me:1,my:1,i:1,tell:1,about:1,please:1,can:1,whats:1,"what's":1 };
   function terms(s) {
     return (s || "").toLowerCase().replace(/[^a-z0-9+#&]+/g, " ").split(/\s+/).filter(function (w) { return w && !STOP[w]; });
@@ -523,8 +527,10 @@
       "available commands:",
       "  help            this list",
       "  whoami          quick intro",
-      "  experience      roles @ AT&T, Colgate, Rutgers",
+      "  experience      roles @ AT&T (x2), Colgate, Rutgers",
       "  projects        featured builds",
+      "  masjidly        the masjid community app I built",
+      "  paper           my AI-detection research paper",
       "  skills          tech + security stack",
       "  education       degree & GPA",
       "  contact         ways to reach me",
@@ -532,7 +538,7 @@
       "  ask \"...\"        ask my résumé anything (RAG demo)",
       "  clear           wipe the screen",
       "",
-      "try:  ask what did you do at AT&T?"
+      "try:  ask what do you do at AT&T?"
     ];
 
     function ask(q) {
@@ -563,20 +569,32 @@
       if (name === "ask") { ask(arg); return; }
       switch (cmd.toLowerCase()) {
         case "help": case "?": case "ls": HELP.forEach(function (h) { line(esc(h)); }); break;
-        case "whoami": case "about": line(KB[0].text, "ok"); break;
+        case "whoami": case "about": line(kb("about").text, "ok"); break;
         case "experience": case "exp": case "experience/":
-          line("AT&amp;T — Cyber AI Engineer (RAG/LLM, IAM/PAM → 96%)", "ok");
+          line("AT&amp;T — AI Security Engineer · full-time (developing AI for the business)", "ok");
+          line("AT&amp;T — Cyber AI Engineer, Intern (RAG/LLM, IAM/PAM → 96%)", "ok");
           line("Colgate-Palmolive — Security Engineer Intern (PAM chatbot, Splunk/Okta/Tanium)", "ok");
           line("Rutgers OIT — IT Supervisor (automation, 200 consultants)", "ok");
-          line('<span class="src">// run `ask` for details, e.g. ask what did you do at AT&amp;T</span>');
+          line('<span class="src">// run `ask` for details, e.g. ask what do you do at AT&amp;T</span>');
           break;
         case "projects": case "ls projects": case "projects/":
-          line("1) On-Device LLM Compression &amp; Deployment — PyTorch · int8 · Raspberry Pi", "ok");
-          line("2) Smart Home Honeypot Dashboard — Flask · WebSockets · GeoIP", "ok");
-          line("3) Sensitive Data Exposure Crawler — FastAPI · NLP · 100+ workers", "ok");
+          line("1) Masjidly — community platform for masjids (PWA + Android, $500+ in awards)", "ok");
+          line("2) Habsburg AI — \"Contamination Detection Is Not Collapse Monitoring\" (research)", "ok");
+          line("3) On-Device LLM Compression &amp; Deployment — PyTorch · int8 · Raspberry Pi", "ok");
+          line("4) Smart Home Honeypot Dashboard — Flask · WebSockets · GeoIP", "ok");
+          line("5) Sensitive Data Exposure Crawler — FastAPI · NLP · 100+ workers", "ok");
+          line('<span class="src">// try: masjidly · paper</span>');
           break;
-        case "skills": line(KB[7].text, "ok"); break;
-        case "education": case "edu": line(KB[8].text, "ok"); break;
+        case "masjidly":
+          line(kb("masjidly").text, "ok");
+          line('→ <a href="https://www.masjidly.com" target="_blank" rel="noopener noreferrer">masjidly.com</a>');
+          break;
+        case "paper": case "research": case "habsburg":
+          line(kb("habsburg").text, "ok");
+          line('→ <a href="https://habsburg-ai.vercel.app" target="_blank" rel="noopener noreferrer">habsburg-ai.vercel.app</a>');
+          break;
+        case "skills": line(kb("skills").text, "ok"); break;
+        case "education": case "edu": line(kb("edu").text, "ok"); break;
         case "contact":
           line('email · <a href="mailto:shaheersaud.internship@gmail.com">shaheersaud.internship@gmail.com</a>');
           line('github · <a href="https://github.com/ShaheerSaud2004" target="_blank" rel="noopener noreferrer">@ShaheerSaud2004</a>');
