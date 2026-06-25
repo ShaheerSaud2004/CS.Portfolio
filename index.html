@@ -34,6 +34,9 @@
 </head>
 <body>
 
+<!-- ===== AMBIENT AI NEURAL FIELD (decorative background) ===== -->
+<canvas id="neural" aria-hidden="true"></canvas>
+
 <a href="#main" class="skip">Skip to content</a>
 
 <!-- ===== BOOT SCREEN (optional, fast, skippable) ===== -->
@@ -120,37 +123,15 @@
         </div>
 
         <aside class="hero-side rv">
-          <!-- Animated SVG radar sweep (decorative) -->
+          <!-- Animated neural inference graph (decorative) -->
           <div class="radar-card" aria-hidden="true">
             <div class="radar-head">
-              <span>node://saud.soc</span>
-              <span class="live"><i class="fa-solid fa-circle"></i> live sweep</span>
+              <span>model://saud.infer</span>
+              <span class="live"><i class="fa-solid fa-circle"></i> live inference</span>
             </div>
-            <div class="radar-wrap">
-              <svg id="radar" viewBox="0 0 300 300" width="100%" height="100%" role="img" aria-label="Animated radar sweep">
-                <defs>
-                  <radialGradient id="rg" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="rgba(67,249,127,.12)"/>
-                    <stop offset="100%" stop-color="rgba(67,249,127,0)"/>
-                  </radialGradient>
-                  <linearGradient id="sweepG" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="rgba(67,249,127,0)"/>
-                    <stop offset="100%" stop-color="rgba(67,249,127,.55)"/>
-                  </linearGradient>
-                </defs>
-                <circle cx="150" cy="150" r="146" fill="url(#rg)"/>
-                <circle cx="150" cy="150" r="146" fill="none" stroke="#1c2a23" stroke-width="1"/>
-                <circle cx="150" cy="150" r="100" fill="none" stroke="#162b20" stroke-width="1"/>
-                <circle cx="150" cy="150" r="54"  fill="none" stroke="#162b20" stroke-width="1"/>
-                <line x1="4" y1="150" x2="296" y2="150" stroke="#162b20" stroke-width="1"/>
-                <line x1="150" y1="4" x2="150" y2="296" stroke="#162b20" stroke-width="1"/>
-                <line x1="46" y1="46" x2="254" y2="254" stroke="#101e16" stroke-width="1"/>
-                <line x1="254" y1="46" x2="46" y2="254" stroke="#101e16" stroke-width="1"/>
-                <g id="sweep">
-                  <path d="M150 150 L150 4 A146 146 0 0 1 256 56 Z" fill="url(#sweepG)"/>
-                </g>
-                <g id="blips"></g>
-              </svg>
+            <div class="nnet-wrap">
+              <canvas id="nnet" role="img" aria-label="Animated neural network inference graph"></canvas>
+              <div class="nnet-tags" aria-hidden="true"><span>input</span><span>hidden ×2</span><span>output</span></div>
             </div>
             <div class="photo-chip">
               <img src="Shaheer.jpg" alt="" loading="lazy" width="44" height="44" />
