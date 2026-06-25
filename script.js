@@ -455,4 +455,265 @@
       card.addEventListener("mouseleave", function () { card.style.transform = ""; });
     });
   }
+
+  /* ===================================================================
+     KNOWLEDGE BASE (résumé chunks) — shared by the terminal `ask` RAG demo
+     =================================================================== */
+  var KB = [
+    { id: "about", src: "about/profile.md", kw: "who you are summary cyber ai engineer security machine learning discipline overview intro background", text: "I'm a Cyber AI Engineer who treats security and machine learning as one discipline — turning slow, manual security work into fast, reliable, auditable automation." },
+    { id: "att", src: "experience/att.md", kw: "at&t att cyber ai engineer rag llm pipeline ingestion iam pam 96% accuracy ragas hugging face benchmarking 1000 labeled examples 90% hyperparameters embeddings proprietary llm middletown 2025 most recent current job", text: "At AT&T (Cyber AI Engineer, May–Aug 2025) I architected a RAG LLM pipeline that cut document processing from weeks to seconds and pushed IAM/PAM query accuracy to 96%, built an LLM benchmarking framework with RAGAS + Hugging Face over 1,000+ examples (90% faster eval), and tuned hyperparameters/embeddings for AT&T's proprietary LLM." },
+    { id: "colgate", src: "experience/colgate.md", kw: "colgate palmolive security engineer intern pam chatbot help desk 98% splunk okta tanium log analysis threat detection anomalies migration 1000 it profiles powershell python api 80% piscataway 2024", text: "At Colgate-Palmolive (Security Engineer Intern, Feb 2024–Dec 2025) I built an AI chatbot for PAM queries that cut help-desk workload 98%, hunted threats across Splunk/Okta/Tanium, and automated migration of 1,000+ IT profiles (80% less manual effort)." },
+    { id: "rutgers", src: "experience/rutgers.md", kw: "rutgers oit office information technology supervisor selenium python automation caller wait 85% osi layer tcp ip dns network 200 consultants 300 tickets servicenow new brunswick 2023", text: "At Rutgers OIT (IT Supervisor, Apr 2023–present) I deployed a Selenium/Python automation that cut caller wait times 85%, applied OSI L1–7 / TCP-IP / DNS expertise, and led & trained 200 consultants resolving 300+ tickets via ServiceNow." },
+    { id: "p1", src: "projects/llm-compression", kw: "project on device llm compression deployment bert gpt-2 edge int8 raspberry pi lime shap pytorch advisor rabiul islam model", text: "Project — On-Device LLM Compression & Deployment (advisor Dr. Rabiul Islam): compressed BERT/GPT-2 for edge, deployed int8 on Raspberry Pi, validated with LIME/SHAP." },
+    { id: "p2", src: "projects/honeypot", kw: "project smart home honeypot dashboard iot flask sqlite websockets geoip telnet jinja attacker deception real time threats", text: "Project — Smart Home Honeypot Dashboard: a full-stack IoT honeypot (Python/Flask/SQLite/WebSockets/GeoIP/Telnet) capturing attacker behavior with a real-time threat dashboard." },
+    { id: "p3", src: "projects/crawler", kw: "project sensitive data exposure crawler fastapi asyncio nlp chartjs uvicorn websockets pii scan public urls 100 concurrent workers", text: "Project — Sensitive Data Exposure Crawler: a real-time crawler (FastAPI/Asyncio/NLP) scanning public URLs for exposed PII with 100+ concurrent workers." },
+    { id: "skills", src: "skills/stack.json", kw: "skills languages tools python java javascript c c++ sql powershell pytorch hugging face splunk tanium okta iam pam siem honeypots tcp ip dns osi tech stack", text: "Skills — Python, Java, JavaScript, C/C++, SQL, PowerShell, PyTorch, Hugging Face; Splunk, Tanium, Okta, IAM/PAM, SIEM, honeypots, TCP/IP, DNS, OSI 1–7." },
+    { id: "edu", src: "education/degree.md", kw: "education rutgers university bachelor computer science cum laude gpa 3.65 may 2026 degree school college", text: "Education — Rutgers University, B.A. Computer Science, Cum Laude, GPA 3.65, expected May 2026." },
+    { id: "contact", src: "contact.sh", kw: "contact email hire reach linkedin github website cipherconsulting khafi resume available roles", text: "Contact — email shaheersaud.internship@gmail.com · github.com/ShaheerSaud2004 · linkedin.com/in/shaheer-saud · cipherconsulting.net · khafi.org" }
+  ];
+  var STOP = { the:1,a:1,an:1,and:1,or:1,of:1,to:1,in:1,on:1,at:1,for:1,with:1,is:1,are:1,was:1,were:1,do:1,did:1,does:1,you:1,your:1,what:1,which:1,how:1,me:1,my:1,i:1,tell:1,about:1,please:1,can:1,whats:1,"what's":1 };
+  function terms(s) {
+    return (s || "").toLowerCase().replace(/[^a-z0-9+#&]+/g, " ").split(/\s+/).filter(function (w) { return w && !STOP[w]; });
+  }
+  function retrieve(q) {
+    var qt = terms(q);
+    if (!qt.length) return [];
+    return KB.map(function (c) {
+      var hay = (c.kw + " " + c.text).toLowerCase();
+      var score = 0;
+      qt.forEach(function (t) { if (hay.indexOf(t) !== -1) score += (t.length > 4 ? 2 : 1); });
+      return { c: c, score: score };
+    }).filter(function (r) { return r.score > 0; })
+      .sort(function (a, b) { return b.score - a.score; });
+  }
+
+  /* ===================================================================
+     INTERACTIVE TERMINAL (hero) + client-side RAG `ask`
+     =================================================================== */
+  (function repl() {
+    var form = document.getElementById("termForm");
+    var input = document.getElementById("termIn");
+    var out = document.getElementById("termOut");
+    if (!form || !input || !out) return;
+
+    var history = [], hpos = -1;
+
+    function esc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+    function line(html, cls) {
+      var d = document.createElement("div");
+      d.className = "l" + (cls ? " " + cls : "");
+      d.innerHTML = html;
+      out.appendChild(d);
+      return d;
+    }
+    function streamInto(el, text, done) {
+      if (reduce) { el.textContent = text; if (done) done(); return; }
+      var words = text.split(/(\s+)/), i = 0;
+      el.innerHTML = '<span class="sw"></span><span class="caret"></span>';
+      var sw = el.firstChild, caret = el.lastChild;
+      (function tick() {
+        if (i < words.length) {
+          sw.textContent += words[i++]; sw.textContent += words[i] || ""; i++;
+          window.setTimeout(tick, 22);
+        } else { if (caret && caret.parentNode) caret.parentNode.removeChild(caret); if (done) done(); }
+      })();
+    }
+
+    var HELP = [
+      "available commands:",
+      "  help            this list",
+      "  whoami          quick intro",
+      "  experience      roles @ AT&T, Colgate, Rutgers",
+      "  projects        featured builds",
+      "  skills          tech + security stack",
+      "  education       degree & GPA",
+      "  contact         ways to reach me",
+      "  resume          open my résumé (pdf)",
+      "  ask \"...\"        ask my résumé anything (RAG demo)",
+      "  clear           wipe the screen",
+      "",
+      "try:  ask what did you do at AT&T?"
+    ];
+
+    function ask(q) {
+      if (!q) { line('usage: ask "your question"  —  e.g. ask what did you build at Colgate?', "err"); return; }
+      line('<span class="pmt">↳</span> <span class="src">retrieving context from résumé knowledge base…</span>');
+      var hits = retrieve(q);
+      window.setTimeout(function () {
+        if (!hits.length) {
+          line('no strong match. try asking about <b>AT&amp;T</b>, <b>Colgate</b>, <b>Rutgers</b>, my <b>projects</b>, <b>skills</b>, or <b>education</b>.', "amb");
+          return;
+        }
+        var top = hits.slice(0, hits.length > 1 && hits[1].score >= hits[0].score - 1 ? 2 : 1);
+        line('<span class="src">sources: ' + top.map(function (t) { return "[" + esc(t.c.src) + "]"; }).join(" ") + '</span>');
+        var answer = top.map(function (t) { return t.c.text; }).join("  ");
+        var l = line("", "ok");
+        streamInto(l, answer);
+      }, 360);
+    }
+
+    function run(raw) {
+      var cmd = raw.trim();
+      line('<span class="pmt">visitor@portfolio:~$</span> ' + esc(cmd), "cmd-echo");
+      if (!cmd) return;
+      var sp = cmd.indexOf(" ");
+      var name = (sp === -1 ? cmd : cmd.slice(0, sp)).toLowerCase();
+      var arg = sp === -1 ? "" : cmd.slice(sp + 1).trim().replace(/^["']|["']$/g, "");
+
+      if (name === "ask") { ask(arg); return; }
+      switch (cmd.toLowerCase()) {
+        case "help": case "?": case "ls": HELP.forEach(function (h) { line(esc(h)); }); break;
+        case "whoami": case "about": line(KB[0].text, "ok"); break;
+        case "experience": case "exp": case "experience/":
+          line("AT&amp;T — Cyber AI Engineer (RAG/LLM, IAM/PAM → 96%)", "ok");
+          line("Colgate-Palmolive — Security Engineer Intern (PAM chatbot, Splunk/Okta/Tanium)", "ok");
+          line("Rutgers OIT — IT Supervisor (automation, 200 consultants)", "ok");
+          line('<span class="src">// run `ask` for details, e.g. ask what did you do at AT&amp;T</span>');
+          break;
+        case "projects": case "ls projects": case "projects/":
+          line("1) On-Device LLM Compression &amp; Deployment — PyTorch · int8 · Raspberry Pi", "ok");
+          line("2) Smart Home Honeypot Dashboard — Flask · WebSockets · GeoIP", "ok");
+          line("3) Sensitive Data Exposure Crawler — FastAPI · NLP · 100+ workers", "ok");
+          break;
+        case "skills": line(KB[7].text, "ok"); break;
+        case "education": case "edu": line(KB[8].text, "ok"); break;
+        case "contact":
+          line('email · <a href="mailto:shaheersaud.internship@gmail.com">shaheersaud.internship@gmail.com</a>');
+          line('github · <a href="https://github.com/ShaheerSaud2004" target="_blank" rel="noopener noreferrer">@ShaheerSaud2004</a>');
+          line('linkedin · <a href="https://linkedin.com/in/shaheer-saud" target="_blank" rel="noopener noreferrer">/in/shaheer-saud</a>');
+          break;
+        case "resume": case "cv":
+          line('opening <a href="Shaheer_Saud_Resume.pdf" target="_blank" rel="noopener noreferrer">Shaheer_Saud_Resume.pdf</a> …', "ok");
+          window.open("Shaheer_Saud_Resume.pdf", "_blank", "noopener");
+          break;
+        case "sudo hire-me": case "sudo hire me":
+          line("[sudo] permission granted ✓", "ok");
+          line('Shaheer is open to Cyber AI / security roles → <a href="mailto:shaheersaud.internship@gmail.com">email me</a>', "ok");
+          break;
+        case "clear": case "cls": out.innerHTML = ""; break;
+        default:
+          if (name === "sudo") { line("sudo: nice try — permission denied. (try: sudo hire-me)", "amb"); break; }
+          line("command not found: " + esc(name) + " — type 'help'", "err");
+      }
+    }
+
+    line('<span class="src">// interactive shell ready — type <b>help</b>, or <b>ask</b> me anything about my work</span>');
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = input.value;
+      if (v.trim()) { history.push(v); hpos = history.length; }
+      run(v);
+      input.value = "";
+      out.scrollTop = out.scrollHeight;
+    });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowUp") { if (hpos > 0) { hpos--; input.value = history[hpos]; e.preventDefault(); } }
+      else if (e.key === "ArrowDown") { if (hpos < history.length - 1) { hpos++; input.value = history[hpos]; } else { hpos = history.length; input.value = ""; } }
+    });
+    var replBox = form.parentNode;
+    if (replBox) replBox.addEventListener("click", function (e) { if (window.getSelection && String(window.getSelection())) return; input.focus(); });
+  })();
+
+  /* ===================================================================
+     TOKEN-STREAMING ABOUT (LLM-style word-by-word reveal on scroll-in)
+     =================================================================== */
+  (function streamAbout() {
+    var body = document.querySelector(".about-body");
+    if (!body || reduce || !hasIO) return;
+
+    // Wrap every word in the rich paragraphs in a .tok span (preserving structure)
+    var texts = [];
+    var walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT, null);
+    var t; while ((t = walker.nextNode())) { if (t.nodeValue.trim()) texts.push(t); }
+    texts.forEach(function (node) {
+      var parts = node.nodeValue.split(/(\s+)/);
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (w) {
+        if (!w) return;
+        if (/^\s+$/.test(w)) frag.appendChild(document.createTextNode(w));
+        else { var s = document.createElement("span"); s.className = "tok"; s.textContent = w; frag.appendChild(s); }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    var toks = Array.prototype.slice.call(body.querySelectorAll(".tok"));
+    var caret = document.createElement("span"); caret.className = "caret";
+
+    var started = false;
+    function reveal(animated) {
+      if (started) return; started = true;
+      if (!animated) { toks.forEach(function (t) { t.classList.add("on"); }); return; }
+      var i = 0;
+      (function tick() {
+        var n = Math.min(i + 2, toks.length);
+        for (; i < n; i++) { toks[i].classList.add("on"); }
+        if (i < toks.length) { if (toks[i]) toks[i].parentNode.insertBefore(caret, toks[i]); window.setTimeout(tick, 34); }
+        else if (caret.parentNode) caret.parentNode.removeChild(caret);
+      })();
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { reveal(true); io.disconnect(); } });
+    }, { threshold: 0.2 });
+    io.observe(body);
+    // Already in view on load (e.g. short screens / reload mid-page)
+    if (body.getBoundingClientRect().top < window.innerHeight * 0.85) {
+      window.setTimeout(function () { reveal(true); }, 400);
+    }
+    // Safety net: text must never stay hidden if the observer never fires
+    window.setTimeout(function () { reveal(false); }, 6000);
+  })();
+
+  /* ===================================================================
+     LIVE THREAT-DETECTION FEED (simulated ML classifier, motion-gated)
+     =================================================================== */
+  (function threatFeed() {
+    var feed = document.getElementById("feed");
+    if (!feed) return;
+
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    var clock = 9 * 3600 + 41 * 60 + 12; // deterministic start (no Date.now)
+    function ts() { clock = (clock + 3 + ((Math.random() * 7) | 0)) % 86400; var h = (clock / 3600) | 0, m = ((clock % 3600) / 60) | 0, s = clock % 60; return pad(h) + ":" + pad(m) + ":" + pad(s); }
+    function ip() { return (10 + (Math.random() * 240 | 0)) + "." + (Math.random() * 256 | 0) + "." + (Math.random() * 256 | 0) + "." + (Math.random() * 256 | 0); }
+    function pick(a) { return a[(Math.random() * a.length) | 0]; }
+    var users = ["s.saud", "root", "svc-pam", "jdoe", "admin", "k.lee", "guest"];
+    var events = [
+      function () { return "auth.login user=" + pick(users) + " src=" + ip(); },
+      function () { return "pam.query id=" + (1000 + (Math.random() * 8999 | 0)) + " lat=" + (8 + (Math.random() * 90 | 0)) + "ms"; },
+      function () { return "honeypot.hit proto=telnet src=" + ip(); },
+      function () { return "siem.rule=" + pick(["T1110", "T1059", "T1078", "T1021"]) + " src=" + ip(); },
+      function () { return "dns.lookup " + pick(["cdn", "api", "vault", "unknown-" + (Math.random() * 99 | 0)]) + ".internal"; },
+      function () { return "iam.escalation user=" + pick(users) + " role=admin"; },
+      function () { return "okta.mfa user=" + pick(users) + " result=" + pick(["pass", "deny"]); }
+    ];
+    function classify() {
+      var r = Math.random();
+      if (r > 0.9) return { cls: "crit", label: "CRITICAL" };
+      if (r > 0.66) return { cls: "susp", label: "SUSPICIOUS" };
+      return { cls: "benign", label: "BENIGN" };
+    }
+
+    var MAX = 7, timer = null, running = false;
+    function add() {
+      var v = classify(), conf = (v.cls === "benign" ? 80 + (Math.random() * 19 | 0) : 90 + (Math.random() * 9 | 0));
+      var row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = '<span class="ts">' + ts() + '</span><span class="msg">' + pick(events)() +
+        '</span><span class="vd ' + v.cls + '">' + v.label + ' ' + conf + '%</span>';
+      feed.appendChild(row);
+      while (feed.children.length > MAX) feed.removeChild(feed.firstChild);
+    }
+    function start() { if (running) return; running = true; add(); timer = window.setInterval(add, 1500); }
+    function stop() { running = false; if (timer) window.clearInterval(timer); }
+
+    for (var k = 0; k < 5; k++) add(); // seed
+    if (reduce) return;
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else if (onView) start(); });
+    var onView = true;
+    if (hasIO) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { onView = e.isIntersecting; if (onView && !document.hidden) start(); else stop(); });
+      }, { threshold: 0.05 });
+      io.observe(feed);
+    } else { start(); }
+  })();
 })();

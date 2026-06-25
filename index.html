@@ -119,6 +119,17 @@
               <a href="https://cipherconsulting.net" target="_blank" rel="noopener noreferrer" aria-label="Cipher Consulting website"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></a>
               <a href="https://khafi.org" target="_blank" rel="noopener noreferrer" aria-label="Khafi website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
             </div>
+
+            <!-- Interactive terminal + client-side RAG (`ask`) -->
+            <div class="repl">
+              <div class="repl-out" id="termOut" aria-live="polite" role="log"></div>
+              <form class="repl-line" id="termForm" autocomplete="off">
+                <label class="pmt2" for="termIn">visitor@portfolio:~$</label>
+                <input id="termIn" class="repl-in" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" enterkeyhint="go"
+                  aria-label="Interactive terminal — type a command such as help, or ask a question about my experience"
+                  placeholder="type 'help' or ask &quot;what did you do at AT&amp;T?&quot;" />
+              </form>
+            </div>
           </div>
         </div>
 
@@ -158,6 +169,16 @@
             <div class="id-row"><span>github</span><b>@ShaheerSaud2004</b></div>
             <div class="id-row"><span>linkedin</span><b>/in/shaheer-saud</b></div>
             <div class="id-row"><span>web</span><b>cipherconsulting.net</b></div>
+          </div>
+
+          <!-- Live threat-detection feed (simulated ML classifier) -->
+          <div class="id-card feed-card" aria-hidden="true">
+            <div class="feed-head">
+              <h2 class="id-h">./sentinel --watch</h2>
+              <span class="live"><i class="fa-solid fa-circle"></i> live</span>
+            </div>
+            <div class="feed" id="feed"></div>
+            <div class="feed-foot">model: anomaly-detector v2 &middot; streaming events</div>
           </div>
         </aside>
 
