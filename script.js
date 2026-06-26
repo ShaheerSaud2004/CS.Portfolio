@@ -359,27 +359,62 @@
     sync();
   })();
 
-  /* ---- B) Hero inference graph ---- */
+  /* ---- B) Hero inference graph — live forward-pass classifier ---- */
   (function heroNet() {
     var cv = document.getElementById("nnet");
     if (!cv) return;
     var ctx = cv.getContext("2d");
     var GREEN = "67,249,127", BG = "8,10,9";
-    var layers = [4, 6, 6, 3];
+    var layers = [4, 6, 6, 3], L = layers.length;
     var nodes = [], edges = [], dims = { w: 0, h: 0 };
-    var raf = null, running = false, onScreen = false, t = 0;
+    var raf = null, running = false, onScreen = false;
+    var cp = 0, revealed = false, sample = null;
+
+    var elLabel = document.querySelector(".nout-label");
+    var elConf = document.querySelector(".nout-conf");
+    var elBar = document.querySelector(".nout-bar i");
+
+    var CLASSES = [
+      { name: "BENIGN", cls: "benign", w: 0.70, lo: 90, hi: 99 },
+      { name: "ANOMALY", cls: "susp", w: 0.22, lo: 78, hi: 94 },
+      { name: "THREAT", cls: "crit", w: 0.08, lo: 85, hi: 98 }
+    ];
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function hexFor(cls) { return cls === "crit" ? "255,91,110" : cls === "susp" ? "255,182,72" : GREEN; }
+
+    function setReadout(label, conf, barPct, cls) {
+      if (elLabel) { elLabel.innerHTML = label; elLabel.className = "nout-label" + (cls ? " " + cls : ""); }
+      if (elConf) elConf.textContent = conf;
+      if (elBar) { elBar.style.width = barPct + "%"; elBar.className = cls || ""; }
+    }
+    function newSample() {
+      var r = Math.random(), acc = 0, pick = CLASSES[0];
+      for (var i = 0; i < CLASSES.length; i++) { acc += CLASSES[i].w; if (r <= acc) { pick = CLASSES[i]; break; } }
+      var conf = Math.round(rnd(pick.lo, pick.hi));
+      nodes.forEach(function (nd) { if (nd.layer !== L - 1) nd.target = rnd(0.45, 1); });
+      var outs = nodes.filter(function (n) { return n.layer === L - 1; });
+      var winIdx = CLASSES.indexOf(pick);
+      outs.forEach(function (n, i) { n.target = (i === winIdx) ? 1 : 0.16; });
+      sample = { verdict: pick, conf: conf, winNode: outs[winIdx] };
+      revealed = false;
+      setReadout("&#9656; running forward pass…", "", 6, "");
+    }
+    function reveal() {
+      revealed = true;
+      setReadout("&#9656; " + sample.verdict.name, "conf " + (sample.conf / 100).toFixed(2), sample.conf, sample.verdict.cls);
+    }
 
     function build() {
       dims = fitCanvas(cv);
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       nodes = []; edges = [];
       var padX = dims.w * 0.13, padY = dims.h * 0.12;
-      var uW = dims.w - padX * 2, uH = dims.h - padY * 2, L = layers.length;
+      var uW = dims.w - padX * 2, uH = dims.h - padY * 2;
       for (var l = 0; l < L; l++) {
         var cnt = layers[l], x = padX + (L === 1 ? 0 : uW * l / (L - 1));
         for (var i = 0; i < cnt; i++) {
           var y = padY + (cnt === 1 ? uH / 2 : uH * i / (cnt - 1));
-          nodes.push({ x: x, y: y, layer: l });
+          nodes.push({ x: x, y: y, layer: l, target: 0.6 });
         }
       }
       for (var l2 = 0; l2 < L - 1; l2++) {
@@ -388,45 +423,62 @@
         A.forEach(function (a) { B.forEach(function (b) { edges.push({ a: a, b: b }); }); });
       }
     }
+    function ease(p) { return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; }
+    function front() { return ease(Math.max(0, Math.min(1, (cp - 0.08) / 0.52))) * (L - 1); }
+    function nodeAct(nd, f) {
+      if (f < nd.layer - 0.05) return 0;
+      return Math.max(0, Math.min(1, (f - nd.layer) / 0.5 + 0.15)) * nd.target;
+    }
     function render() {
       ctx.clearRect(0, 0, dims.w, dims.h);
-      var wave = (t % 1) * layers.length;
+      var f = front();
       for (var i = 0; i < edges.length; i++) {
-        var e = edges[i];
-        ctx.strokeStyle = "rgba(" + GREEN + ",0.10)";
+        var e = edges[i], aAct = nodeAct(e.a, f), bAct = nodeAct(e.b, f);
+        ctx.strokeStyle = "rgba(" + GREEN + "," + (0.055 + 0.16 * aAct * bAct).toFixed(3) + ")";
         ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
-        var prog = wave - e.a.layer;
-        if (prog > 0 && prog < 1) {
+        var prog = f - e.a.layer;
+        if (prog > 0 && prog < 1 && e.a.target > 0.4) {
           var px = e.a.x + (e.b.x - e.a.x) * prog, py = e.a.y + (e.b.y - e.a.y) * prog;
-          ctx.fillStyle = "rgba(154,255,185," + (Math.sin(prog * Math.PI) * 0.85).toFixed(3) + ")";
-          ctx.beginPath(); ctx.arc(px, py, 1.5, 0, 6.2832); ctx.fill();
+          ctx.fillStyle = "rgba(154,255,185," + (Math.sin(prog * Math.PI) * 0.8 * e.a.target).toFixed(3) + ")";
+          ctx.beginPath(); ctx.arc(px, py, 1.6, 0, 6.2832); ctx.fill();
         }
       }
       for (var k = 0; k < nodes.length; k++) {
-        var nd = nodes[k], act = Math.max(0, 1 - Math.abs(wave - nd.layer) * 1.5), r = 3.3 + act * 2.1;
-        if (act > 0.03) {
-          ctx.fillStyle = "rgba(" + GREEN + "," + (act * 0.15).toFixed(3) + ")";
-          ctx.beginPath(); ctx.arc(nd.x, nd.y, r + 6, 0, 6.2832); ctx.fill();
+        var nd = nodes[k], act = nodeAct(nd, f);
+        var isWin = sample && nd === sample.winNode && revealed;
+        var col = isWin ? hexFor(sample.verdict.cls) : GREEN;
+        var r = 3.3 + act * 2.2 + (isWin ? 1.3 : 0);
+        if (act > 0.04 || isWin) {
+          ctx.fillStyle = "rgba(" + col + "," + ((isWin ? 0.3 : 0.14) * Math.max(act, isWin ? 0.85 : 0)).toFixed(3) + ")";
+          ctx.beginPath(); ctx.arc(nd.x, nd.y, r + (isWin ? 10 : 6), 0, 6.2832); ctx.fill();
         }
         ctx.fillStyle = "rgba(" + BG + ",1)";
         ctx.beginPath(); ctx.arc(nd.x, nd.y, r, 0, 6.2832); ctx.fill();
-        ctx.fillStyle = "rgba(" + GREEN + "," + (0.22 + act * 0.66).toFixed(3) + ")";
+        ctx.fillStyle = "rgba(" + col + "," + (0.22 + act * 0.66).toFixed(3) + ")";
         ctx.beginPath(); ctx.arc(nd.x, nd.y, Math.max(0, r - 2.1), 0, 6.2832); ctx.fill();
-        ctx.strokeStyle = "rgba(" + GREEN + "," + (0.45 + act * 0.5).toFixed(3) + ")";
+        ctx.strokeStyle = "rgba(" + col + "," + (0.4 + act * 0.5).toFixed(3) + ")";
         ctx.lineWidth = 1.3;
         ctx.beginPath(); ctx.arc(nd.x, nd.y, r, 0, 6.2832); ctx.stroke();
       }
     }
-    function loop() { t = (t + 0.004) % 1; render(); raf = requestAnimationFrame(loop); }
+    function loop() {
+      cp += 0.0049;
+      if (cp >= 1) { cp = 0; newSample(); }
+      if (!revealed && cp >= 0.6) reveal();
+      render();
+      raf = requestAnimationFrame(loop);
+    }
     function sync() {
       if (onScreen && !document.hidden) { if (!running) { running = true; raf = requestAnimationFrame(loop); } }
       else { running = false; if (raf) cancelAnimationFrame(raf); }
     }
 
     build();
-    if (reduce) { t = 0.5; render(); return; }
+    newSample();
+    cp = 0.66; reveal();          // first paint shows a completed forward pass + verdict
     render();
+    if (reduce) return;
     var rt2;
     window.addEventListener("resize", function () { clearTimeout(rt2); rt2 = setTimeout(function () { build(); render(); }, 200); });
     document.addEventListener("visibilitychange", sync);

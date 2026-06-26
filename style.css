@@ -97,6 +97,19 @@ img{max-width:100%;display:block;}
   text-transform:uppercase;color:var(--text-faint);
 }
 
+/* live classifier verdict readout */
+.nnet-out{margin-top:11px;font-family:var(--mono);}
+.nout-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;font-size:11px;letter-spacing:.04em;}
+.nout-label{color:var(--text-dim);font-weight:700;transition:color .2s ease;}
+.nout-label.benign{color:var(--green);}
+.nout-label.susp{color:var(--amber);}
+.nout-label.crit{color:var(--crit);}
+.nout-conf{color:var(--text-faint);font-variant-numeric:tabular-nums;font-size:10.5px;}
+.nout-bar{height:3px;border-radius:3px;background:rgba(127,163,148,.14);overflow:hidden;}
+.nout-bar i{display:block;height:100%;width:0;border-radius:3px;background:var(--green);transition:width .35s ease;}
+.nout-bar i.susp{background:var(--amber);}
+.nout-bar i.crit{background:var(--crit);}
+
 :focus-visible{
   outline:2px solid var(--amber);
   outline-offset:3px;
