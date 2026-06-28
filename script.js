@@ -28,9 +28,11 @@
     ["am", "[ >> ] ", "user: shaheer_saud authenticated"]
   ];
 
+  var pv = null;
   function endBoot() {
     if (booted || !boot) return;
     booted = true;
+    if (pv) { window.clearInterval(pv); pv = null; }
     boot.classList.add("done");
     document.body.style.overflow = "";
     document.removeEventListener("keydown", onBootKey);
@@ -69,7 +71,7 @@
     })();
 
     var p = 0;
-    var pv = window.setInterval(function () {
+    pv = window.setInterval(function () {
       p += Math.random() * 22 + 12;
       if (p >= 100) { p = 100; window.clearInterval(pv); }
       bootBar.style.width = p + "%";
@@ -224,20 +226,28 @@
   var burger = document.getElementById("burger");
   var mobileMenu = document.getElementById("mobileMenu");
 
+  var mainEl = document.getElementById("main");
   function closeMenu() {
     if (!mobileMenu) return;
     mobileMenu.classList.remove("open");
+    mobileMenu.setAttribute("aria-hidden", "true");
     burger.classList.remove("open");
     burger.setAttribute("aria-expanded", "false");
     burger.setAttribute("aria-label", "Open menu");
+    if (mainEl) mainEl.removeAttribute("inert");
     if (booted || !boot) document.body.style.overflow = "";
+    if (burger) burger.focus();
   }
   function openMenu() {
     mobileMenu.classList.add("open");
+    mobileMenu.setAttribute("aria-hidden", "false");
     burger.classList.add("open");
     burger.setAttribute("aria-expanded", "true");
     burger.setAttribute("aria-label", "Close menu");
+    if (mainEl) mainEl.setAttribute("inert", "");
     document.body.style.overflow = "hidden";
+    var first = mobileMenu.querySelector("a");
+    if (first) first.focus();
   }
   if (burger && mobileMenu) {
     burger.addEventListener("click", function () {
@@ -343,8 +353,9 @@
       }
     }
     function loop() { update(); render(); raf = requestAnimationFrame(loop); }
+    var nearTop = true; // field is masked away below ~1 viewport, so stop the O(n^2) loop there
     function sync() {
-      if (!document.hidden) { if (!running) { running = true; raf = requestAnimationFrame(loop); } }
+      if (nearTop && !document.hidden) { if (!running) { running = true; raf = requestAnimationFrame(loop); } }
       else { running = false; if (raf) cancelAnimationFrame(raf); }
     }
 
@@ -355,6 +366,10 @@
     window.addEventListener("mouseout", function () { mouse.x = -9999; mouse.y = -9999; });
     var rt;
     window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(build, 200); });
+    window.addEventListener("scroll", function () {
+      var nt = window.scrollY < window.innerHeight;
+      if (nt !== nearTop) { nearTop = nt; sync(); }
+    }, { passive: true });
     document.addEventListener("visibilitychange", sync);
     sync();
   })();
@@ -517,7 +532,7 @@
     { id: "att", src: "experience/att-intern.md", kw: "at&t att cyber ai engineer intern internship rag llm pipeline ingestion iam pam 96% accuracy ragas hugging face benchmarking 1000 labeled examples 90% hyperparameters embeddings proprietary llm middletown 2025 summer", text: "As a Cyber AI Engineer Intern at AT&T (Cyber Security Data Analytics, May–Aug 2025) I architected a RAG LLM pipeline that cut document processing from weeks to seconds and pushed IAM/PAM query accuracy to 96%, built an LLM benchmarking framework with RAGAS + Hugging Face over 1,000+ examples (90% faster eval), and tuned hyperparameters/embeddings for AT&T's proprietary LLM. I now work there full-time." },
     { id: "colgate", src: "experience/colgate.md", kw: "colgate palmolive security engineer intern pam chatbot help desk 98% splunk okta tanium log analysis threat detection anomalies migration 1000 it profiles powershell python api 80% piscataway 2024", text: "At Colgate-Palmolive (Security Engineer Intern, Feb 2024–Dec 2025) I built an AI chatbot for PAM queries that cut help-desk workload 98%, hunted threats across Splunk/Okta/Tanium, and automated migration of 1,000+ IT profiles (80% less manual effort)." },
     { id: "rutgers", src: "experience/rutgers.md", kw: "rutgers oit office information technology supervisor selenium python automation caller wait 85% osi layer tcp ip dns network 200 consultants 300 tickets servicenow new brunswick 2023", text: "At Rutgers OIT (IT Supervisor, Apr 2023–present) I deployed a Selenium/Python automation that cut caller wait times 85%, applied OSI L1–7 / TCP-IP / DNS expertise, and led & trained 200 consultants resolving 300+ tickets via ServiceNow." },
-    { id: "masjidly", src: "projects/masjidly", kw: "masjidly app product pwa android google play masjid mosque muslim prayer salah jamat iqamah community announcements awards $500 hackathon launched built shipped startup founder side project", text: "I built Masjidly — 'the community platform for masjids': a privacy-first PWA + Android app for finding nearby masjids, accurate Salah/Jamat times, and real-time community announcements. It has won $500+ in awards and is live at masjidly.com (still in active development, not yet advertised)." },
+    { id: "masjidly", src: "projects/masjidly", kw: "masjidly app product pwa android google play masjid mosque muslim prayer salah jamat iqamah community announcements awards $500 hackathon launched built shipped startup founder side project", text: "I built Masjidly — 'the community platform for masjids': a privacy-first PWA + Android app for finding nearby masjids, accurate Salah/Jamat times, and real-time community announcements. It has won $500+ in awards and is live at masjidly.com, in active development." },
     { id: "habsburg", src: "research/habsburg-ai", kw: "habsburg ai paper research contamination detection collapse monitoring model collapse ai text detection synthetictextprobe habsburgdetector raid hc3 auc 0.915 reproducible writing publishing eight generators llm independent", text: "I'm writing an independent research paper, 'Contamination Detection Is Not Collapse Monitoring,' showing per-document AI-text detection is not a reliable model-collapse monitor. My SyntheticTextProbe reaches 0.915 mean AUC across eight LLMs (RAID + HC3). Read more at habsburg-ai.vercel.app." },
     { id: "p1", src: "projects/llm-compression", kw: "project on device llm compression deployment bert gpt-2 edge int8 raspberry pi lime shap pytorch advisor rabiul islam model", text: "Project — On-Device LLM Compression & Deployment (advisor Dr. Rabiul Islam): compressed BERT/GPT-2 for edge, deployed int8 on Raspberry Pi, validated with LIME/SHAP." },
     { id: "p2", src: "projects/honeypot", kw: "project smart home honeypot dashboard iot flask sqlite websockets geoip telnet jinja attacker deception real time threats", text: "Project — Smart Home Honeypot Dashboard: a full-stack IoT honeypot (Python/Flask/SQLite/WebSockets/GeoIP/Telnet) capturing attacker behavior with a real-time threat dashboard." },
