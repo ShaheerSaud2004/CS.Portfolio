@@ -1,0 +1,6 @@
+
+# added by laptop backup (secrets / large / generated files)
+.env
+node_modules/
+.DS_Store
+dist/
